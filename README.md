@@ -7,7 +7,7 @@ Experiencia web estática de verdadero o falso sobre la historia y la identidad 
 - Explicación inmediata después de cada respuesta.
 - Rigor histórico: no publicar afirmaciones sin fuente identificable.
 - Interfaz simple, visual, accesible y multidispositivo.
-- Sin cuentas, backend, bases de datos ni dependencias externas.
+- Sin cuentas, backend, bases de datos ni bibliotecas JavaScript externas. Las tipografías web son opcionales y tienen alternativas del sistema.
 
 ## Estructura
 - `index.html`: estructura de la experiencia.
