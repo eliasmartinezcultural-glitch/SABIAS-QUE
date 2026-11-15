@@ -56,6 +56,9 @@ https://www.legislaturaneuquen.gob.ar/SVRFILES/hln/documentos/DiaSesio/XLVIII/DX
 
 Reseña institucional sobre la fundación, el nombre, la familia Gasparri y antecedentes de riego. Presenta una secuencia que debe cotejarse con la reseña municipal.
 
+### Nota de cotejo: fecha fundacional y puesta en funciones
+Las fuentes consultadas coinciden en reconocer el 21 de mayo de 1973 como fecha de fundación. Algunas reseñas describen el Decreto 1339/73 como instrumento de creación de la Comisión de Fomento; otras distinguen la fecha fundacional de la puesta en funciones de las primeras autoridades, ubicada el 8 de abril de 1974. Hasta localizar y revisar el texto íntegro del decreto y el acta del acto institucional de 1974, el juego evita afirmar que ambos hitos ocurrieron el mismo día.
+
 ## Criterios de publicación
 
 1. Toda afirmación debe tener una respuesta inequívoca en el contexto en que está redactada.
