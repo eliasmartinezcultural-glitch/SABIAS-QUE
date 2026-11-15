@@ -21,6 +21,14 @@ Experiencia web gratuita de verdadero o falso para descubrir historias documenta
 ## Publicación con GitHub Pages
 En el repositorio: **Settings → Pages → Build and deployment → Deploy from a branch → main → /(root) → Save**. Esperar a que GitHub complete la publicación.
 
+## Accesibilidad para personas mayores
+- Controles A− y A+ para ajustar el tamaño de lectura.
+- Modo de alto contraste.
+- Lectura en voz alta de preguntas y explicaciones si el navegador ofrece voz en español.
+- Instrucciones breves y visibles; botones grandes; una pregunta por pantalla.
+- Sin reloj, penalización por tardar ni obligación de registrarse.
+- El juego siempre puede completarse leyendo; la voz es una ayuda opcional.
+
 ## Control de calidad
 Antes de ampliar el banco:
 1. Probar inicio, cada respuesta, avance y resultado final.
