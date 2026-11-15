@@ -6,7 +6,7 @@ Experiencia web gratuita de verdadero o falso para descubrir historias documenta
 - Una mecánica central: responder VERDADERO o FALSO.
 - Explicación inmediata y enlace a la fuente después de cada respuesta.
 - Preguntas mezcladas en cada partida.
-- Puntaje final y posibilidad de compartir el resultado.
+- Puntaje acumulado, rachas y progreso visible durante la partida.\n- Devolución inmediata, explicación y fuente después de cada respuesta.\n- Pantalla final con precisión, puntos, mejor racha y medalla.\n- Repaso de respuestas incorrectas y partida especial para volver a intentarlas.\n- Reinicio completo y mezcla de preguntas en cada partida.
 - Diseño adaptable a celulares, tabletas y computadoras.
 - Acceso libre, sin cuentas, backend ni base de datos.
 - Donativo voluntario opcional para apoyar la continuidad del proyecto.
