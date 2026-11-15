@@ -101,3 +101,39 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--coral);outline-offs
 .high-contrast{--paper:#fff;--paper-light:#fff;--ink:#000;--muted:#222;--green:#064b26;--green-dark:#00391b;--coral:#a32b16;--line:#555;--shadow:0 0 0 2px #111}.high-contrast .intro-lead,.high-contrast .answer-hint,.high-contrast .small-note,.high-contrast .game-footer,.high-contrast .support-copy p:not(.support-eyebrow),.high-contrast .support-owner,.high-contrast .copy-feedback{color:#222}.high-contrast .question-card,.high-contrast .results-screen,.high-contrast .support-card{border:2px solid #111}.high-contrast .true-button{background:#d8f5dc;color:#003b16;border:2px solid #003b16}.high-contrast .false-button{background:#ffe0d8;color:#641000;border:2px solid #641000}.high-contrast .access-button,.high-contrast .listen-button{border:2px solid #000;color:#000;background:#fff}.share-feedback{font-size:14px;font-weight:700;color:var(--green);min-height:22px}
 @media(max-width:600px){.access-tools{justify-content:center;gap:7px}.access-label{width:100%;text-align:center}.access-button{min-height:52px;min-width:56px}.contrast-button{flex:1}.answer-buttons{grid-template-columns:1fr}.answer-button{min-height:78px;font-size:16px}.question-card h2{font-size:30px}.listen-button{width:100%;min-height:56px}.primary-button,.secondary-button{width:100%;min-height:62px}.game-footer{align-items:flex-start;flex-direction:column}.support-copy h2{font-size:29px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Nueva capa de jugabilidad: HUD, estados, recompensas y repaso */
+.game-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 17px}
+.game-stat{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 15px;border:1px solid #e5dccd;border-radius:13px;background:#fffaf1}
+.game-stat span{font-size:10px;font-weight:800;letter-spacing:.8px;color:#718078}
+.game-stat strong{font-size:20px;color:#315c43;font-family:Georgia,serif}
+.progress-caption{display:flex;justify-content:space-between;gap:10px;margin:0 2px 8px;font-size:11px;font-weight:800;color:#6d7b70}
+.answer-encouragement{font-size:12px;line-height:1.5;color:#748278;margin:-7px 0 17px}
+.answer-verdict{font-weight:800;color:#294d39!important;padding:10px 12px;background:#ffffffa8;border-radius:9px}
+.learning-bonus{font-size:13px;font-weight:800;line-height:1.5;color:#315c43;margin:12px 0;padding:12px 14px;background:#ffffffa8;border-radius:10px}
+.next-button{display:block;width:100%;min-height:66px!important;margin-top:18px;font-size:16px!important;letter-spacing:.4px!important;box-shadow:0 8px 22px rgba(56,102,79,.2)}
+.next-button:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.next-hint{font-size:11px;color:#77847a;text-align:center;margin:9px 0 0}
+.answer-button.answer-correct{border:3px solid #27633d!important;box-shadow:inset 0 0 0 2px #ffffff}
+.answer-button.answer-wrong{border:3px solid #a33d2c!important;opacity:1}
+.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.result-stats>div{padding:14px 8px;background:#f0f3e9;border-radius:13px;display:flex;flex-direction:column;gap:5px}
+.result-stats strong{font:800 25px Georgia,serif;color:#315c43}
+.result-stats span{font-size:9px;font-weight:800;letter-spacing:1px;color:#718078}
+.result-badge{display:inline-block;margin:0 auto 20px;padding:12px 18px;border:1px dashed #a6b89a;border-radius:999px;background:#fff8e9;color:#315c43;font-size:12px;font-weight:800;letter-spacing:.5px}
+.review-panel{text-align:left;margin:20px 0;padding:20px;background:#f5f0e5;border-radius:17px}
+.review-panel h3{font:700 24px Georgia,serif;color:#294d39;margin:0 0 7px}
+.review-panel>p{font-size:13px;line-height:1.5;color:#6c7b70;margin:0 0 14px}
+.review-list{display:grid;gap:11px}
+.review-item{padding:14px;background:#fffaf1;border:1px solid #e6dac8;border-radius:12px}
+.review-item strong{font-size:10px;letter-spacing:1px;color:#a45b48;text-transform:uppercase}
+.review-item p{font-size:13px;line-height:1.55;color:#35483d;margin:8px 0}
+.review-item span{display:inline-block;font-size:11px;font-weight:800;color:#315c43}
+.result-actions .secondary-button{min-height:56px}
+@media(max-width:600px){
+ .game-stats{gap:6px}.game-stat{padding:10px 8px;flex-direction:column;align-items:flex-start}.game-stat span{font-size:9px}.game-stat strong{font-size:19px}
+ .progress-caption{font-size:10px}.answer-encouragement{font-size:13px}
+ .result-stats{gap:6px}.result-stats>div{padding:12px 5px}.result-stats strong{font-size:21px}.result-stats span{font-size:8px}
+ .result-badge{font-size:11px;line-height:1.4;border-radius:14px}
+ .review-panel{padding:14px}.review-item p{font-size:14px}
+}
