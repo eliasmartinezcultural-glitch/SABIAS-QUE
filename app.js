@@ -2,36 +2,43 @@
   "use strict";
 
   const $ = (id) => document.getElementById(id);
-  const questions = Array.isArray(window.CHANAR_QUESTIONS)
+  const validQuestions = Array.isArray(window.CHANAR_QUESTIONS)
     ? window.CHANAR_QUESTIONS.filter((q) =>
-        q &&
-        typeof q.statement === "string" && q.statement.trim() &&
+        q && typeof q.statement === "string" && q.statement.trim() &&
         typeof q.explanation === "string" && q.explanation.trim() &&
         typeof q.answer === "boolean" &&
         typeof q.sourceUrl === "string" && /^https?:\/\//i.test(q.sourceUrl)
       )
     : [];
 
-  const el = {
+  const ui = {
     intro: $("intro"), game: $("game"), results: $("results"),
     start: $("start-button"), next: $("next-button"), restart: $("restart-button"),
-    share: $("share-button"), copyAlias: $("copy-alias-button"),
-    answers: $("answer-buttons"), question: $("question-text"),
-    counter: $("question-counter"), category: $("category-label"),
-    difficulty: $("difficulty-label"), art: $("question-art"),
-    feedback: $("feedback"), feedbackIcon: $("feedback-icon"),
-    feedbackTitle: $("feedback-title"), explanation: $("feedback-explanation"),
-    source: $("source-link"), scoreLive: $("score-live"),
-    progress: $("progress-track"), progressFill: $("progress-fill"),
-    listen: $("listen-button"), listenExplain: $("listen-explanation")
+    retry: $("retry-missed-button"), share: $("share-button"),
+    copyAlias: $("copy-alias-button"), answers: $("answer-buttons"),
+    question: $("question-text"), counter: $("question-counter"),
+    category: $("category-label"), difficulty: $("difficulty-label"),
+    art: $("question-art"), feedback: $("feedback"),
+    feedbackIcon: $("feedback-icon"), feedbackTitle: $("feedback-title"),
+    verdict: $("answer-verdict"), explanation: $("feedback-explanation"),
+    bonus: $("learning-bonus"), source: $("source-link"),
+    scoreLive: $("score-live"), progress: $("progress-track"),
+    progressFill: $("progress-fill"), listen: $("listen-button"),
+    listenExplain: $("listen-explanation")
   };
-
   const answerButtons = [...document.querySelectorAll(".answer-button")];
-  let order = [];
-  let index = 0;
-  let score = 0;
+
+  let deck = [];
+  let position = 0;
+  let correctCount = 0;
+  let points = 0;
+  let streak = 0;
+  let bestStreak = 0;
   let answered = false;
+  let history = [];
   let fontLevel = 0;
+  let gameMode = "full";
+  let lastRun = null;
 
   const show = (node) => node && node.classList.remove("hidden");
   const hide = (node) => node && node.classList.add("hidden");
@@ -51,19 +58,19 @@
     return copy;
   }
 
-  function scrollToTop() {
-    const reduce = window.matchMedia &&
+  function scrollTop() {
+    const reduced = window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
   }
 
   function stopVoice() {
     if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-    if (el.listen) el.listen.textContent = "🔊 ESCUCHAR LA PREGUNTA";
-    if (el.listenExplain) el.listenExplain.textContent = "🔊 ESCUCHAR LA EXPLICACIÓN";
+    if (ui.listen) ui.listen.textContent = "🔊 ESCUCHAR LA PREGUNTA";
+    if (ui.listenExplain) ui.listenExplain.textContent = "🔊 ESCUCHAR LA EXPLICACIÓN";
   }
 
-  function speak(text, button, idleLabel) {
+  function speak(text, button, idleText) {
     if (!("speechSynthesis" in window) || !window.SpeechSynthesisUtterance) {
       button.textContent = "LECTURA NO DISPONIBLE";
       return;
@@ -76,193 +83,267 @@
     utterance.lang = "es-AR";
     utterance.rate = 0.88;
     button.textContent = "■ DETENER LECTURA";
-    utterance.onend = utterance.onerror = () => {
-      button.textContent = idleLabel;
-    };
+    utterance.onend = utterance.onerror = () => { button.textContent = idleText; };
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utterance);
   }
 
-  function updateProgress(completed) {
-    const total = order.length || 1;
-    const percent = Math.max(0, Math.min(100, completed / total * 100));
-    el.progressFill.style.width = percent + "%";
-    el.progress.setAttribute("aria-valuenow", String(completed));
-    el.progress.setAttribute("aria-valuemax", String(total));
+  function updateHud() {
+    const total = deck.length || 1;
+    const completed = position;
+    const percent = Math.round(completed / total * 100);
+    $("points-live").textContent = points;
+    $("streak-live").textContent = streak;
+    $("correct-live").textContent = correctCount;
+    ui.scoreLive.textContent = "ACIERTOS: " + correctCount + " · PUNTOS: " + points;
+    ui.progressFill.style.width = percent + "%";
+    ui.progress.setAttribute("aria-valuenow", String(completed));
+    ui.progress.setAttribute("aria-valuemax", String(total));
+    $("progress-percent").textContent = percent + "% completado";
+    $("progress-label").textContent = completed === 0
+      ? "¡Vamos a empezar!"
+      : completed === total ? "¡Recorrido completo!" : "¡Vas muy bien!";
   }
 
-  function begin() {
+  function resetRun(items, mode) {
+    deck = items.slice();
+    position = 0;
+    correctCount = 0;
+    points = 0;
+    streak = 0;
+    bestStreak = 0;
+    answered = false;
+    history = [];
+    gameMode = mode;
+  }
+
+  function startGame(items = validQuestions, mode = "full") {
     stopVoice();
-    if (!questions.length) {
-      el.question.textContent = "Estamos preparando nuevas preguntas. Volvé pronto.";
+    if (!items.length) {
+      ui.question.textContent = "No hay preguntas disponibles para esta partida.";
       return;
     }
-    order = shuffle(questions);
-    index = 0;
-    score = 0;
-    answered = false;
-    hide(el.intro);
-    hide(el.results);
-    show(el.game);
+    resetRun(shuffle(items), mode);
+    hide(ui.intro);
+    hide(ui.results);
+    show(ui.game);
     renderQuestion();
   }
 
   function renderQuestion() {
-    if (!order.length || index < 0 || index >= order.length) {
-      finish();
+    if (!deck.length || position >= deck.length) {
+      finishGame();
       return;
     }
 
     answered = false;
     stopVoice();
-    const q = order[index];
+    const q = deck[position];
+    ui.counter.textContent =
+      String(position + 1).padStart(2, "0") + " / " +
+      String(deck.length).padStart(2, "0");
+    ui.category.textContent = String(q.category || "HISTORIA").toUpperCase();
+    ui.difficulty.textContent = String(q.difficulty || "DESAFÍO").toUpperCase();
+    ui.question.textContent = q.statement;
+    ui.art.querySelector(".art-big-icon").textContent = q.icon || "🌿";
+    ui.source.href = q.sourceUrl;
+    ui.source.textContent = (q.sourceTitle || "Consultar fuente histórica") + " ↗";
+    ui.explanation.textContent = "";
+    ui.verdict.textContent = "";
+    ui.bonus.textContent = "";
+    updateHud();
 
-    el.counter.textContent =
-      String(index + 1).padStart(2, "0") + " / " +
-      String(order.length).padStart(2, "0");
-    el.category.textContent = String(q.category || "HISTORIA").toUpperCase();
-    el.difficulty.textContent = "PREGUNTA " + (index + 1);
-    el.question.textContent = q.statement;
-    el.art.querySelector(".art-big-icon").textContent = q.icon || "🌿";
-    el.explanation.textContent = "";
-    el.source.href = q.sourceUrl;
-    el.source.textContent = (q.sourceTitle || "Consultar fuente") + " ↗";
-
-    updateProgress(index);
-    hide(el.feedback);
-    show(el.answers);
-
+    hide(ui.feedback);
+    show(ui.answers);
     answerButtons.forEach((button) => {
       button.disabled = false;
-      button.classList.remove("selected");
+      button.classList.remove("selected", "answer-correct", "answer-wrong");
       button.setAttribute("aria-pressed", "false");
     });
-
-    el.scoreLive.textContent = "ACIERTOS: " + score;
-    el.next.disabled = false;
-    el.next.textContent = index === order.length - 1
-      ? "TERMINAR Y VER MI RESULTADO →"
-      : "SEGUIR CON LA PRÓXIMA →";
-
-    scrollToTop();
-    window.setTimeout(() => focus(el.question), 180);
+    ui.next.disabled = true;
+    ui.next.textContent = position === deck.length - 1
+      ? "VER MI RESULTADO FINAL →"
+      : "SIGUIENTE PREGUNTA →";
+    scrollTop();
+    window.setTimeout(() => focus(ui.question), 150);
   }
 
-  function answerQuestion(value, selectedButton) {
-    if (answered || !order[index]) return;
-
+  function submitAnswer(value, selected) {
+    if (answered || !deck[position]) return;
     answered = true;
     stopVoice();
 
-    const q = order[index];
-    const correct = value === q.answer;
-    if (correct) score++;
+    const q = deck[position];
+    const isCorrect = value === q.answer;
+    let earned = 0;
+
+    if (isCorrect) {
+      correctCount += 1;
+      streak += 1;
+      bestStreak = Math.max(bestStreak, streak);
+      earned = 100;
+      if (streak > 0 && streak % 3 === 0) earned += 50;
+      points += earned;
+    } else {
+      streak = 0;
+    }
+
+    history.push({
+      question: q,
+      chosen: value,
+      correct: q.answer,
+      isCorrect,
+      earned
+    });
 
     answerButtons.forEach((button) => {
-      const chosen = button === selectedButton;
+      const chosen = button === selected;
       button.disabled = true;
       button.classList.toggle("selected", chosen);
+      button.classList.toggle("answer-correct", button.dataset.answer === String(q.answer));
+      button.classList.toggle("answer-wrong", chosen && !isCorrect);
       button.setAttribute("aria-pressed", String(chosen));
     });
 
-    el.feedbackIcon.textContent = correct ? "✓" : "✳";
-    el.feedbackTitle.textContent = correct
-      ? "¡Muy bien! ¡Acertaste!"
-      : "¡No importa! ¡Hoy aprendimos!";
-    el.feedback.classList.toggle("feedback-correct", correct);
-    el.feedback.classList.toggle("feedback-learning", !correct);
-    el.explanation.textContent =
-      (correct ? "¡Acertaste! " :
-        "La respuesta correcta es " + (q.answer ? "VERDADERO. " : "FALSO. ")) +
-      q.explanation;
+    ui.feedbackIcon.textContent = isCorrect ? "✓" : "✳";
+    ui.feedbackTitle.textContent = isCorrect
+      ? (streak >= 3 ? "¡RACHA IMPARABLE!" : "¡MUY BIEN! ¡ACERTASTE!")
+      : "¡NO IMPORTA! ¡HOY APRENDIMOS!";
+    ui.verdict.textContent = isCorrect
+      ? "Tu respuesta es correcta: " + (q.answer ? "VERDADERO." : "FALSO.")
+      : "La respuesta correcta era: " + (q.answer ? "VERDADERO." : "FALSO.") +
+        " Tu respuesta fue " + (value ? "VERDADERO." : "FALSO.");
+    ui.explanation.textContent = q.explanation;
 
-    el.scoreLive.textContent = "ACIERTOS: " + score;
-    hide(el.answers);
-    show(el.feedback);
-
-    el.next.disabled = false;
-    el.next.textContent = index === order.length - 1
-      ? "TERMINAR Y VER MI RESULTADO →"
-      : "SEGUIR CON LA PRÓXIMA →";
-
-    focus(el.feedbackTitle);
-  }
-
-  function advance() {
-    // El botón de avance solo se muestra después de responder.
-    // La comprobación de answered evita saltar preguntas por dobles clics.
-    if (!answered) return;
-
-    stopVoice();
-    if (index + 1 < order.length) {
-      index += 1;
-      renderQuestion();
+    if (isCorrect) {
+      ui.bonus.textContent = "⭐ +" + earned + " PUNTOS" +
+        (streak % 3 === 0 ? " · ¡BONO DE RACHA!" : "") +
+        " · 🔥 RACHA: " + streak;
     } else {
-      finish();
+      ui.bonus.textContent = "💡 La próxima pregunta es una nueva oportunidad. No perdés puntos por equivocarte.";
     }
+
+    ui.feedback.classList.toggle("feedback-correct", isCorrect);
+    ui.feedback.classList.toggle("feedback-learning", !isCorrect);
+    hide(ui.answers);
+    show(ui.feedback);
+    updateHud();
+
+    ui.next.disabled = false;
+    ui.next.textContent = position === deck.length - 1
+      ? "TERMINAR Y VER MI RESULTADO →"
+      : "SIGUIENTE PREGUNTA →";
+    focus(ui.feedbackTitle);
   }
 
-  function finish() {
+  function nextQuestion() {
+    if (!answered || ui.next.disabled) return;
+    ui.next.disabled = true;
     stopVoice();
-    hide(el.game);
-    show(el.results);
-    updateProgress(order.length);
+    position += 1;
+    if (position < deck.length) renderQuestion();
+    else finishGame();
+  }
 
-    $("final-score").textContent = score + " de " + order.length;
-    const ratio = order.length ? score / order.length : 0;
+  function finishGame() {
+    stopVoice();
+    hide(ui.game);
+    show(ui.results);
+    const total = history.length;
+    const ratio = total ? correctCount / total : 0;
+    const accuracy = total ? Math.round(ratio * 100) : 0;
+    $("final-score").textContent = correctCount + " de " + total;
+    $("final-points").textContent = points;
+    $("final-accuracy").textContent = accuracy + "%";
+    $("final-streak").textContent = bestStreak;
+
     let title = "¡Gracias por jugar!";
     let message = "Cada respuesta es una oportunidad para conocer un poco más nuestro lugar.";
-
-    if (ratio >= 0.9) {
-      title = "¡Memoria chañarense!";
-      message = "¡Qué nivel! Tenés muy presente la historia de nuestro lugar. Y todavía quedan muchas historias por descubrir.";
-    } else if (ratio >= 0.65) {
-      title = "¡Gran conocedor del Chañar!";
-      message = "Conocés un montón de historias. Algunas seguro te sorprendieron. ¡Compartí el desafío con alguien más!";
-    } else if (ratio >= 0.4) {
-      title = "¡Vecino curioso!";
-      message = "Hay datos que ya conocías y otros que acabás de descubrir. La historia local siempre tiene algo nuevo.";
+    let badge = "🌱 CURIOSIDAD CHAÑARENSE";
+    if (ratio === 1) {
+      title = "¡PERFECTO! ¡MEMORIA CHAÑARENSE!";
+      message = "¡No se te escapó ninguna! Conocés muy bien estas historias. Hay muchas más esperando ser descubiertas.";
+      badge = "🏆 LEYENDA DEL CHAÑAR";
+    } else if (ratio >= 0.75) {
+      title = "¡QUÉ GRAN PARTIDA!";
+      message = "Tenés muy presente la historia de nuestro lugar. ¡Te faltó muy poquito para completar el desafío!";
+      badge = "🥇 GRAN CONOCEDOR/A";
+    } else if (ratio >= 0.5) {
+      title = "¡VAS DESCUBRIENDO!";
+      message = "Ya conocés varias historias nuevas. Repasá las que te costaron y vas a sorprenderte con lo que aprendés.";
+      badge = "🥈 EXPLORADOR/A LOCAL";
     } else {
-      title = "¡A seguir descubriendo!";
-      message = "No pasa nada: la idea es aprender. Ahora ya tenés varias historias nuevas para contar.";
+      title = "¡ESTO RECIÉN EMPIEZA!";
+      message = "No importa cuántas acertaste: ahora conocés más que antes. Volvé a jugar y descubrí nuevas historias.";
+      badge = "🌱 CURIOSO/A DEL CHAÑAR";
     }
-
     $("result-title").textContent = title;
     $("result-message").textContent = message;
-    scrollToTop();
-    window.setTimeout(() => focus($("result-title")), 180);
+    $("result-badge").textContent = badge;
+
+    const missed = history.filter((item) => !item.isCorrect);
+    const reviewPanel = $("review-panel");
+    const reviewList = $("review-list");
+    reviewList.replaceChildren();
+    if (missed.length) {
+      show(reviewPanel);
+      show(ui.retry);
+      missed.forEach((item, i) => {
+        const card = document.createElement("article");
+        card.className = "review-item";
+        const label = document.createElement("strong");
+        label.textContent = "Para recordar · " + (i + 1);
+        const statement = document.createElement("p");
+        statement.textContent = item.question.statement;
+        const answer = document.createElement("span");
+        answer.textContent = "Respuesta correcta: " + (item.correct ? "VERDADERO" : "FALSO");
+        const explanation = document.createElement("p");
+        explanation.textContent = item.question.explanation;
+        card.append(label, statement, answer, explanation);
+        reviewList.append(card);
+      });
+    } else {
+      hide(reviewPanel);
+      hide(ui.retry);
+    }
+
+    lastRun = {
+      score: correctCount,
+      total,
+      points,
+      accuracy,
+      history: history.slice(),
+      missed: missed.map((item) => item.question)
+    };
+    scrollTop();
+    window.setTimeout(() => focus($("result-title")), 150);
   }
 
   async function shareResult() {
-    const message = "¡Hice " + score + " de " + order.length +
-      " en ¿Sabías que...? San Patricio del Chañar. ¿Te animás?";
+    const result = lastRun || { score: correctCount, total: history.length, points };
+    const message = "¡Hice " + result.score + " de " + result.total +
+      " en ¿Sabías que...? San Patricio del Chañar y sumé " + result.points +
+      " puntos. ¿Te animás a jugar?";
     const payload = {
       title: "¿Sabías que...? — San Patricio del Chañar",
       text: message,
       url: location.href
     };
     $("share-feedback").textContent = "";
-
     if (navigator.share) {
-      try {
-        await navigator.share(payload);
-        return;
-      } catch (error) {
-        if (error && error.name === "AbortError") return;
-      }
+      try { await navigator.share(payload); return; }
+      catch (error) { if (error && error.name === "AbortError") return; }
     }
-
-    const value = message + " " + location.href;
+    const text = message + " " + location.href;
     try {
       if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(value);
-        $("share-feedback").textContent =
-          "¡Resultado copiado! Ahora podés pegarlo en WhatsApp.";
+        await navigator.clipboard.writeText(text);
+        $("share-feedback").textContent = "¡Resultado copiado! Ahora podés pegarlo en WhatsApp.";
       } else {
-        window.prompt("Copiá tu resultado y compartilo:", value);
+        window.prompt("Copiá tu resultado y compartilo:", text);
       }
     } catch (error) {
-      window.prompt("Copiá tu resultado y compartilo:", value);
+      window.prompt("Copiá tu resultado y compartilo:", text);
     }
   }
 
@@ -273,18 +354,18 @@
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(alias);
       } else {
-        const temporary = document.createElement("textarea");
-        temporary.value = alias;
-        temporary.readOnly = true;
-        temporary.style.position = "absolute";
-        temporary.style.left = "-9999px";
-        document.body.appendChild(temporary);
-        temporary.select();
+        const temp = document.createElement("textarea");
+        temp.value = alias;
+        temp.readOnly = true;
+        temp.style.position = "absolute";
+        temp.style.left = "-9999px";
+        document.body.appendChild(temp);
+        temp.select();
         const copied = document.execCommand("copy");
-        temporary.remove();
-        if (!copied) throw new Error("No se pudo copiar");
+        temp.remove();
+        if (!copied) throw new Error("copy");
       }
-      el.copyAlias.textContent = "¡ALIAS COPIADO!";
+      ui.copyAlias.textContent = "¡ALIAS COPIADO!";
       feedback.textContent = "¡Gracias por apoyar este proyecto! ♡";
     } catch (error) {
       feedback.textContent = "Copiá manualmente: ocarina.guitarra";
@@ -297,53 +378,46 @@
     document.body.classList.toggle("text-large", fontLevel === 1);
     document.body.classList.toggle("text-extra-large", fontLevel === 2);
   });
-
   $("font-larger").addEventListener("click", () => {
     fontLevel = Math.min(2, fontLevel + 1);
     document.body.classList.toggle("text-small", fontLevel < 0);
     document.body.classList.toggle("text-large", fontLevel === 1);
     document.body.classList.toggle("text-extra-large", fontLevel === 2);
   });
-
   $("contrast-toggle").addEventListener("click", (event) => {
-    const enabled = document.body.classList.toggle("high-contrast");
-    event.currentTarget.setAttribute("aria-pressed", String(enabled));
-    event.currentTarget.textContent = enabled ? "CONTRASTE NORMAL" : "MÁS CONTRASTE";
+    const active = document.body.classList.toggle("high-contrast");
+    event.currentTarget.setAttribute("aria-pressed", String(active));
+    event.currentTarget.textContent = active ? "CONTRASTE NORMAL" : "MÁS CONTRASTE";
   });
 
   if (!("speechSynthesis" in window)) {
-    el.listen.disabled = true;
-    el.listenExplain.disabled = true;
-    el.listen.title = "La lectura en voz alta no está disponible en este navegador.";
-    el.listenExplain.title = el.listen.title;
+    ui.listen.disabled = true;
+    ui.listenExplain.disabled = true;
+    ui.listen.title = "La lectura en voz alta no está disponible en este navegador.";
+    ui.listenExplain.title = ui.listen.title;
   }
-
-  el.listen.addEventListener("click", () => {
-    if (order[index]) speak(order[index].statement, el.listen, "🔊 ESCUCHAR LA PREGUNTA");
+  ui.listen.addEventListener("click", () => {
+    if (deck[position]) speak(deck[position].statement, ui.listen, "🔊 ESCUCHAR LA PREGUNTA");
+  });
+  ui.listenExplain.addEventListener("click", () => {
+    if (deck[position] && answered) speak(ui.explanation.textContent, ui.listenExplain, "🔊 ESCUCHAR LA EXPLICACIÓN");
   });
 
-  el.listenExplain.addEventListener("click", () => {
-    if (order[index] && answered) {
-      speak(el.explanation.textContent, el.listenExplain, "🔊 ESCUCHAR LA EXPLICACIÓN");
-    }
+  ui.start.addEventListener("click", () => startGame());
+  ui.restart.addEventListener("click", () => startGame());
+  ui.retry.addEventListener("click", () => {
+    if (lastRun && lastRun.missed.length) startGame(lastRun.missed, "review");
   });
-
-  el.start.addEventListener("click", begin);
-  el.restart.addEventListener("click", begin);
-  el.next.addEventListener("click", advance);
-
+  ui.next.addEventListener("click", nextQuestion);
   answerButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      answerQuestion(button.dataset.answer === "true", button);
-    });
+    button.addEventListener("click", () => submitAnswer(button.dataset.answer === "true", button));
   });
+  ui.share.addEventListener("click", shareResult);
+  ui.copyAlias.addEventListener("click", copyDonationAlias);
 
-  el.share.addEventListener("click", shareResult);
-  el.copyAlias.addEventListener("click", copyDonationAlias);
-
-  if (!questions.length) {
-    el.start.disabled = true;
-    el.start.textContent = "PRÓXIMAMENTE";
-    el.question.textContent = "Estamos preparando nuevas preguntas.";
+  if (!validQuestions.length) {
+    ui.start.disabled = true;
+    ui.start.textContent = "PRÓXIMAMENTE";
+    ui.question.textContent = "Estamos preparando nuevas preguntas.";
   }
 })();
