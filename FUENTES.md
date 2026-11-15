@@ -36,6 +36,11 @@ https://www.mininterior.gob.ar/planificacion/pdf/planes-loc/NEUQUEN/Plan-de-Orde
 
 Documento de planificación territorial que incluye antecedentes de propiedad, riego, desarrollo productivo y creación del núcleo urbano. Debe consultarse el documento completo y rastrear las fuentes originales que cita.
 
+### 6 bis. Consejo Federal de Inversiones — Plan de Ordenamiento Territorial Ambiental
+https://www.argentina.gob.ar/sites/default/files/plan_de_ordenamiento_territorial_y_ambiental_para_las_localidades_des_anelo_san_patricio_del_chanar_y_sauzal_bonito_0.pdf
+
+Documento de planificación que aporta una segunda referencia sobre la compra de El Chañar en 1966 por vecinos de Cinco Saltos. Presenta una versión diferente sobre la adquisición de 1968: atribuye la compra a Gasparri Hnos., mientras que la reseña municipal menciona a Frigorífico Cipolletti S.A. (luego absorbida por Gasparri Hnos.). Esta diferencia queda expresamente abierta y no debe ocultarse.
+
 ### 7. Legislatura del Neuquén — Ley Provincial 2435
 https://www.legislaturaneuquen.gob.ar/svrfiles/neuleg/DiariosSesion/DS_P_39_R218_3637.pdf?var=17
 
