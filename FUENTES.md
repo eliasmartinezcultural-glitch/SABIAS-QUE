@@ -36,7 +36,17 @@ https://www.mininterior.gob.ar/planificacion/pdf/planes-loc/NEUQUEN/Plan-de-Orde
 
 Documento de planificación territorial que incluye antecedentes de propiedad, riego, desarrollo productivo y creación del núcleo urbano. Debe consultarse el documento completo y rastrear las fuentes originales que cita.
 
-### 7. Honorable Legislatura del Neuquén — Diario de Sesiones, 46.º aniversario
+### 7. Legislatura del Neuquén — Ley Provincial 2435
+https://www.legislaturaneuquen.gob.ar/svrfiles/neuleg/DiariosSesion/DS_P_39_R218_3637.pdf?var=17
+
+Texto legal que declara a San Patricio del Chañar municipio de primera categoría el 31 de julio de 2003.
+
+### 8. Neuquén Informa — Reseña institucional (17/05/2013)
+https://www.neuqueninforma.gob.ar/noticias/2013/05/17/29151-ana-pechen-preside-la-ceremonia-aniversario-de-san-patricio-del-chanar
+
+Resume la secuencia de categorías municipales: tercera categoría en 1978, segunda en 1987 y primera en 2003.
+
+### 9. Honorable Legislatura del Neuquén — Diario de Sesiones, 46.º aniversario
 https://www.legislaturaneuquen.gob.ar/SVRFILES/hln/documentos/DiaSesio/XLVIII/DXLVIII_08.pdf
 
 Reseña institucional sobre la fundación, el nombre, la familia Gasparri y antecedentes de riego. Presenta una secuencia que debe cotejarse con la reseña municipal.
