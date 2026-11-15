@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5eddf">
+  <meta name="description" content="¿Cuánto sabés de San Patricio del Chañar? Una experiencia de verdadero o falso para descubrir historias reales de nuestro lugar.">
+  <title>¿Sabías que...? — San Patricio del Chañar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="questions.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Sabías que, inicio">
+        <span class="brand-mark" aria-hidden="true">¿?</span>
+        <span class="brand-name">SABÍAS<span>QUE</span></span>
+      </a>
+      <span class="top-note">Historias de nuestro lugar</span>
+    </header>
+
+    <main>
+      <section id="intro" class="intro-screen">
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
+          <div class="river"></div><div class="vine-row vine-one"></div><div class="vine-row vine-two"></div>
+          <div class="hero-stamp">EDICIÓN<br>CHAÑARENSE</div>
+          <span class="art-spark spark-one">✳</span><span class="art-spark spark-two">✦</span>
+          <span class="art-caption">NEUQUÉN · PATAGONIA</span>
+        </div>
+        <div class="intro-copy">
+          <p class="eyebrow"><span></span> UN JUEGO DE HISTORIAS REALES</p>
+          <h1>¿Cuánto<br>sabés del <em>Chañar?</em></h1>
+          <p class="intro-lead">Hay historias que conocés. Otras te van a sorprender. Poné a prueba cuánto sabés de nuestro lugar.</p>
+          <div class="intro-meta"><span>●  VERDADERO O FALSO</span><span>●  HISTORIA LOCAL</span><span>●  PARA TODAS LAS EDADES</span></div>
+          <button id="start-button" class="primary-button">¡A VER CUÁNTO SABÉS! <span aria-hidden="true">→</span></button>
+          <p class="small-note">Sin registrarte. Sin apuro. Solo curiosidad.</p>
+        </div>
+      </section>
+
+      <section id="game" class="game-screen hidden" aria-live="polite">
+        <div class="game-topline">
+          <span class="round-label">DESAFÍO CHAÑARENSE</span>
+          <span id="question-counter" class="question-counter">01 / 10</span>
+        </div>
+        <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+        <div class="question-card">
+          <div class="question-kicker"><span id="category-label">HISTORIA</span><span id="difficulty-label">PARA EMPEZAR</span></div>
+          <div id="question-art" class="question-art" aria-hidden="true">
+            <span class="art-big-icon">🌿</span><span class="art-artifact">ARCHIVO<br>CHAÑARENSE</span>
+          </div>
+          <p class="question-overline">¿VERDADERO O FALSO?</p>
+          <h2 id="question-text">Cargando pregunta...</h2>
+          <p class="answer-hint">Leé con atención y elegí tu respuesta.</p>
+          <div id="answer-buttons" class="answer-buttons">
+            <button class="answer-button true-button" data-answer="true"><span class="answer-symbol">✓</span><span>VERDADERO</span></button>
+            <button class="answer-button false-button" data-answer="false"><span class="answer-symbol">✕</span><span>FALSO</span></button>
+          </div>
+          <div id="feedback" class="feedback hidden">
+            <div class="feedback-heading"><span id="feedback-icon">✓</span><strong id="feedback-title">¡Correcto!</strong></div>
+            <p id="feedback-explanation"></p>
+            <div class="source-line"><span>PARA SABER MÁS</span><a id="source-link" href="#" target="_blank" rel="noopener noreferrer">Consultar fuente histórica ↗</a></div>
+            <button id="next-button" class="primary-button next-button">SEGUIR DESCUBRIENDO <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+        <div class="game-footer"><span>Una respuesta puede abrir una historia.</span><span id="score-live">ACIERTOS: 0</span></div>
+      </section>
+
+      <section id="results" class="results-screen hidden">
+        <div class="result-confetti" aria-hidden="true">✳　✦　✳</div>
+        <p class="eyebrow"><span></span> FIN DEL DESAFÍO</p>
+        <h2 id="result-title">¡Qué lindo descubrir!</h2>
+        <div class="score-seal"><strong id="final-score">0/10</strong><span>RESPUESTAS<br>CORRECTAS</span></div>
+        <p id="result-message" class="result-message"></p>
+        <div class="result-actions">
+          <button id="restart-button" class="primary-button">VOLVER A JUGAR ↻</button>
+          <button id="share-button" class="secondary-button">COMPARTIR MI RESULTADO ↗</button>
+        </div>
+        <p class="small-note">La historia de nuestro lugar siempre tiene algo más para contar.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Una creación de <strong>OCARINA PRODUCCIONES</strong></span>
+      <a href="FUENTES.md" target="_blank">Fuentes y criterios históricos</a>
+    </footer>
+  </div>
+  <noscript><p class="noscript">Para jugar necesitás activar JavaScript en tu navegador.</p></noscript>
+</body>
+</html>
