@@ -50,6 +50,12 @@
           <span class="round-label">DESAFÍO CHAÑARENSE</span>
           <span id="question-counter" class="question-counter">01 / 08</span>
         </div>
+        <div class="game-stats" aria-label="Estado de la partida">
+          <div class="game-stat"><span>⭐ PUNTOS</span><strong id="points-live">0</strong></div>
+          <div class="game-stat"><span>🔥 RACHA</span><strong id="streak-live">0</strong></div>
+          <div class="game-stat"><span>✓ ACIERTOS</span><strong id="correct-live">0</strong></div>
+        </div>
+        <div class="progress-caption"><span id="progress-label">Tu recorrido</span><span id="progress-percent">0% completado</span></div>
         <div class="progress-track" role="progressbar" aria-label="Progreso del desafío" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
         <div class="question-card">
           <div class="question-kicker"><span id="category-label">HISTORIA</span><span id="difficulty-label">PARA EMPEZAR</span></div>
@@ -59,15 +65,19 @@
           <p class="question-overline">¿VERDADERO O FALSO?</p>
           <h2 id="question-text">Preparando una historia...</h2>
           <p class="answer-hint">Leé o escuchá. Después elegí tu respuesta.</p><button id="listen-button" class="listen-button" type="button">🔊 ESCUCHAR LA PREGUNTA</button>
+          <p class="answer-encouragement">No hay apuro. Pensá tu respuesta y disfrutá el descubrimiento.</p>
           <div id="answer-buttons" class="answer-buttons">
             <button class="answer-button true-button" type="button" data-answer="true"><span class="answer-symbol" aria-hidden="true">✓</span><span>VERDADERO</span></button>
             <button class="answer-button false-button" type="button" data-answer="false"><span class="answer-symbol" aria-hidden="true">✕</span><span>FALSO</span></button>
           </div>
           <div id="feedback" class="feedback hidden" aria-live="polite">
             <div class="feedback-heading"><span id="feedback-icon" aria-hidden="true">✓</span><strong id="feedback-title">¡Correcto!</strong></div>
-            <p id="feedback-explanation"></p><button id="listen-explanation" class="listen-button" type="button">🔊 ESCUCHAR LA EXPLICACIÓN</button>
+            <p id="answer-verdict" class="answer-verdict"></p>
+            <p id="feedback-explanation"></p>
+            <div id="learning-bonus" class="learning-bonus" aria-live="polite"></div><button id="listen-explanation" class="listen-button" type="button">🔊 ESCUCHAR LA EXPLICACIÓN</button>
             <div class="source-line"><span>PARA SABER MÁS</span><a id="source-link" href="#" target="_blank" rel="noopener noreferrer">Consultar fuente histórica ↗</a></div>
-            <button id="next-button" class="primary-button next-button" type="button">SEGUIR DESCUBRIENDO <span aria-hidden="true">→</span></button>
+            <button id="next-button" class="primary-button next-button" type="button" disabled> SIGUIENTE PREGUNTA <span aria-hidden="true">→</span></button>
+            <p class="next-hint">Tu respuesta quedó guardada en esta partida.</p>
           </div>
         </div>
         <div class="game-footer"><span>Una respuesta puede abrir una historia.</span><span id="score-live" aria-live="polite">ACIERTOS: 0</span></div>
@@ -79,8 +89,20 @@
         <h2 id="result-title">¡Qué lindo descubrir!</h2>
         <div class="score-seal"><strong id="final-score">0/8</strong><span>RESPUESTAS<br>CORRECTAS</span></div>
         <p id="result-message" class="result-message"></p>
+        <div class="result-stats">
+          <div><strong id="final-points">0</strong><span>PUNTOS</span></div>
+          <div><strong id="final-accuracy">0%</strong><span>PRECISIÓN</span></div>
+          <div><strong id="final-streak">0</strong><span>MEJOR RACHA</span></div>
+        </div>
+        <div id="result-badge" class="result-badge">🏅 DESAFÍO COMPLETADO</div>
+        <section id="review-panel" class="review-panel hidden" aria-labelledby="review-title">
+          <h3 id="review-title">Repasemos lo aprendido</h3>
+          <p>Estas son las afirmaciones que podemos volver a descubrir.</p>
+          <div id="review-list" class="review-list"></div>
+        </section>
         <div class="result-actions">
-          <button id="restart-button" class="primary-button" type="button">VOLVER A JUGAR ↻</button>
+          <button id="retry-missed-button" class="secondary-button hidden" type="button">VOLVER A JUGAR LAS QUE ME COSTARON ↻</button>
+          <button id="restart-button" class="primary-button" type="button">JUGAR DE NUEVO ↻</button>
           <button id="share-button" class="secondary-button" type="button">COMPARTIR MI RESULTADO ↗</button>
         </div>
         <p class="small-note">La historia de nuestro lugar siempre tiene algo más para contar.</p><p id="share-feedback" class="share-feedback" role="status" aria-live="polite"></p>
