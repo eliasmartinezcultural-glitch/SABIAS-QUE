@@ -8,14 +8,12 @@
   <meta property="og:title" content="¿Sabías que...? — San Patricio del Chañar">
   <meta property="og:description" content="¿Cuánto sabés de la historia de nuestro lugar? Entrá y descubrilo.">
   <title>¿Sabías que...? — San Patricio del Chañar</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="questions.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
   <div class="page-shell">
     <header class="topbar">
       <a class="brand" href="#inicio" aria-label="Sabías que, ir al inicio">
@@ -25,7 +23,8 @@
       <span class="top-note">Historias de nuestro lugar <span aria-hidden="true">✳</span></span>
     </header>
 
-    <main id="inicio">
+    <nav class="access-tools" aria-label="Opciones de lectura"><span class="access-label">¿NECESITÁS VER MEJOR?</span><button id="font-smaller" class="access-button" type="button" aria-label="Achicar letra">A−</button><button id="font-larger" class="access-button" type="button" aria-label="Agrandar letra">A+</button><button id="contrast-toggle" class="access-button contrast-button" type="button" aria-pressed="false">MÁS CONTRASTE</button></nav>
+    <main id="main-content">
       <section id="intro" class="intro-screen" aria-labelledby="main-title">
         <div class="hero-art" aria-hidden="true">
           <div class="sun"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
@@ -38,7 +37,7 @@
         <div class="intro-copy">
           <p class="eyebrow"><span></span> UN JUEGO DE HISTORIAS REALES</p>
           <h1 id="main-title">¿Cuánto<br>sabés del <em>Chañar?</em></h1>
-          <p class="intro-lead">Hay historias que conocés. Otras te van a sorprender. Poné a prueba cuánto sabés de nuestro lugar y descubrí algo nuevo en cada respuesta.</p>
+          <p class="intro-lead">Hay historias que conocés. Otras te van a sorprender. Poné a prueba cuánto sabés de nuestro lugar y descubrí algo nuevo en cada respuesta.</p><div class="how-to-play"><strong>¿CÓMO SE JUEGA?</strong><span>1. Leé o escuchá la frase.</span><span>2. Elegí VERDADERO o FALSO.</span><span>3. Descubrí la historia. ¡Y seguí!</span><b>No hay reloj ni apuro. Podés tomarte todo el tiempo que quieras.</b></div>
           <div class="intro-meta"><span>✓ VERDADERO O FALSO</span><span>✳ HISTORIA LOCAL</span><span>♡ PARA TODAS LAS EDADES</span></div>
           <button id="start-button" class="primary-button" type="button">¡A VER CUÁNTO SABÉS! <span aria-hidden="true">→</span></button>
           <p class="small-note">Sin registrarte. Sin apuro. Solo curiosidad.</p>
@@ -59,14 +58,14 @@
           </div>
           <p class="question-overline">¿VERDADERO O FALSO?</p>
           <h2 id="question-text">Preparando una historia...</h2>
-          <p class="answer-hint">Leé con atención y elegí tu respuesta.</p>
+          <p class="answer-hint">Leé o escuchá. Después elegí tu respuesta.</p><button id="listen-button" class="listen-button" type="button">🔊 ESCUCHAR LA PREGUNTA</button>
           <div id="answer-buttons" class="answer-buttons">
             <button class="answer-button true-button" type="button" data-answer="true"><span class="answer-symbol" aria-hidden="true">✓</span><span>VERDADERO</span></button>
             <button class="answer-button false-button" type="button" data-answer="false"><span class="answer-symbol" aria-hidden="true">✕</span><span>FALSO</span></button>
           </div>
           <div id="feedback" class="feedback hidden" aria-live="polite">
             <div class="feedback-heading"><span id="feedback-icon" aria-hidden="true">✓</span><strong id="feedback-title">¡Correcto!</strong></div>
-            <p id="feedback-explanation"></p>
+            <p id="feedback-explanation"></p><button id="listen-explanation" class="listen-button" type="button">🔊 ESCUCHAR LA EXPLICACIÓN</button>
             <div class="source-line"><span>PARA SABER MÁS</span><a id="source-link" href="#" target="_blank" rel="noopener noreferrer">Consultar fuente histórica ↗</a></div>
             <button id="next-button" class="primary-button next-button" type="button">SEGUIR DESCUBRIENDO <span aria-hidden="true">→</span></button>
           </div>
@@ -84,7 +83,7 @@
           <button id="restart-button" class="primary-button" type="button">VOLVER A JUGAR ↻</button>
           <button id="share-button" class="secondary-button" type="button">COMPARTIR MI RESULTADO ↗</button>
         </div>
-        <p class="small-note">La historia de nuestro lugar siempre tiene algo más para contar.</p>
+        <p class="small-note">La historia de nuestro lugar siempre tiene algo más para contar.</p><p id="share-feedback" class="share-feedback" role="status" aria-live="polite"></p>
       </section>
 
       <section id="support" class="support-card" aria-labelledby="support-title">
