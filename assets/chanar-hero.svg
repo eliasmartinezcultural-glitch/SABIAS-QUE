@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t d">
+<title id="t">Paisaje ilustrado del valle del Chañar</title>
+<desc id="d">Ilustración cálida de montañas patagónicas, río, chacras, hileras de cultivo y un chañar.</desc>
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#f5dca8"/><stop offset=".65" stop-color="#e9c995"/><stop offset="1" stop-color="#c4d1ad"/></linearGradient>
+ <linearGradient id="water" x2="0" y2="1"><stop stop-color="#a9d0c5"/><stop offset="1" stop-color="#77a9a1"/></linearGradient>
+ <linearGradient id="hill" x2="0" y2="1"><stop stop-color="#93aa8d"/><stop offset="1" stop-color="#64866e"/></linearGradient>
+</defs>
+<rect width="1200" height="900" fill="url(#sky)"/>
+<circle cx="930" cy="170" r="95" fill="#fff0c9" opacity=".92"/><circle cx="930" cy="170" r="125" fill="#fff0c9" opacity=".22"/>
+<path d="M0 420 150 270 260 360 430 170 590 355 740 230 900 390 1050 260 1200 400V610H0Z" fill="#a8b69a"/>
+<path d="m0 470 170-115 125 90 170-180 175 180 170-120 170 145 120-95 100 75v190H0Z" fill="#849e83"/>
+<path d="M0 530Q220 465 420 525T820 510T1200 520V900H0Z" fill="#9eb38b"/>
+<path d="M0 625Q180 540 380 600T760 600T1200 560V900H0Z" fill="#6f936f"/>
+<path d="M-40 730Q210 650 390 700T760 670T1240 620L1240 900H-40Z" fill="#b5c79a"/>
+<path d="M-20 735Q220 640 440 720T830 700T1230 650" fill="none" stroke="#e1d5a8" stroke-width="12" opacity=".7"/>
+<!-- Río y brazos de agua -->
+<path d="M-30 805Q190 700 360 770T720 765T1230 705L1230 900H-30Z" fill="url(#water)"/>
+<path d="M-20 820Q210 730 390 795T760 790T1220 735" fill="none" stroke="#d5eee0" stroke-width="13" opacity=".65"/>
+<path d="M0 852Q250 780 440 840T850 830T1200 785" fill="none" stroke="#d5eee0" stroke-width="7" opacity=".6"/>
+<!-- Chacras y hileras -->
+<path d="M80 600 420 535 570 635 210 730Z" fill="#d5c58f" opacity=".85"/>
+<g fill="none" stroke="#557a51" stroke-width="9" stroke-linecap="round" opacity=".9">
+ <path d="M110 625 360 568"/><path d="M130 654 385 595"/><path d="M150 682 410 620"/>
+ <path d="M760 555 1080 500"/><path d="M780 585 1100 530"/><path d="M800 615 1120 560"/>
+</g>
+<g fill="#557a51"><g><circle cx="165" cy="615" r="13"/><circle cx="235" cy="598" r="13"/><circle cx="305" cy="580" r="13"/><circle cx="375" cy="565" r="13"/></g><g><circle cx="815" cy="548" r="13"/><circle cx="895" cy="534" r="13"/><circle cx="975" cy="520" r="13"/><circle cx="1055" cy="505" r="13"/></g></g>
+<!-- Casita de chacra -->
+<g transform="translate(570 485)"><rect x="0" y="35" width="125" height="95" rx="4" fill="#f4e5c7"/><path d="M-12 42 62-18 137 42Z" fill="#a96e53"/><rect x="50" y="78" width="27" height="52" fill="#8c6a4e"/><rect x="15" y="58" width="25" height="25" fill="#a9c9bd"/><rect x="88" y="58" width="25" height="25" fill="#a9c9bd"/></g>
+<!-- Chañar estilizado -->
+<g transform="translate(1000 430)"><path d="M0 190Q-10 95 0 0" stroke="#765d43" stroke-width="24" fill="none" stroke-linecap="round"/><path d="M0 75-72 20M0 100 65 35M0 130-80 90" stroke="#765d43" stroke-width="13" stroke-linecap="round"/><g fill="#63875c"><circle cx="-45" cy="10" r="48"/><circle cx="32" cy="15" r="54"/><circle cx="-12" cy="-28" r="55"/><circle cx="-83" cy="66" r="38"/><circle cx="76" cy="66" r="42"/></g><g fill="#91a96f"><circle cx="-45" cy="0" r="25"/><circle cx="34" cy="-3" r="27"/><circle cx="-6" cy="-35" r="26"/></g></g>
+<g fill="#fff7df" opacity=".7"><circle cx="150" cy="150" r="4"/><circle cx="210" cy="110" r="3"/><circle cx="700" cy="115" r="4"/><circle cx="770" cy="170" r="3"/></g>
+</svg>
