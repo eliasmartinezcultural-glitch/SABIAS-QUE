@@ -278,3 +278,10 @@ button:focus-visible,a:focus-visible{outline:3px solid #c45e49;outline-offset:4p
  .support-action{padding:15px}
 }
 @media(prefers-reduced-motion:reduce){button,a{transition:none}}
+
+/* Ilustración original del valle: arte vectorial liviano y nítido en cualquier pantalla */
+.hero-art{background:#e8d5a8;isolation:isolate}
+.hero-art:before{display:none}
+.hero-illustration{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-art .sun,.hero-art .mountain,.hero-art .river,.hero-art .vine-row{display:none}
+.hero-stamp,.art-spark,.art-caption,.art-postmark{z-index:2}
