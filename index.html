@@ -45,7 +45,15 @@
             <b class="no-rush">Sin reloj, sin apuro. ¡A tu ritmo!</b>
           </div>
           <div class="intro-meta"><span>✓ VERDADERO O FALSO</span><span>✳ HISTORIA LOCAL</span><span>♡ PARA TODAS LAS EDADES</span></div>
-          <button id="start-button" class="primary-button" type="button">¡A VER CUÁNTO SABÉS! <span aria-hidden="true">→</span></button>
+          <button id="start-button" class="primary-button" type="button">¡JUGAR TODAS LAS CURIOSIDADES! <span aria-hidden="true">→</span></button>
+<section class="topic-picker" aria-labelledby="topic-title">
+<div class="topic-heading"><span class="topic-spark" aria-hidden="true">✳</span><div><h2 id="topic-title">¿Qué querés descubrir hoy?</h2><p>Elegí un tema o jugá el recorrido completo.</p></div></div>
+<div class="topic-grid">
+<button class="topic-card topic-history" type="button" data-category="Fundación,Instituciones"><span class="topic-emoji">🏛️</span><span class="topic-name">Los comienzos</span><small>Fundación e instituciones</small><b>EMPEZAR A EXPLORAR →</b></button>
+<button class="topic-card topic-water" type="button" data-category="Agua y producción"><span class="topic-emoji">💧</span><span class="topic-name">Agua y chacras</span><small>Producción y riego</small><b>EMPEZAR A EXPLORAR →</b></button>
+<button class="topic-card topic-land" type="button" data-category="Tierra y territorio"><span class="topic-emoji">🌾</span><span class="topic-name">La tierra</span><small>Territorio y sus historias</small><b>EMPEZAR A EXPLORAR →</b></button>
+<button class="topic-card topic-identity" type="button" data-category="Nombre e identidad"><span class="topic-emoji">☘️</span><span class="topic-name">Nuestra identidad</span><small>Nombres y símbolos</small><b>EMPEZAR A EXPLORAR →</b></button>
+</div></section>
           <p class="small-note">Sin registrarte. Sin apuro. Solo curiosidad.</p>
           <div class="intro-footnote"><span class="tiny-sun">✳</span> Una experiencia para jugar en familia, en la escuela o entre amigos.</div>
         </div>
@@ -53,6 +61,7 @@
 
       <section id="game" class="game-screen hidden" aria-label="Desafío de verdadero o falso">
         <div class="game-topline">
+          <button id="home-button" class="home-button" type="button" aria-label="Volver al inicio">← INICIO</button>
           <span class="round-label">DESAFÍO CHAÑARENSE</span>
           <span id="question-counter" class="question-counter">01 / 08</span>
         </div>
@@ -66,7 +75,7 @@
         <div class="question-card">
           <div class="question-kicker"><span id="category-label">HISTORIA</span><span id="difficulty-label">PARA EMPEZAR</span></div>
           <div id="question-art" class="question-art" aria-hidden="true">
-            <span class="art-big-icon">🌿</span><span class="art-artifact">ARCHIVO<br>CHAÑARENSE</span>
+            <img class="question-illustration" src="assets/tema-historia.svg" alt="" width="900" height="420"><span class="art-big-icon">🌿</span><span class="art-artifact">ARCHIVO<br>CHAÑARENSE</span>
           </div>
           <p class="question-overline">¿VERDADERO O FALSO?</p>
           <h2 id="question-text">Preparando una historia...</h2>
