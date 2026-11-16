@@ -285,3 +285,82 @@ button:focus-visible,a:focus-visible{outline:3px solid #c45e49;outline-offset:4p
 .hero-illustration{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .hero-art .sun,.hero-art .mountain,.hero-art .river,.hero-art .vine-row{display:none}
 .hero-stamp,.art-spark,.art-caption,.art-postmark{z-index:2}
+
+
+/* Experiencia multiedad: color, juego por temas, ilustraciones y controles grandes */
+:root{--violet:#7356b7;--pink:#e86f91;--orange:#f29a42;--aqua:#39aeb0;--blue:#4f88d8}
+body{background:radial-gradient(circle at 5% 22%,#ffcf6a35,transparent 19rem),radial-gradient(circle at 95% 62%,#64c7c035,transparent 22rem),#fff8ed}
+.topbar{border-bottom:2px solid #f1e6d5}
+.brand-mark{background:linear-gradient(135deg,#f39b42,#e86f91);box-shadow:0 6px 0 #e86f9125}
+.brand-name span{color:#e86f91}
+.hero-art{border-radius:32px 32px 90px 32px;box-shadow:0 20px 0 #f1c77a33,0 25px 55px #67502b20}
+.hero-stamp{background:#fff5ce;color:#7753a7;border:2px dashed #e8bf6d}
+.intro-copy .eyebrow{color:#7657ad}
+h1 em{color:#e66f8e}
+.primary-button{background:linear-gradient(100deg,#e86f91,#ef9845);box-shadow:0 8px 0 #c85d7230,0 14px 25px #e86f9130;border-radius:17px;font-size:13px;min-height:62px}
+.primary-button:hover{background:linear-gradient(100deg,#d95d83,#e58b37)}
+.topic-picker{margin:28px 0 24px;max-width:560px}
+.topic-heading{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.topic-spark{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:#fff0c9;color:#e38a35;font-size:25px}
+.topic-heading h2{font:800 18px Arial,sans-serif;letter-spacing:-.4px;margin:0;color:#344c45}
+.topic-heading p{font-size:12px;color:#758078;margin:4px 0 0}
+.topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.topic-card{min-height:158px;position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:15px;border:2px solid transparent;border-radius:19px;cursor:pointer;box-shadow:0 7px 18px #4b432012;transition:transform .18s,box-shadow .18s}
+.topic-card:hover{transform:translateY(-4px);box-shadow:0 13px 24px #4b432022}
+.topic-card:active{transform:scale(.98)}
+.topic-history{background:#fff0ce;border-color:#f3d58e}
+.topic-water{background:#ddf4f1;border-color:#a9dfd8}
+.topic-land{background:#e9e4fb;border-color:#cbc0f0}
+.topic-identity{background:#fde4eb;border-color:#f5bfd0}
+.topic-emoji{font-size:27px;margin-bottom:7px}
+.topic-name{font-weight:900;font-size:16px;color:#30483d}
+.topic-card small{font-size:11px;color:#5f7167;margin-top:4px}
+.topic-card b{font-size:9px;letter-spacing:.6px;margin-top:auto;padding-top:12px;color:#7254a2}
+.topic-water b{color:#217f82}.topic-land b{color:#6551a3}.topic-identity b{color:#b64d70}
+.game-topline{align-items:center}
+.home-button{border:0;background:#fff0ce;color:#805e32;border-radius:999px;padding:12px 15px;font-weight:900;font-size:11px;min-height:44px;cursor:pointer}
+.round-label{background:#e9e4fb;color:#6551a3}
+.game-stat:nth-child(1){background:#fff0ce;border-color:#f5d58d}
+.game-stat:nth-child(2){background:#fde4eb;border-color:#f3bfd0}
+.game-stat:nth-child(3){background:#ddf4f1;border-color:#a9dfd8}
+.game-stat strong{color:#354e43}
+.progress-fill{background:linear-gradient(90deg,#7356b7,#e86f91,#f29a42,#39aeb0)}
+.question-card{border:2px solid #f0e3d2;box-shadow:0 16px 0 #f2e4d130,0 24px 48px #59472a12}
+.question-kicker span:first-child{background:#e9e4fb;color:#6551a3}
+.question-kicker span:last-child{background:#fff0ce;color:#9b682d}
+.question-art{height:230px;background:linear-gradient(120deg,#fff0c9,#d9f3ed 55%,#e9e1fb);border:0}
+.question-art:before,.question-art:after{display:none}
+.question-illustration{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.art-big-icon{position:absolute;z-index:1;right:20px;bottom:12px;font-size:42px;background:#ffffffd9;border-radius:18px;padding:8px}
+.art-artifact{z-index:2;background:#fffdf2;border:1px dashed #bba5d7;color:#7056a5}
+.question-card h2{color:#263e36}
+.question-overline{background:#fde4eb;color:#b34f70}
+.answer-button{min-height:82px;border-radius:18px;font-size:15px;border:3px solid transparent}
+.true-button{background:#d8f3e3;color:#176541;border-color:#a8dfbf}
+.false-button{background:#ffe0e8;color:#a6385d;border-color:#f4b6c8}
+.answer-button:hover:not(:disabled){transform:translateY(-3px) scale(1.01)}
+.answer-button:focus-visible,.topic-card:focus-visible,.home-button:focus-visible{outline:4px solid #7356b7;outline-offset:4px}
+.feedback-correct{background:#e1f5e7;border:2px solid #9dd6ae}
+.feedback-learning{background:#fff0d9;border:2px solid #f2cf8a}
+.feedback-heading{color:#256847}
+.feedback-heading span{background:#39a86b}
+.next-button{background:linear-gradient(100deg,#7356b7,#4f88d8);box-shadow:0 7px 0 #4c40942b,0 12px 24px #7356b72a}
+.listen-button{border-radius:14px;min-height:52px;background:#e9e4fb;color:#5f4b9a;font-weight:900}
+.results-screen{border:2px solid #f0d9ae;background:#fffdf6}
+.result-badge{background:#fff0c9;color:#8c632e;border-color:#edc56f}
+.support-card{background:linear-gradient(125deg,#e0f5e9,#e5e0fa 55%,#ffe7e9);border:2px solid #d6e6dc}
+.site-footer strong{color:#7056a5}
+@media(max-width:600px){
+ .topic-grid{gap:9px}
+ .topic-card{min-height:145px;padding:12px;border-radius:16px}
+ .topic-name{font-size:14px}
+ .topic-card small{font-size:10px;line-height:1.35}
+ .topic-card b{font-size:8px}
+ .topic-heading h2{font-size:17px}
+ .game-topline{gap:7px}
+ .round-label{font-size:8px;letter-spacing:.7px;padding:8px}
+ .question-art{height:175px}
+ .answer-button{min-height:76px;font-size:14px}
+ .home-button{padding:10px 12px;font-size:10px}
+}
+@media(min-width:900px){.topic-card{min-height:168px;padding:18px}.topic-emoji{font-size:32px}.topic-name{font-size:18px}}
