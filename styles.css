@@ -364,3 +364,17 @@ h1 em{color:#e66f8e}
  .home-button{padding:10px 12px;font-size:10px}
 }
 @media(min-width:900px){.topic-card{min-height:168px;padding:18px}.topic-emoji{font-size:32px}.topic-name{font-size:18px}}
+
+/* Accesibilidad de los nuevos controles */
+.text-large .topic-name,.text-extra-large .topic-name{font-size:20px}
+.text-large .topic-card small,.text-extra-large .topic-card small{font-size:14px}
+.text-large .topic-card b,.text-extra-large .topic-card b{font-size:11px}
+.text-extra-large .topic-card{min-height:185px}
+.text-extra-large .home-button{font-size:14px;min-height:54px}
+.high-contrast .topic-card,.high-contrast .home-button{background:#fff!important;color:#000!important;border:3px solid #000!important}
+.high-contrast .topic-card small,.high-contrast .topic-card b,.high-contrast .topic-name{color:#000!important}
+.high-contrast .topic-spark{background:#fff;color:#000;border:2px solid #000}
+.high-contrast .question-card{border:3px solid #000}
+.high-contrast .question-kicker span,.high-contrast .question-overline,.high-contrast .round-label{background:#fff!important;color:#000!important;border:1px solid #000}
+.high-contrast .answer-button{background:#fff!important;color:#000!important;border:3px solid #000!important}
+@media(prefers-reduced-motion:reduce){.topic-card,.answer-button{transition:none!important}}
