@@ -13,7 +13,7 @@
 
   const ui = {
     intro: $("intro"), game: $("game"), results: $("results"),
-    start: $("start-button"), next: $("next-button"), restart: $("restart-button"),
+    start: $("start-button"), next: $("next-button"), restart: $("restart-button"), home: $("home-button"),
     retry: $("retry-missed-button"), share: $("share-button"),
     copyAlias: $("copy-alias-button"), answers: $("answer-buttons"),
     question: $("question-text"), counter: $("question-counter"),
@@ -146,6 +146,16 @@
     ui.difficulty.textContent = String(q.difficulty || "DESAFÍO").toUpperCase();
     ui.question.textContent = q.statement;
     ui.art.querySelector(".art-big-icon").textContent = q.icon || "🌿";
+    const artImage = ui.art.querySelector(".question-illustration");
+    const artByCategory = {
+      "Fundación": "assets/tema-historia.svg",
+      "Instituciones": "assets/tema-historia.svg",
+      "Agua y producción": "assets/tema-agua.svg",
+      "Tierra y territorio": "assets/tema-tierra.svg",
+      "Nombre e identidad": "assets/tema-identidad.svg"
+    };
+    artImage.src = artByCategory[q.category] || "assets/tema-historia.svg";
+    artImage.alt = "Ilustración sobre " + String(q.category || "la historia local").toLowerCase();
     ui.source.href = q.sourceUrl;
     ui.source.textContent = (q.sourceTitle || "Consultar fuente histórica") + " ↗";
     ui.explanation.textContent = "";
@@ -404,6 +414,21 @@
   });
 
   ui.start.addEventListener("click", () => startGame());
+  document.querySelectorAll("[data-category]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedCategories = button.dataset.category.split(",");
+      const selection = validQuestions.filter((q) => selectedCategories.includes(q.category));
+      startGame(selection, "category");
+    });
+  });
+  ui.home.addEventListener("click", () => {
+    stopVoice();
+    hide(ui.game);
+    hide(ui.results);
+    show(ui.intro);
+    scrollTop();
+    focus($("main-title"));
+  });
   ui.restart.addEventListener("click", () => startGame());
   ui.retry.addEventListener("click", () => {
     if (lastRun && lastRun.missed.length) startGame(lastRun.missed, "review");
