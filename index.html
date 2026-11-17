@@ -8,7 +8,7 @@
   <meta name="format-detection" content="telephone=no">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Ocarina Producciones · SABÍAS QUE">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="¿Sabías que...? — San Patricio del Chañar">
   <meta name="twitter:description" content="Jugá gratis y descubrí historias reales de San Patricio del Chañar.">
   <meta property="og:url" content="https://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/">
@@ -16,10 +16,10 @@
   <meta property="og:title" content="¿Sabías que...? — San Patricio del Chañar">
   <meta property="og:description" content="Un juego de curiosidades reales de San Patricio del Chañar. Abrilo desde tu celular y jugá gratis.">
   <title>¿Sabías que...? — San Patricio del Chañar</title>
-  <link rel="stylesheet" href="styles.css?v=20261116-08">
+  <link rel="stylesheet" href="styles.css?v=20261116-09">
   <script src="questions.js?v=20261116-03" defer></script>
-  <script src="extras.js?v=20261116-09" defer></script>
-  <script src="app.js?v=20261116-07" defer></script>
+  <script src="extras.js?v=20261116-10" defer></script>
+  <script src="app.js?v=20261116-08" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
@@ -43,6 +43,7 @@
           <div class="start-actions">
             <button id="start-button" class="primary-button" type="button">JUGAR TODO EL RECORRIDO <span aria-hidden="true">→</span></button>
             <button id="short-game-button" class="secondary-button quick-play-button" type="button">🎲 JUGAR 5 PREGUNTAS</button>
+            <a id="whatsapp-game-button" class="whatsapp-button" href="https://wa.me/?text=%C2%A1Te%20invito%20a%20jugar%20%C2%BFSab%C3%ADas%20que...%3F%20Un%20juego%20gratuito%20para%20descubrir%20historias%20reales%20de%20San%20Patricio%20del%20Cha%C3%B1ar.%20https%3A%2F%2Feliasmartinezcultural-glitch.github.io%2FSABIAS-QUE%2F" target="_blank" rel="noopener noreferrer">COMPARTIR EL JUEGO POR WHATSAPP ↗</a>
           </div>
           <p class="family-invite">Podés jugar solo, en familia o por turnos. ¡Lo importante es descubrir!</p>
 
@@ -168,7 +169,8 @@
         <div class="result-actions">
           <button id="retry-missed-button" class="secondary-button hidden" type="button">VOLVER A JUGAR LAS QUE ME COSTARON ↻</button>
           <button id="restart-button" class="primary-button" type="button">JUGAR DE NUEVO ↻</button>
-          <button id="share-button" class="secondary-button" type="button">COMPARTIR MI RESULTADO ↗</button>
+          <button id="whatsapp-result-button" class="whatsapp-button" type="button">COMPARTIR POR WHATSAPP ↗</button>
+          <button id="share-button" class="secondary-button" type="button">MÁS OPCIONES PARA COMPARTIR ↗</button>
         </div>
         <p class="small-note">La historia de nuestro lugar siempre tiene algo más para contar.</p><p id="share-feedback" class="share-feedback" role="status" aria-live="polite"></p>
       </section>
