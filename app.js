@@ -241,7 +241,7 @@
     // Si una foto no carga, vuelve automáticamente a la ilustración local del juego.
     const localPhotos = {
       "CH-003": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Balneario-Municipal.JPG", alt: "Río Neuquén y balneario municipal de San Patricio del Chañar", caption: "RÍO NEUQUÉN · NUESTRO PAISAJE" },
-      "CH-004": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Balneario-Municipal.JPG", alt: "Río Neuquén junto a San Patricio del Chañar", caption: "EL AGUA QUE ACOMPAÑA NUESTRA HISTORIA" },
+      "CH-004": { src: "https://sanpatricio.gob.ar/assets/images/municipio/vinedos.JPG", alt: "Viñedos de San Patricio del Chañar", caption: "VIÑEDOS · PRODUCCIÓN CHAÑARENSE" },
       "CH-005": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG", alt: "Chacra Municipal Valles del Chañar", caption: "CHACRAS · TIERRA DE TRABAJO" },
       "CH-006": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG", alt: "Vista de la Chacra Municipal Valles del Chañar", caption: "EL TERRITORIO Y SU HISTORIA" }
     };
