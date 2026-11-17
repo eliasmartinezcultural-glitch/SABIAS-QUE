@@ -248,15 +248,9 @@
       "Tierra y territorio": "assets/tema-tierra.svg",
       "Nombre e identidad": "assets/tema-identidad.svg"
     };
-    // Fotografías municipales reales: se usan solo cuando ilustran el tema de la pregunta.
-    // Si una foto no carga, vuelve automáticamente a la ilustración local del juego.
-    const localPhotos = {
-      "CH-003": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Balneario-Municipal.JPG", alt: "Río Neuquén y balneario municipal de San Patricio del Chañar", caption: "RÍO NEUQUÉN · NUESTRO PAISAJE" },
-      "CH-004": { src: "https://sanpatricio.gob.ar/assets/images/municipio/vinedos.JPG", alt: "Viñedos de San Patricio del Chañar", caption: "VIÑEDOS · PRODUCCIÓN CHAÑARENSE" },
-      "CH-005": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG", alt: "Chacra Municipal Valles del Chañar", caption: "CHACRAS · TIERRA DE TRABAJO" },
-      "CH-006": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG", alt: "Vista de la Chacra Municipal Valles del Chañar", caption: "EL TERRITORIO Y SU HISTORIA" }
-    };
-    const photo = localPhotos[q.id];
+    // Los recursos visuales opcionales viven junto a cada pregunta en questions.js.
+    // Si una fotografía externa no carga, se utiliza la ilustración local de su categoría.
+    const photo = q.image && typeof q.image.src === "string" ? q.image : null;
     const illustration = artByCategory[q.category] || "assets/tema-historia.svg";
     ui.art.classList.toggle("has-photo", Boolean(photo));
     if (photo) {
@@ -558,6 +552,9 @@
     document.body.classList.toggle("text-small", fontLevel < 0);
     document.body.classList.toggle("text-large", fontLevel === 1);
     document.body.classList.toggle("text-extra-large", fontLevel === 2);
+    document.documentElement.classList.toggle("text-small", fontLevel < 0);
+    document.documentElement.classList.toggle("text-large", fontLevel === 1);
+    document.documentElement.classList.toggle("text-extra-large", fontLevel === 2);
   });
   $("font-larger").addEventListener("click", () => {
     fontLevel = Math.min(2, fontLevel + 1);
