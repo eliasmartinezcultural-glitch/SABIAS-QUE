@@ -679,3 +679,12 @@ button:focus-visible,a:focus-visible{outline:3px solid #7356b7;outline-offset:3p
  .photo-caption strong{font-size:12px}
  .photo-caption small{font-size:10px}
 }
+
+/* Afinado: tarjetas fotográficas proporcionadas y sin adornos sobre la foto */
+.question-art.has-photo:before{display:none}
+.local-photo{aspect-ratio:1.55/1}
+.local-photo img{height:100%}
+@media(max-width:480px){
+ .local-photo{aspect-ratio:1.25/1}
+ .local-photo img,.local-photo:last-child img{height:100%}
+}
