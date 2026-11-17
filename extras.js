@@ -233,6 +233,7 @@
             .replace(new RegExp("^"+number+" de "+number+" preguntas completadas\\.$"), "$1 of $2 questions completed.")
             .replace(new RegExp("^"+number+"% completado$"), "$1% complete")
             .replace(new RegExp("^ACIERTOS: "+number+" · PUNTOS: "+number+"$"), "CORRECT: $1 · POINTS: $2")
+            .replace(new RegExp("^ACIERTOS: "+number+"$"), "CORRECT: $1")
             .replace(new RegExp("^"+number+" de "+number+" aciertos$"), "$1 of $2 correct")
             .replace(new RegExp("^Tu mejor precisión guardada es "+number+"%\\.$"), "Your best saved accuracy is $1%.")
             .replace(new RegExp("^Se desbloquea con "+number+" aciertos acumulados\\.$"), "Unlock with $1 total correct answers.")
@@ -247,6 +248,7 @@
             .replace(new RegExp("^"+number+" de "+number+" preguntas completadas\\.$"), "$1 questions sur $2 terminées.")
             .replace(new RegExp("^"+number+"% completado$"), "$1% terminé")
             .replace(new RegExp("^ACIERTOS: "+number+" · PUNTOS: "+number+"$"), "BONNES RÉPONSES : $1 · POINTS : $2")
+            .replace(new RegExp("^ACIERTOS: "+number+"$"), "BONNES RÉPONSES : $1")
             .replace(new RegExp("^"+number+" de "+number+" aciertos$"), "$1 bonnes réponses sur $2")
             .replace(new RegExp("^Tu mejor precisión guardada es "+number+"%\\.$"), "Votre meilleur score enregistré est de $1%.")
             .replace(new RegExp("^Se desbloquea con "+number+" aciertos acumulados\\.$"), "Débloqué après $1 bonnes réponses au total.")
@@ -261,6 +263,7 @@
             .replace(new RegExp("^"+number+" de "+number+" preguntas completadas\\.$"), "$1 de $2 perguntas concluídas.")
             .replace(new RegExp("^"+number+"% completado$"), "$1% concluído")
             .replace(new RegExp("^ACIERTOS: "+number+" · PUNTOS: "+number+"$"), "ACERTOS: $1 · PONTOS: $2")
+            .replace(new RegExp("^ACIERTOS: "+number+"$"), "ACERTOS: $1")
             .replace(new RegExp("^"+number+" de "+number+" aciertos$"), "$1 de $2 acertos")
             .replace(new RegExp("^Tu mejor precisión guardada es "+number+"%\\.$"), "Sua melhor precisão salva é $1%.")
             .replace(new RegExp("^Se desbloquea con "+number+" aciertos acumulados\\.$"), "Desbloqueia com $1 acertos acumulados.")
@@ -279,6 +282,21 @@
     };
     Object.entries(labels).forEach(([id, map]) => { if ($(id) && map[lang]) $(id).textContent = map[lang]; });
     document.documentElement.lang = lang;
+    const titles = {
+      es: "¿Sabías que...? — San Patricio del Chañar",
+      en: "Did you know...? — San Patricio del Chañar",
+      fr: "Le saviez-vous...? — San Patricio del Chañar",
+      pt: "Você sabia...? — San Patricio del Chañar"
+    };
+    document.title = titles[lang] || titles.es;
+    const description = {
+      es: "Jugá gratis y descubrí historias reales de San Patricio del Chañar.",
+      en: "Play for free and discover real stories from San Patricio del Chañar.",
+      fr: "Jouez gratuitement et découvrez les histoires de San Patricio del Chañar.",
+      pt: "Jogue grátis e descubra histórias reais de San Patricio del Chañar."
+    };
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) metaDescription.content = description[lang] || description.es;
   }
   function applyLanguage(lang) {
     const current = $("question-text");
