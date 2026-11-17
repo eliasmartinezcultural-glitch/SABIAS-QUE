@@ -27,6 +27,26 @@
     listenExplain: $("listen-explanation")
   };
   const answerButtons = [...document.querySelectorAll(".answer-button")];
+  const quickButtons = [...document.querySelectorAll("[data-quick-count]")];
+
+  function refreshDiscoveryCounts() {
+    const total = validQuestions.length;
+    const available = $("available-questions");
+    if (available) available.textContent = total
+      ? total + (total === 1 ? " curiosidad disponible para descubrir." : " curiosidades disponibles para descubrir.")
+      : "Estamos preparando nuevas curiosidades verificadas.";
+    document.querySelectorAll("[data-count-for]").forEach((node) => {
+      const categories = node.dataset.countFor.split(",");
+      const count = validQuestions.filter((q) => categories.includes(q.category)).length;
+      node.textContent = count + (count === 1 ? " pregunta" : " preguntas");
+    });
+    quickButtons.forEach((button) => {
+      const count = button.dataset.quickCount === "all"
+        ? total : Math.min(Number(button.dataset.quickCount), total);
+      button.disabled = !count;
+    });
+  }
+
 
   let deck = [];
   let position = 0;
@@ -414,6 +434,15 @@
   });
 
   ui.start.addEventListener("click", () => startGame());
+  quickButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const requested = button.dataset.quickCount === "all"
+        ? validQuestions.length : Number(button.dataset.quickCount);
+      startGame(validQuestions.slice(0, requested), "quick");
+    });
+  });
+  refreshDiscoveryCounts();
+
   document.querySelectorAll("[data-category]").forEach((button) => {
     button.addEventListener("click", () => {
       const selectedCategories = button.dataset.category.split(",");
