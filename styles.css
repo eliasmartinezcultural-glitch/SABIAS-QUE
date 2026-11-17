@@ -7,16 +7,16 @@
 /* 01 · Tokens y base */
 :root{
   color-scheme:light;
-  --paper:#f3eee3;
-  --surface:#fffdf8;
-  --surface-soft:#eaf0e6;
-  --ink:#263a32;
-  --muted:#5f7065;
-  --green:#3f7055;
-  --green-dark:#294c3b;
-  --coral:#b96d58;
-  --gold:#d6a64a;
-  --line:#e3dacb;
+  --paper:#f5eddd;
+  --surface:#fffdf7;
+  --surface-soft:#e8efe4;
+  --ink:#263a38;
+  --muted:#596d6a;
+  --green:#34745e;
+  --green-dark:#245344;
+  --coral:#c56b4e;
+  --gold:#d9a63d;
+  --line:#e2d5bf;
   --focus:#98552f;
   --shadow:0 14px 34px rgba(54,67,48,.09);
   --serif:Georgia,"Times New Roman",serif;
@@ -797,4 +797,234 @@ body:not(.high-contrast){
 }
 @media(prefers-reduced-motion:reduce){
   .access-button{transition:none}
+}
+
+
+/* 12 · Dirección de arte: expedición histórica por el Chañar
+   Solo presentación visual. No modifica estructura ni comportamiento. */
+body:not(.high-contrast){
+  background-image:
+    radial-gradient(ellipse at 4% 12%,rgba(217,166,61,.16),transparent 25rem),
+    radial-gradient(ellipse at 96% 20%,rgba(72,139,151,.12),transparent 28rem),
+    radial-gradient(ellipse at 50% 90%,rgba(197,107,78,.07),transparent 30rem),
+    repeating-linear-gradient(0deg,rgba(122,104,69,.018) 0,rgba(122,104,69,.018) 1px,transparent 1px,transparent 7px),
+    linear-gradient(180deg,#f8f1e4,#f2ecdf 65%,#f7f0e4);
+}
+.topbar{
+  border-bottom:1px solid #d9c9ad;
+}
+.brand-mark{
+  background:linear-gradient(145deg,#e3ad48 0%,#c9794e 48%,#36745e 100%);
+  box-shadow:0 3px 0 rgba(99,74,40,.16),0 7px 16px rgba(67,80,57,.16);
+}
+.brand-name span{color:#bd6448}
+.top-note span{color:#c56b4e}
+.access-button{
+  border-color:#d9cbb4;
+  background:linear-gradient(145deg,#fffefa,#f5efdf);
+}
+.intro-screen{position:relative}
+.hero-art{
+  background:linear-gradient(135deg,#e9d7b4,#c8ded2 55%,#a9c6bd);
+  outline-color:rgba(183,132,66,.34);
+  box-shadow:0 17px 38px rgba(74,76,54,.15),0 3px 8px rgba(74,76,54,.08);
+}
+.hero-art:before{
+  content:"";position:absolute;z-index:2;inset:10px;
+  border:1px solid rgba(255,250,231,.5);border-radius:11px;
+  pointer-events:none;
+}
+.eyebrow{color:#3c7562}
+.eyebrow>span{background:#d17a4d;box-shadow:0 0 0 4px rgba(209,122,77,.15)}
+.intro-copy h1 em{
+  color:#34745e;
+  text-decoration-color:rgba(217,166,61,.8);
+}
+.intro-lead{color:#526965}
+.primary-button{
+  background:linear-gradient(115deg,#397a62 0%,#2e6a5c 55%,#285849 100%);
+  box-shadow:0 4px 0 #204a3c,0 9px 17px rgba(39,88,69,.17);
+}
+.primary-button:hover:not(:disabled){
+  background:linear-gradient(115deg,#43866b,#2d6557);
+}
+.secondary-button{
+  border-color:#d7b98a;
+  background:linear-gradient(135deg,#fffdf7,#f7edda);
+  color:#875c35;
+}
+.secondary-button:hover:not(:disabled){
+  border-color:#c99a5e;background:#fff7e7;
+}
+.how-to-play{
+  border-color:#e2d2b6;
+  background:linear-gradient(135deg,#fffdf7,#f4eddf);
+}
+.how-step>span:first-child{
+  color:#fff;background:linear-gradient(145deg,#43836b,#2d6658);
+}
+.topic-picker{
+  border-color:#dfceb0;
+  background:linear-gradient(145deg,#fffdf7,#f6efdf);
+}
+.topic-heading h2{color:#314c45}
+.topic-heading h2:after{
+  width:52px;height:3px;
+  background:linear-gradient(90deg,#d9a63d,#c56b4e,#4e8c83);
+}
+.topic-card{
+  border-color:#e5d9c4;
+  background:linear-gradient(145deg,#fffefa,#fbf6e9);
+}
+.topic-card:before{width:4px}
+.topic-history:before{background:#c58a49}
+.topic-water:before{background:#4f9aa3}
+.topic-land:before{background:#72934f}
+.topic-identity:before{background:#b17a9a}
+.topic-history .topic-emoji{color:#a87335}
+.topic-water .topic-emoji{color:#39838d}
+.topic-land .topic-emoji{color:#638541}
+.topic-identity .topic-emoji{color:#94709a}
+.topic-card:hover:not(:disabled){
+  border-color:#c6a879;background:#fffaf0;
+  box-shadow:0 6px 14px rgba(105,81,48,.10);
+}
+.available-questions:before{background:#d49c3d;box-shadow:0 0 0 3px rgba(212,156,61,.15)}
+.player-record,.achievement-shelf,.local-postcards{
+  border-color:#dfd0b7;background:linear-gradient(145deg,#fffdf7,#f7f0e3);
+}
+.record-stats>div{
+  border:1px solid #dce4d5;
+  background:linear-gradient(145deg,#eef4e9,#e1ede3);
+}
+.achievement-item.is-new{
+  border-color:#d9a63d;
+  background:linear-gradient(135deg,#fff8e5,#f9edcf);
+}
+.local-postcards summary{
+  color:#3d6f60;
+  background:linear-gradient(90deg,rgba(219,231,215,.85),rgba(255,250,238,.3));
+}
+.local-photo{
+  border-color:#fffdf7;
+  box-shadow:0 3px 10px rgba(62,66,48,.16);
+}
+.game-topline{border-bottom-color:#ddceb4}
+.home-button{
+  border-color:#d9c9ae;
+  background:linear-gradient(145deg,#fffdf7,#f4ecdc);
+  color:#3c6658;
+}
+.question-counter{
+  border-color:#d8e3d6;
+  background:linear-gradient(135deg,#eaf2e8,#dcebe4);
+  color:#2d6658;
+}
+.game-stat{
+  border-color:#e1d4bd;
+  background:linear-gradient(155deg,#fffefa,#f7f0e3);
+}
+.game-stat:before{
+  left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#d9a63d,#c56b4e,#4f9290);
+}
+.progress-track{
+  border-color:#d9d7c3;
+  background:linear-gradient(90deg,#e8e7d9,#e1e9dc);
+}
+.progress-fill{
+  background:linear-gradient(90deg,#397b63 0%,#6fa58a 38%,#e0b34e 72%,#cb7650 100%);
+}
+.question-card{
+  border-color:#ddceb3;
+  background:linear-gradient(155deg,#fffefa 0%,#fffdf7 60%,#f8f0e1 100%);
+}
+.question-card:before{
+  height:4px;
+  background:linear-gradient(90deg,#34745e 0%,#64a09a 32%,#d9a63d 68%,#c56b4e 100%);
+}
+.question-kicker span{
+  border-color:#d9e4d7;
+  background:linear-gradient(135deg,#eef4e9,#e3eee6);
+  color:#3a6d5c;
+}
+.question-art{
+  border-color:#fffdf7;
+  outline-color:#ddcda9;
+  background:linear-gradient(130deg,#ead8b6,#d7e7d8 48%,#b9d5d2);
+}
+.question-overline{color:#bd694b}
+.question-overline:before{background:#d9a63d}
+.listen-button{
+  border-color:#d5e2d8;
+  background:linear-gradient(135deg,#f2f7ed,#e3f0e9);
+  color:#2e6858;
+}
+.true-button{
+  border-color:#d1e3d1;
+  background:linear-gradient(145deg,#eaf4e5,#d8ebdf);
+  color:#286044;
+}
+.false-button{
+  border-color:#ecd2c2;
+  background:linear-gradient(145deg,#fff0e5,#f4ddd0);
+  color:#984b37;
+}
+.feedback-correct{
+  border-color:#c9dfc9;
+  background:linear-gradient(145deg,#f1f7eb,#e3f1e6);
+}
+.feedback-learning{
+  border-color:#ead5b7;
+  background:linear-gradient(145deg,#fff6e8,#f5e8d8);
+}
+.feedback-heading{color:#2c6754}
+.feedback-heading span{background:linear-gradient(145deg,#43866b,#2a624e)}
+.source-line{
+  border-color:#e3d7c3;
+  background:linear-gradient(90deg,rgba(228,238,222,.65),rgba(255,250,239,.15));
+}
+.source-line a{color:#34745e}
+.results-screen{
+  border-color:#dfcfb4;
+  background:linear-gradient(150deg,#fffefa,#fffaf0 72%,#f5ead8);
+}
+.score-seal{
+  border-color:#d2a65b;
+  background:radial-gradient(circle at 35% 28%,#fffdf4,#f4e7c9 72%);
+}
+.score-seal strong{color:#34745e}
+.result-badge{
+  border:1px solid #e6d2a8;
+  background:linear-gradient(135deg,#fff5d9,#f3e5bd);
+  color:#805b27;
+}
+.result-stats>div{
+  border-color:#dce5d6;
+  background:linear-gradient(145deg,#f0f5e9,#e4eee5);
+}
+.review-item.review-missed{border-left-color:#c56b4e}
+.support-card{
+  border-color:#d6dfc9;
+  background:
+    radial-gradient(circle at 92% 12%,rgba(217,166,61,.23),transparent 11rem),
+    radial-gradient(circle at 4% 100%,rgba(77,145,137,.12),transparent 13rem),
+    linear-gradient(120deg,#edf3e6,#e0eee5);
+}
+.support-eyebrow{color:#a5673f}
+.copy-button{
+  background:linear-gradient(110deg,#3b8064,#2d6655);
+  box-shadow:0 3px 0 #204a3c,0 7px 13px rgba(39,88,69,.15);
+}
+.site-footer{border-top-color:#d9c9ae}
+.site-footer strong{color:#34745e}
+.high-contrast .brand-mark,
+.high-contrast .primary-button,
+.high-contrast .copy-button{filter:none}
+@media(max-width:760px){
+  .hero-art:before{inset:7px}
+  .topic-card{box-shadow:0 2px 5px rgba(105,81,48,.055)}
+}
+@media(prefers-reduced-motion:reduce){
+  .topic-card,.primary-button,.secondary-button{transition:none}
 }
