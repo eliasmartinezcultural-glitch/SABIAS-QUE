@@ -244,7 +244,12 @@
             .replace(new RegExp("^Tu mejor precisión guardada es "+number+"%\\.$"), "Your best saved accuracy is $1%.")
             .replace(new RegExp("^Se desbloquea con "+number+" aciertos acumulados\\.$"), "Unlock with $1 total correct answers.")
             .replace(/^Tu respuesta es correcta: (VERDADERO|FALSO)\.$/, (_,v)=>"Your answer is correct: "+(v==="VERDADERO"?"TRUE.":"FALSE."))
-            .replace(/^La respuesta correcta era: (VERDADERO|FALSO)\. Tu respuesta fue (VERDADERO|FALSO)\.$/, (_,a,b)=>"The correct answer was: "+(a==="VERDADERO"?"TRUE":"FALSE")+". Your answer was "+(b==="VERDADERO"?"TRUE.":"FALSE."));
+            .replace(/^La respuesta correcta era: (VERDADERO|FALSO)\. Tu respuesta fue (VERDADERO|FALSO)\.$/, (_,a,b)=>"The correct answer was: "+(a==="VERDADERO"?"TRUE":"FALSE")+". Your answer was "+(b==="VERDADERO"?"TRUE.":"FALSE."))
+            .replace(/^⭐ \+(\d+) PUNTOS( · ¡BONO DE RACHA!)?( · 🔥 RACHA: (\d+))?$/, (_,p,b,s,n)=>"⭐ +"+p+" POINTS"+(b?" · STREAK BONUS!":"")+(s?" · 🔥 STREAK: "+n:""))
+            .replace(/^✓ Bien respondida · (\d+)$/, "✓ Correctly answered · $1")
+            .replace(/^↗ Para volver a descubrir · (\d+)$/, "↗ Discover again · $1")
+            .replace(/^Respuesta correcta: (VERDADERO|FALSO) · ¡Acertaste!$/, (_,v)=>"Correct answer: "+(v==="VERDADERO"?"TRUE":"FALSE")+" · You got it!")
+            .replace(/^Respuesta correcta: (VERDADERO|FALSO) · Tu respuesta: (VERDADERO|FALSO)$/, (_,a,b)=>"Correct answer: "+(a==="VERDADERO"?"TRUE":"FALSE")+" · Your answer: "+(b==="VERDADERO"?"TRUE":"FALSE"));
         } else if (lang === "fr") {
           translated = translated
             .replace(new RegExp("^"+number+" curiosidades disponibles para descubrir\\.$"), "$1 anecdotes à découvrir.")
@@ -259,7 +264,12 @@
             .replace(new RegExp("^Tu mejor precisión guardada es "+number+"%\\.$"), "Votre meilleur score enregistré est de $1%.")
             .replace(new RegExp("^Se desbloquea con "+number+" aciertos acumulados\\.$"), "Débloqué après $1 bonnes réponses au total.")
             .replace(/^Tu respuesta es correcta: (VERDADERO|FALSO)\.$/, (_,v)=>"Votre réponse est correcte : "+(v==="VERDADERO"?"VRAI.":"FAUX."))
-            .replace(/^La respuesta correcta era: (VERDADERO|FALSO)\. Tu respuesta fue (VERDADERO|FALSO)\.$/, (_,a,b)=>"La bonne réponse était : "+(a==="VERDADERO"?"VRAI":"FAUX")+". Votre réponse : "+(b==="VERDADERO"?"VRAI.":"FAUX."));
+            .replace(/^La respuesta correcta era: (VERDADERO|FALSO)\. Tu respuesta fue (VERDADERO|FALSO)\.$/, (_,a,b)=>"La bonne réponse était : "+(a==="VERDADERO"?"VRAI":"FAUX")+". Votre réponse : "+(b==="VERDADERO"?"VRAI.":"FAUX."))
+            .replace(/^⭐ \+(\d+) PUNTOS( · ¡BONO DE RACHA!)?( · 🔥 RACHA: (\d+))?$/, (_,p,b,s,n)=>"⭐ +"+p+" POINTS"+(b?" · BONUS DE SÉRIE !":"")+(s?" · 🔥 SÉRIE : "+n:""))
+            .replace(/^✓ Bien respondida · (\d+)$/, "✓ Bonne réponse · $1")
+            .replace(/^↗ Para volver a descubrir · (\d+)$/, "↗ À redécouvrir · $1")
+            .replace(/^Respuesta correcta: (VERDADERO|FALSO) · ¡Acertaste!$/, (_,v)=>"Bonne réponse : "+(v==="VERDADERO"?"VRAI":"FAUX")+" · Bravo !")
+            .replace(/^Respuesta correcta: (VERDADERO|FALSO) · Tu respuesta: (VERDADERO|FALSO)$/, (_,a,b)=>"Bonne réponse : "+(a==="VERDADERO"?"VRAI":"FAUX")+" · Votre réponse : "+(b==="VERDADERO"?"VRAI":"FAUX"));
         } else if (lang === "pt") {
           translated = translated
             .replace(new RegExp("^"+number+" curiosidades disponibles para descubrir\\.$"), "$1 curiosidades disponíveis para descobrir.")
@@ -274,7 +284,12 @@
             .replace(new RegExp("^Tu mejor precisión guardada es "+number+"%\\.$"), "Sua melhor precisão salva é $1%.")
             .replace(new RegExp("^Se desbloquea con "+number+" aciertos acumulados\\.$"), "Desbloqueia com $1 acertos acumulados.")
             .replace(/^Tu respuesta es correcta: (VERDADERO|FALSO)\.$/, (_,v)=>"Sua resposta está correta: "+(v==="VERDADERO"?"VERDADEIRO.":"FALSO."))
-            .replace(/^La respuesta correcta era: (VERDADERO|FALSO)\. Tu respuesta fue (VERDADERO|FALSO)\.$/, (_,a,b)=>"A resposta correta era: "+(a==="VERDADERO"?"VERDADEIRO":"FALSO")+". Sua resposta foi "+(b==="VERDADERO"?"VERDADEIRO.":"FALSO."));
+            .replace(/^La respuesta correcta era: (VERDADERO|FALSO)\. Tu respuesta fue (VERDADERO|FALSO)\.$/, (_,a,b)=>"A resposta correta era: "+(a==="VERDADERO"?"VERDADEIRO":"FALSO")+". Sua resposta foi "+(b==="VERDADERO"?"VERDADEIRO.":"FALSO."))
+            .replace(/^⭐ \+(\d+) PUNTOS( · ¡BONO DE RACHA!)?( · 🔥 RACHA: (\d+))?$/, (_,p,b,s,n)=>"⭐ +"+p+" PONTOS"+(b?" · BÔNUS DE SEQUÊNCIA!":"")+(s?" · 🔥 SEQUÊNCIA: "+n:""))
+            .replace(/^✓ Bien respondida · (\d+)$/, "✓ Respondida corretamente · $1")
+            .replace(/^↗ Para volver a descubrir · (\d+)$/, "↗ Para descobrir novamente · $1")
+            .replace(/^Respuesta correcta: (VERDADERO|FALSO) · ¡Acertaste!$/, (_,v)=>"Resposta correta: "+(v==="VERDADERO"?"VERDADEIRO":"FALSO")+" · Você acertou!")
+            .replace(/^Respuesta correcta: (VERDADERO|FALSO) · Tu respuesta: (VERDADERO|FALSO)$/, (_,a,b)=>"Resposta correta: "+(a==="VERDADERO"?"VERDADEIRO":"FALSO")+" · Sua resposta: "+(b==="VERDADERO"?"VERDADEIRO":"FALSO"));
         }
       }
       const next = original.replace(trimmed, translated);
