@@ -550,7 +550,7 @@
     if (navigator.share) {
       const card = buildShareImage(result);
       if (card && navigator.canShare && navigator.canShare({files:[card]})) {
-        try { await navigator.share({files:[card],title:payload.title,text:message}); return; }
+        try { await navigator.share({files:[card],title:payload.title,text:message,url:payload.url}); return; }
         catch (error) { if (error && error.name === "AbortError") return; }
       }
       try { await navigator.share(payload); return; }
@@ -588,7 +588,7 @@
         if (!copied) throw new Error("copy");
       }
       ui.copyAlias.textContent = "¡ALIAS COPIADO!";
-      feedback.textContent = "¡Gracias por apoyar este proyecto! ♡";
+      feedback.textContent = "Alias copiado. La transferencia solo se realiza si vos decidís hacerla. ♡";
     } catch (error) {
       feedback.textContent = "Copiá manualmente: ocarina.guitarra";
     }
