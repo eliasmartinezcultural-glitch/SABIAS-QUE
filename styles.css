@@ -648,3 +648,34 @@ button:focus-visible,a:focus-visible{outline:3px solid #7356b7;outline-offset:3p
 @media(max-width:700px){.local-postcards{margin:22px 0 28px;padding:16px;border-radius:20px}.local-photo-grid{grid-template-columns:1fr 1fr;gap:9px}.local-photo{aspect-ratio:1.28/1}.local-photo-orchard{grid-column:1/-1;aspect-ratio:2.15/1}.photo-caption{left:10px;bottom:9px}.photo-caption strong{font-size:13px}.photo-caption small{font-size:10px}}
 @media(max-width:380px){.local-photo-grid{grid-template-columns:1fr}.local-photo,.local-photo-orchard{grid-column:auto;aspect-ratio:1.7/1}.local-postcards{padding:13px}.local-postcards-heading h2{font-size:19px}}
 @media(prefers-reduced-motion:reduce){.local-photo img{transition:none}}
+
+
+/* Rediseño local: fotografías documentales contenidas, sin competir con la pregunta */
+.question-art{height:clamp(150px,24vw,205px);background:#e8e1d2}
+.question-art .question-illustration{display:block;width:100%;height:100%;object-fit:contain}
+.question-art.has-photo{display:block;background:#e8e1d2;isolation:isolate}
+.question-art.has-photo .question-illustration{width:100%;height:100%;object-fit:cover;object-position:center 48%;opacity:1}
+.question-art.has-photo:after{content:attr(data-photo-caption);position:absolute;z-index:2;left:12px;bottom:12px;right:12px;width:max-content;max-width:calc(100% - 24px);padding:7px 10px;border-radius:7px;background:rgba(28,48,38,.88);color:#fff;font:800 10px/1.35 Arial,sans-serif;letter-spacing:.7px}
+.question-art.has-photo .art-big-icon,.question-art.has-photo .art-artifact{display:none}
+.hero-art{height:clamp(260px,34vw,360px);border-radius:26px}
+.local-photo-grid{gap:12px}
+.local-photo{min-width:0;overflow:hidden;border-radius:13px}
+.local-photo img{display:block;width:100%;height:clamp(112px,15vw,155px);object-fit:cover}
+.photo-caption{min-height:55px}
+.photo-caption strong{font-size:13px}
+.photo-caption small{font-size:11px}
+@media(max-width:800px){
+ .hero-art{height:235px;order:initial;border-radius:20px}
+ .question-art{height:155px}
+ .local-photo img{height:118px}
+}
+@media(max-width:480px){
+ .hero-art{height:190px}
+ .question-art{height:145px}
+ .local-photo-grid{grid-template-columns:1fr 1fr}
+ .local-photo:last-child{grid-column:1/-1}
+ .local-photo:last-child img{height:135px}
+ .photo-caption{padding:8px}
+ .photo-caption strong{font-size:12px}
+ .photo-caption small{font-size:10px}
+}
