@@ -580,17 +580,40 @@
     }
   }
 
+  function openWhatsAppMessage(message) {
+    const url = "https://wa.me/?text=" + encodeURIComponent(message);
+    const popup = window.open(url, "_blank", "noopener,noreferrer");
+    if (!popup) window.location.href = url;
+  }
+
+  function shareWhatsAppGame() {
+    const lang = document.documentElement.lang || "es";
+    const messages = {
+      es: "¡Te invito a jugar ¿Sabías que...?\n\n📍 San Patricio del Chañar\n🎮 Un juego gratuito para descubrir historias reales de nuestro lugar.\n\nCreado por Ocarina Producciones. ¿Te animás?\n\nhttps://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/",
+      en: "I invite you to play Did You Know...?\n\n📍 San Patricio del Chañar\n🎮 A free game to discover real stories about this place.\n\nCreated by Ocarina Producciones. Want to play?\n\nhttps://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/",
+      fr: "Je t'invite à jouer à Le saviez-vous...?\n\n📍 San Patricio del Chañar\n🎮 Un jeu gratuit pour découvrir les histoires réelles de cette région.\n\nCréé par Ocarina Producciones. Tu joues ?\n\nhttps://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/",
+      pt: "Convido você a jogar Você sabia...?\n\n📍 San Patricio del Chañar\n🎮 Um jogo gratuito para descobrir histórias reais deste lugar.\n\nCriado pela Ocarina Producciones. Vamos jogar?\n\nhttps://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/"
+    };
+    openWhatsAppMessage(messages[lang] || messages.es);
+  }
+
   function shareWhatsAppResult() {
     const result = lastRun || { score: correctCount, total: history.length, points };
-    const message = "¡Terminé mi recorrido en ¿Sabías que...?\n\n" +
-      "📍 San Patricio del Chañar\n" +
-      "🏅 Resultado: " + result.score + " de " + result.total + " respuestas correctas\n" +
-      "⭐ Puntos: " + result.points + "\n\n" +
-      "Es un juego gratuito de Ocarina Producciones para descubrir historias reales de nuestro lugar. ¿Te animás a jugar?\n\n" +
-      "🎮 https://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/";
-    const url = "https://wa.me/?text=" + encodeURIComponent(message);
-    window.open(url, "_blank", "noopener,noreferrer");
-    $("share-feedback").textContent = "Se abrió WhatsApp con tu invitación lista para revisar y enviar.";
+    const lang = document.documentElement.lang || "es";
+    const messages = {
+      es: "¡Terminé mi recorrido en ¿Sabías que...?\n\n📍 San Patricio del Chañar\n🏅 Resultado: " + result.score + " de " + result.total + " respuestas correctas\n⭐ Puntos: " + result.points + "\n\nEs un juego gratuito de Ocarina Producciones para descubrir historias reales de nuestro lugar. ¿Te animás a jugar?\n\n🎮 https://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/",
+      en: "I finished my journey in Did You Know...?\n\n📍 San Patricio del Chañar\n🏅 Score: " + result.score + " out of " + result.total + " correct answers\n⭐ Points: " + result.points + "\n\nA free Ocarina Producciones game to discover real local stories. Want to play?\n\n🎮 https://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/",
+      fr: "J'ai terminé mon parcours dans Le saviez-vous...?\n\n📍 San Patricio del Chañar\n🏅 Résultat : " + result.score + " sur " + result.total + " bonnes réponses\n⭐ Points : " + result.points + "\n\nUn jeu gratuit d'Ocarina Producciones pour découvrir des histoires locales. Tu joues ?\n\n🎮 https://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/",
+      pt: "Terminei meu percurso em Você sabia...?\n\n📍 San Patricio del Chañar\n🏅 Resultado: " + result.score + " de " + result.total + " respostas corretas\n⭐ Pontos: " + result.points + "\n\nUm jogo gratuito da Ocarina Producciones para descobrir histórias locais. Vamos jogar?\n\n🎮 https://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/"
+    };
+    openWhatsAppMessage(messages[lang] || messages.es);
+    const feedback = {
+      es:"WhatsApp se abrió con tu resultado listo para revisar y enviar.",
+      en:"WhatsApp opened with your result ready to review and send.",
+      fr:"WhatsApp s'est ouvert avec votre résultat, prêt à être vérifié et envoyé.",
+      pt:"O WhatsApp foi aberto com seu resultado pronto para revisar e enviar."
+    };
+    $("share-feedback").textContent = feedback[lang] || feedback.es;
   }
 
   async function copyDonationAlias() {
@@ -690,6 +713,8 @@
     button.addEventListener("click", () => submitAnswer(button.dataset.answer === "true", button));
   });
   ui.share.addEventListener("click", shareResult);
+  const whatsappGame = $("whatsapp-game-button");
+  if (whatsappGame) whatsappGame.addEventListener("click", (event) => { event.preventDefault(); shareWhatsAppGame(); });
   const whatsappResult = $("whatsapp-result-button");
   if (whatsappResult) whatsappResult.addEventListener("click", shareWhatsAppResult);
   ui.copyAlias.addEventListener("click", copyDonationAlias);
