@@ -76,6 +76,39 @@
   }
 
   let playerRecord = readRecord();
+  const ACHIEVEMENTS = [
+    { id: "first", threshold: 1, icon: "🌱", title: "Primera huella", detail: "Acertaste tu primera curiosidad." },
+    { id: "five", threshold: 5, icon: "🧭", title: "Explorador del Chañar", detail: "Sumaste cinco respuestas correctas." },
+    { id: "ten", threshold: 10, icon: "🏵️", title: "Memoria en marcha", detail: "Llegaste a diez descubrimientos." },
+    { id: "twenty", threshold: 20, icon: "🏛️", title: "Guardián de historias", detail: "Alcanzaste veinte aciertos." },
+    { id: "forty", threshold: 40, icon: "⭐", title: "Leyenda chañarense", detail: "Ya reuniste cuarenta aciertos." }
+  ];
+
+  function earnedAchievements(totalCorrect) {
+    return ACHIEVEMENTS.filter((item) => totalCorrect >= item.threshold);
+  }
+
+  function renderAchievementShelf(container, list, totalCorrect, newlyEarned = []) {
+    if (!container || !list) return;
+    list.replaceChildren();
+    const earnedIds = new Set(earnedAchievements(totalCorrect).map((item) => item.id));
+    ACHIEVEMENTS.forEach((item) => {
+      const card = document.createElement("div");
+      const unlocked = earnedIds.has(item.id);
+      const isNew = newlyEarned.includes(item.id);
+      card.className = "achievement-item" + (unlocked ? " is-earned" : " is-locked") + (isNew ? " is-new" : "");
+      const icon = document.createElement("span");
+      icon.className = "achievement-icon";
+      icon.textContent = unlocked ? item.icon : "🔒";
+      const title = document.createElement("strong");
+      title.textContent = item.title;
+      const detail = document.createElement("small");
+      detail.textContent = unlocked ? item.detail : "Se desbloquea con " + item.threshold + " aciertos acumulados.";
+      card.append(icon, title, detail);
+      list.append(card);
+    });
+    show(container);
+  }
 
   function updateRecordDisplay() {
     const panel = $("player-record");
@@ -85,6 +118,7 @@
     $("record-best").textContent = playerRecord.bestAccuracy + "%";
     $("record-correct").textContent = playerRecord.totalCorrect;
     show(panel);
+    renderAchievementShelf($("achievement-shelf"), $("achievement-list"), playerRecord.totalCorrect);
   }
 
   const show = (node) => node && node.classList.remove("hidden");
@@ -316,8 +350,8 @@
     $("final-accuracy").textContent = accuracy + "%";
     $("final-streak").textContent = bestStreak;
 
-    let title = "¡Gracias por jugar!";
-    let message = "Cada respuesta es una oportunidad para conocer un poco más nuestro lugar.";
+    let title = "¡Aventura completada!";
+    let message = "Cada respuesta es una oportunidad para conocer un poco más nuestro lugar. ¡Gracias por recorrer San Patricio del Chañar!";
     let badge = "🌱 CURIOSIDAD CHAÑARENSE";
     if (ratio === 1) {
       title = "¡PERFECTO! ¡MEMORIA CHAÑARENSE!";
@@ -396,6 +430,8 @@
     else hide(categoryPanel);
 
     const previousBest = playerRecord.bestAccuracy;
+    const previousCorrect = playerRecord.totalCorrect;
+    const previouslyEarned = new Set(earnedAchievements(previousCorrect).map((item) => item.id));
     playerRecord.games += 1;
     playerRecord.bestAccuracy = Math.max(playerRecord.bestAccuracy, accuracy);
     playerRecord.totalCorrect += correctCount;
@@ -405,6 +441,14 @@
     $("record-line").textContent = accuracy > previousBest
       ? "✨ ¡Nuevo mejor resultado en este dispositivo!"
       : "Tu mejor precisión guardada es " + playerRecord.bestAccuracy + "%.";
+    const newlyEarned = earnedAchievements(playerRecord.totalCorrect)
+      .filter((item) => !previouslyEarned.has(item.id)).map((item) => item.id);
+    const earnedPanel = $("earned-achievements");
+    if (newlyEarned.length) {
+      renderAchievementShelf(earnedPanel, $("earned-list"), playerRecord.totalCorrect, newlyEarned);
+    } else {
+      hide(earnedPanel);
+    }
 
     lastRun = {
       score: correctCount,
