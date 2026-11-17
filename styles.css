@@ -1114,3 +1114,60 @@ body:not(.high-contrast){
   .site-footer{align-items:flex-start;flex-direction:column;gap:12px}
   .footer-links{align-items:flex-start;text-align:left}
 }
+
+
+/* 12 · Barra fija permanente de créditos y colaboración */
+body{padding-bottom:var(--support-dock-space,104px)}
+.support-card{
+  position:fixed;z-index:1000;left:50%;bottom:0;transform:translateX(-50%);
+  width:min(100% - 24px,1120px);margin:0;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;gap:16px;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  border:1px solid #cbd9c8;border-bottom:0;border-radius:15px 15px 0 0;
+  box-shadow:0 -7px 28px rgba(35,58,44,.16);
+  background:rgba(240,246,235,.97);backdrop-filter:blur(12px);
+}
+.support-doodle{display:none}
+.support-copy{max-width:none;min-width:0}
+.support-eyebrow{margin:0 0 3px;font-size:.53rem}
+.support-copy h2{max-width:none;margin:0 0 3px;font-size:1rem;line-height:1.2}
+.support-copy p:not(.support-eyebrow){max-width:none;margin:0;font-size:.65rem;line-height:1.35}
+.support-owner{display:none}
+.support-action{
+  display:grid;grid-template-columns:auto auto;align-items:center;
+  min-width:0;gap:5px 10px;padding:7px 10px;
+}
+.alias-label{grid-column:1/-1;text-align:left;font-size:.5rem}
+.alias-panel{display:flex;flex-direction:row;align-items:center;gap:7px;padding:0;border:0;background:transparent;text-align:left}
+.alias-caption,.alias-holder{display:none}
+.donation-alias{font-size:1.05rem;white-space:nowrap}
+.copy-button{min-height:36px;padding:8px 11px;font-size:.58rem}
+.copy-feedback{grid-column:1/-1;min-height:0;font-size:.52rem;line-height:1.2;text-align:left}
+.site-footer{padding-bottom:18px}
+@media(max-width:600px){
+  body{padding-bottom:calc(116px + env(safe-area-inset-bottom,0px))}
+  .support-card{
+    width:100%;grid-template-columns:minmax(0,1fr);gap:5px;
+    padding:7px 12px calc(7px + env(safe-area-inset-bottom,0px));
+    border-radius:13px 13px 0 0;
+  }
+  .support-copy{display:grid;grid-template-columns:minmax(0,1fr);gap:2px}
+  .support-eyebrow{font-size:.47rem;letter-spacing:.08em}
+  .support-copy h2{font-size:.86rem}
+  .support-copy p:not(.support-eyebrow){font-size:.57rem}
+  .support-action{
+    display:flex;flex-direction:row;justify-content:space-between;align-items:center;
+    gap:8px;padding:5px 8px;
+  }
+  .alias-label{display:none}
+  .alias-panel{flex:1}
+  .donation-alias{font-size:1rem}
+  .copy-button{min-height:34px;padding:7px 10px;font-size:.55rem}
+  .copy-feedback{display:none}
+}
+@media(max-width:360px){
+  body{padding-bottom:124px}
+  .support-copy p:not(.support-eyebrow){font-size:.53rem}
+  .donation-alias{font-size:.9rem}
+}
