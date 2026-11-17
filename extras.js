@@ -224,9 +224,10 @@
   // Si la lógica del juego actualiza un nodo existente, ese nuevo texto pasa
   // a ser la fuente; nunca se restaura un placeholder antiguo.
   const originalTextNodes = new WeakMap();
-  function translateTextNodes(lang) {
+  function translateTextNodes(lang, root = document.body) {
     const dict = translations[lang]?.ui || {};
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    if (!root) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     const nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach(node => {
@@ -441,12 +442,21 @@
     if (language !== "es") $("language-select").value = language;
     // La música nunca se reproduce automáticamente: requiere una acción explícita.
     if (document.hidden) stopMusic();
-    const languageObserver = new MutationObserver(() => {
-      // Traducir cambios del juego sin observar nuestras propias traducciones.
-      // Evita ciclos de mutaciones que pueden congelar la interfaz en algunos navegadores.
-      languageObserver.disconnect();
-      translateTextNodes(language);
-      languageObserver.observe(document.body, {subtree:true,childList:true,characterData:true});
+    // Observar únicamente las zonas que cambiaron. No recorrer toda la página
+    // por cada actualización del juego: eso podía bloquear el hilo principal.
+    const languageObserver = new MutationObserver(records => {
+      const roots = new Set();
+      records.forEach(record => {
+        if (record.type === "characterData") {
+          if (record.target.parentElement) roots.add(record.target.parentElement);
+          return;
+        }
+        record.addedNodes.forEach(node => {
+          if (node.nodeType === Node.ELEMENT_NODE) roots.add(node);
+          else if (node.nodeType === Node.TEXT_NODE && node.parentElement) roots.add(node.parentElement);
+        });
+      });
+      roots.forEach(root => translateTextNodes(language, root));
     });
     languageObserver.observe(document.body, {subtree:true,childList:true,characterData:true});
     document.addEventListener("visibilitychange", () => { if (document.hidden) stopMusic(); });
