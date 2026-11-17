@@ -27,7 +27,6 @@
     listenExplain: $("listen-explanation")
   };
   const answerButtons = [...document.querySelectorAll(".answer-button")];
-  const quickButtons = [...document.querySelectorAll("[data-quick-count]")];
 
   function refreshDiscoveryCounts() {
     const total = validQuestions.length;
@@ -40,18 +39,12 @@
       const count = validQuestions.filter((q) => categories.includes(q.category)).length;
       node.textContent = count + (count === 1 ? " pregunta" : " preguntas");
     });
-    quickButtons.forEach((button) => {
-      const count = button.dataset.quickCount === "all"
-        ? total : Math.min(Number(button.dataset.quickCount), total);
-      button.disabled = !count;
-      button.setAttribute("aria-disabled", String(!count));
-    });
     document.querySelectorAll("[data-category]").forEach((button) => {
       const categories = button.dataset.category.split(",");
       const count = validQuestions.filter((q) => categories.includes(q.category)).length;
       button.disabled = count === 0;
       button.setAttribute("aria-disabled", String(count === 0));
-      button.setAttribute("aria-label", button.querySelector(".topic-name").textContent + ", " + count + (count === 1 ? " pregunta disponible" : " preguntas disponibles"));
+      button.setAttribute("aria-label", (button.querySelector(".topic-name")?.textContent || "Tema") + ", " + count + (count === 1 ? " pregunta disponible" : " preguntas disponibles"));
     });
   }
 
@@ -592,13 +585,6 @@
   });
 
   ui.start.addEventListener("click", () => startGame());
-  quickButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const requested = button.dataset.quickCount === "all"
-        ? validQuestions.length : Number(button.dataset.quickCount);
-      startGame(shuffle(validQuestions).slice(0, requested), "quick");
-    });
-  });
   refreshDiscoveryCounts();
   updateRecordDisplay();
 
