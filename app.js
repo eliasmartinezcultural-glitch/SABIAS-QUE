@@ -698,7 +698,7 @@
     stopVoice();
     hide(ui.game);
     hide(ui.results);
-    hide(ui.support);
+
     show(ui.intro);
     scrollTop();
     focus($("main-title"));
