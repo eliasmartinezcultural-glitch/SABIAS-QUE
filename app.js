@@ -59,6 +59,33 @@
   let fontLevel = 0;
   let gameMode = "full";
   let lastRun = null;
+  const RECORD_KEY = "sabias-que-record-v1";
+
+  function readRecord() {
+    const empty = { games: 0, bestAccuracy: 0, totalCorrect: 0, totalAnswered: 0 };
+    try {
+      const saved = JSON.parse(localStorage.getItem(RECORD_KEY) || "null");
+      if (!saved || typeof saved !== "object") return empty;
+      return {
+        games: Math.max(0, Number(saved.games) || 0),
+        bestAccuracy: Math.max(0, Math.min(100, Number(saved.bestAccuracy) || 0)),
+        totalCorrect: Math.max(0, Number(saved.totalCorrect) || 0),
+        totalAnswered: Math.max(0, Number(saved.totalAnswered) || 0)
+      };
+    } catch (error) { return empty; }
+  }
+
+  let playerRecord = readRecord();
+
+  function updateRecordDisplay() {
+    const panel = $("player-record");
+    if (!panel) return;
+    if (!playerRecord.games) { hide(panel); return; }
+    $("record-games").textContent = playerRecord.games;
+    $("record-best").textContent = playerRecord.bestAccuracy + "%";
+    $("record-correct").textContent = playerRecord.totalCorrect;
+    show(panel);
+  }
 
   const show = (node) => node && node.classList.remove("hidden");
   const hide = (node) => node && node.classList.add("hidden");
@@ -317,27 +344,67 @@
     const reviewPanel = $("review-panel");
     const reviewList = $("review-list");
     reviewList.replaceChildren();
-    if (missed.length) {
+    if (history.length) {
       show(reviewPanel);
-      show(ui.retry);
-      missed.forEach((item, i) => {
+      history.forEach((item, i) => {
         const card = document.createElement("article");
-        card.className = "review-item";
+        card.className = "review-item " + (item.isCorrect ? "review-correct" : "review-missed");
         const label = document.createElement("strong");
-        label.textContent = "Para recordar · " + (i + 1);
+        label.textContent = (item.isCorrect ? "✓ Bien respondida · " : "↗ Para volver a descubrir · ") + (i + 1);
         const statement = document.createElement("p");
         statement.textContent = item.question.statement;
         const answer = document.createElement("span");
-        answer.textContent = "Respuesta correcta: " + (item.correct ? "VERDADERO" : "FALSO");
+        answer.textContent = "Respuesta correcta: " + (item.correct ? "VERDADERO" : "FALSO") +
+          (item.isCorrect ? " · ¡Acertaste!" : " · Tu respuesta: " + (item.chosen ? "VERDADERO" : "FALSO"));
         const explanation = document.createElement("p");
         explanation.textContent = item.question.explanation;
         card.append(label, statement, answer, explanation);
         reviewList.append(card);
       });
-    } else {
-      hide(reviewPanel);
-      hide(ui.retry);
-    }
+    } else hide(reviewPanel);
+
+    if (missed.length) show(ui.retry);
+    else hide(ui.retry);
+
+    const categoryPanel = $("category-breakdown");
+    const categoryResults = $("category-results");
+    categoryResults.replaceChildren();
+    const categoryTotals = new Map();
+    history.forEach((item) => {
+      const name = item.question.category || "Otros temas";
+      if (!categoryTotals.has(name)) categoryTotals.set(name, { total: 0, correct: 0 });
+      const stats = categoryTotals.get(name);
+      stats.total += 1;
+      if (item.isCorrect) stats.correct += 1;
+    });
+    categoryTotals.forEach((stats, name) => {
+      const row = document.createElement("div");
+      row.className = "category-result-row";
+      const title = document.createElement("strong");
+      title.textContent = name;
+      const score = document.createElement("span");
+      score.textContent = stats.correct + " de " + stats.total + " aciertos";
+      const track = document.createElement("div");
+      track.className = "category-result-track";
+      const fill = document.createElement("span");
+      fill.style.width = Math.round(stats.correct / stats.total * 100) + "%";
+      track.append(fill);
+      row.append(title, score, track);
+      categoryResults.append(row);
+    });
+    if (categoryTotals.size) show(categoryPanel);
+    else hide(categoryPanel);
+
+    const previousBest = playerRecord.bestAccuracy;
+    playerRecord.games += 1;
+    playerRecord.bestAccuracy = Math.max(playerRecord.bestAccuracy, accuracy);
+    playerRecord.totalCorrect += correctCount;
+    playerRecord.totalAnswered += total;
+    try { localStorage.setItem(RECORD_KEY, JSON.stringify(playerRecord)); } catch (error) {}
+    updateRecordDisplay();
+    $("record-line").textContent = accuracy > previousBest
+      ? "✨ ¡Nuevo mejor resultado en este dispositivo!"
+      : "Tu mejor precisión guardada es " + playerRecord.bestAccuracy + "%.";
 
     lastRun = {
       score: correctCount,
@@ -440,10 +507,11 @@
     button.addEventListener("click", () => {
       const requested = button.dataset.quickCount === "all"
         ? validQuestions.length : Number(button.dataset.quickCount);
-      startGame(validQuestions.slice(0, requested), "quick");
+      startGame(shuffle(validQuestions).slice(0, requested), "quick");
     });
   });
   refreshDiscoveryCounts();
+  updateRecordDisplay();
 
   document.querySelectorAll("[data-category]").forEach((button) => {
     button.addEventListener("click", () => {
