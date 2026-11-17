@@ -631,20 +631,16 @@ button:focus-visible,a:focus-visible{outline:3px solid #7356b7;outline-offset:3p
 .high-contrast .achievement-item{background:#fff!important;border:2px solid #000}
 
 
-/* Identidad local: fotografías reales y lectura amable */
-.local-postcards{margin:30px 0 34px;padding:22px;background:#fffaf1;border:1px solid #e7dcc9;border-radius:24px;box-shadow:0 12px 34px rgba(65,55,39,.07)}
-.local-postcards-heading{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.local-pin{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:14px;background:#e8efdf;color:#38664f;font-size:25px;font-weight:800}
-.local-kicker{margin:0 0 3px;color:#8a7657;font-size:10px;font-weight:800;letter-spacing:.13em}
-.local-postcards-heading h2{margin:0;color:#263b35;font-family:var(--serif);font-size:clamp(19px,2.5vw,26px);line-height:1.15}
-.local-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.local-photo{position:relative;display:block;min-width:0;aspect-ratio:1.18/1;overflow:hidden;border-radius:16px;background:#d9dfd0;color:white;text-decoration:none;isolation:isolate}
-.local-photo:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(180deg,transparent,rgba(20,35,29,.78));z-index:0}
-.local-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
-.local-photo:hover img,.local-photo:focus-visible img{transform:scale(1.045)}
-.photo-caption{position:absolute;z-index:1;left:12px;right:10px;bottom:11px;display:flex;flex-direction:column;gap:3px;text-shadow:0 1px 4px rgba(0,0,0,.3)}
-.photo-caption strong{font-size:14px;line-height:1.15}.photo-caption small{font-size:11px;line-height:1.25;color:#fff8ed}
-.photo-credit{margin:12px 0 0;color:#7a8278;font-size:10px;line-height:1.5}.photo-credit a{color:#38664f;text-decoration:underline;text-underline-offset:2px}
-@media(max-width:700px){.local-postcards{margin:22px 0 28px;padding:16px;border-radius:20px}.local-photo-grid{grid-template-columns:1fr 1fr;gap:9px}.local-photo{aspect-ratio:1.28/1}.local-photo-orchard{grid-column:1/-1;aspect-ratio:2.15/1}.photo-caption{left:10px;bottom:9px}.photo-caption strong{font-size:13px}.photo-caption small{font-size:10px}}
-@media(max-width:380px){.local-photo-grid{grid-template-columns:1fr}.local-photo,.local-photo-orchard{grid-column:auto;aspect-ratio:1.7/1}.local-postcards{padding:13px}.local-postcards-heading h2{font-size:19px}}
-@media(prefers-reduced-motion:reduce){.local-photo img{transition:none}}
+/* Referencias visuales locales: pequeñas, discretas y ligadas al juego */
+.local-glimpse{margin:18px auto 22px;padding:12px 14px;max-width:690px;background:rgba(255,250,241,.72);border:1px solid #eee5d6;border-radius:16px}
+.local-glimpse-label{margin:0 0 9px;color:#81745f;font-size:9px;font-weight:800;letter-spacing:.11em;line-height:1.3}
+.local-glimpse-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.local-glimpse-item{display:flex;align-items:center;gap:8px;min-width:0;color:#33483d;text-decoration:none;border-radius:10px}
+.local-glimpse-item img{display:block;flex:0 0 54px;width:54px;height:46px;object-fit:cover;border-radius:8px;filter:saturate(.78)}
+.local-glimpse-item span{display:flex;flex-direction:column;gap:2px;min-width:0}
+.local-glimpse-item strong{font-size:12px;line-height:1.15}
+.local-glimpse-item small{font-size:10px;line-height:1.2;color:#77776d}
+.local-glimpse-item:focus-visible{outline:2px solid #38664f;outline-offset:3px}
+.local-glimpse-credit{margin:8px 0 0;color:#8b887f;font-size:9px;line-height:1.3}
+@media(max-width:420px){.local-glimpse{padding:10px;margin:14px auto 18px}.local-glimpse-items{gap:6px}.local-glimpse-item{flex-direction:column;align-items:flex-start;gap:4px}.local-glimpse-item img{width:100%;height:42px;flex-basis:auto;object-fit:cover}.local-glimpse-item strong{font-size:11px}.local-glimpse-item small{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.local-glimpse-item{scroll-behavior:auto}}
