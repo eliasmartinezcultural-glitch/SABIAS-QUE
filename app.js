@@ -164,7 +164,7 @@
       return;
     }
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "es-AR";
+    utterance.lang = ({ es: "es-AR", en: "en-US", fr: "fr-FR", pt: "pt-BR" })[document.documentElement.lang] || "es-AR";
     utterance.rate = 0.88;
     button.textContent = "■ DETENER LECTURA";
     utterance.onend = utterance.onerror = () => { button.textContent = idleText; };
