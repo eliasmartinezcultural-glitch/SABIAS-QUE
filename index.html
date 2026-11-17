@@ -69,6 +69,10 @@
       <div><strong id="record-correct">0</strong><span>ACIERTOS TOTALES</span></div>
     </div>
   </section>
+  <section id="achievement-shelf" class="achievement-shelf hidden" aria-labelledby="achievement-title">
+    <div class="achievement-heading"><span aria-hidden="true">🏵️</span><div><h3 id="achievement-title">Tus insignias de explorador</h3><p>Se consiguen jugando y descubriendo historias.</p></div></div>
+    <div id="achievement-list" class="achievement-list"></div>
+  </section>
 </section>
 <section class="topic-picker" aria-labelledby="topic-title">
 <div class="topic-heading"><span class="topic-spark" aria-hidden="true">✳</span><div><h2 id="topic-title">¿Qué querés descubrir hoy?</h2><p>Elegí un tema o jugá el recorrido completo.</p></div></div>
@@ -135,6 +139,10 @@
         </div>
         <div id="result-badge" class="result-badge">🏅 DESAFÍO COMPLETADO</div>
         <p id="record-line" class="record-line" aria-live="polite"></p>
+        <section id="earned-achievements" class="earned-achievements hidden" aria-labelledby="earned-title">
+          <h3 id="earned-title">Insignias conseguidas</h3>
+          <div id="earned-list" class="earned-list"></div>
+        </section>
         <section id="category-breakdown" class="category-breakdown hidden" aria-labelledby="category-breakdown-title">
           <h3 id="category-breakdown-title">Tus temas favoritos</h3>
           <p>Así te fue en cada tema de esta partida.</p>
