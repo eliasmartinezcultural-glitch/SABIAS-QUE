@@ -12,9 +12,9 @@
   <meta property="og:title" content="¿Sabías que...? — San Patricio del Chañar">
   <meta property="og:description" content="Un juego de curiosidades reales de San Patricio del Chañar. Abrilo desde tu celular y jugá gratis.">
   <title>¿Sabías que...? — San Patricio del Chañar</title>
-  <link rel="stylesheet" href="styles.css?v=20261116-02">
-  <script src="questions.js?v=20261116-02" defer></script>
-  <script src="app.js?v=20261116-02" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261116-03">
+  <script src="questions.js?v=20261116-03" defer></script>
+  <script src="app.js?v=20261116-03" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
@@ -35,14 +35,18 @@
           <p class="eyebrow"><span></span> UN JUEGO DE SAN PATRICIO DEL CHAÑAR</p>
           <h1 id="main-title">¿Cuánto sabés de <em>nuestro lugar?</em></h1>
           <p class="intro-lead">Curiosidades para jugar, compartir y descubrir historias reales del Chañar.</p>
-          <button id="start-button" class="primary-button" type="button">EMPEZAR A JUGAR <span aria-hidden="true">→</span></button>
+          <div class="start-actions">
+            <button id="start-button" class="primary-button" type="button">JUGAR TODO EL RECORRIDO <span aria-hidden="true">→</span></button>
+            <button id="short-game-button" class="secondary-button quick-play-button" type="button">🎲 JUGAR 5 PREGUNTAS</button>
+          </div>
+          <p class="family-invite">Podés jugar solo, en familia o por turnos. ¡Lo importante es descubrir!</p>
 
           <div class="how-to-play" aria-label="Cómo se juega">
             <div class="how-step"><span aria-hidden="true">1</span><span><b>Leé</b><small>Una historia breve.</small></span></div>
             <div class="how-step"><span aria-hidden="true">2</span><span><b>Elegí</b><small>Verdadero o falso.</small></span></div>
             <div class="how-step"><span aria-hidden="true">3</span><span><b>Descubrí</b><small>Aprendé algo nuevo.</small></span></div>
           </div>
-          <p class="no-rush">Sin reloj y sin apuro. Cada edad, a su ritmo.</p>
+          <p class="no-rush">Sin reloj, sin apuro y sin respuestas que den vergüenza. Cada edad, a su ritmo.</p>
 
           <section class="topic-picker" aria-labelledby="topic-title">
             <div class="topic-heading"><div><h2 id="topic-title">También podés elegir un tema</h2><p>Entrá directo a lo que más te interesa.</p></div></div>
@@ -110,8 +114,8 @@
           </div>
           <p class="question-overline">¿VERDADERO O FALSO?</p>
           <h2 id="question-text">Preparando una historia...</h2>
-          <p class="answer-hint">Leé o escuchá. Después elegí tu respuesta.</p><button id="listen-button" class="listen-button" type="button">🔊 ESCUCHAR LA PREGUNTA</button>
-          <p class="answer-encouragement">No hay apuro. Pensá tu respuesta y disfrutá el descubrimiento.</p>
+          <p class="answer-hint">Leé o escuchá. Después tocá una de las dos respuestas.</p><button id="listen-button" class="listen-button" type="button">🔊 ESCUCHAR LA PREGUNTA</button>
+          <p class="answer-encouragement">No hace falta saberlo todo. ¡Acá venimos a descubrir!</p>
           <div id="answer-buttons" class="answer-buttons">
             <button class="answer-button true-button" type="button" data-answer="true"><span class="answer-symbol" aria-hidden="true">✓</span><span>VERDADERO</span></button>
             <button class="answer-button false-button" type="button" data-answer="false"><span class="answer-symbol" aria-hidden="true">✕</span><span>FALSO</span></button>
