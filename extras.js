@@ -218,7 +218,53 @@
       if (!originalTextNodes.has(node)) originalTextNodes.set(node, node.nodeValue);
       const original = originalTextNodes.get(node);
       const trimmed = original.trim();
-      const translated = dict[trimmed] || trimmed;
+      let translated = dict[trimmed] || trimmed;
+      if (lang !== "es") {
+        const number = "(\\d+)";
+        if (lang === "en") {
+          translated = translated
+            .replace(new RegExp("^"+number+" curiosidades disponibles para descubrir\\.$"), "$1 fun facts available to discover.")
+            .replace(new RegExp("^"+number+" curiosidad disponible para descubrir\\.$"), "$1 fun fact available to discover.")
+            .replace(new RegExp("^"+number+" preguntas$"), "$1 questions")
+            .replace(new RegExp("^"+number+" pregunta$"), "$1 question")
+            .replace(new RegExp("^"+number+" de "+number+" preguntas completadas\\.$"), "$1 of $2 questions completed.")
+            .replace(new RegExp("^"+number+"% completado$"), "$1% complete")
+            .replace(new RegExp("^ACIERTOS: "+number+" · PUNTOS: "+number+"$"), "CORRECT: $1 · POINTS: $2")
+            .replace(new RegExp("^"+number+" de "+number+" aciertos$"), "$1 of $2 correct")
+            .replace(new RegExp("^Tu mejor precisión guardada es "+number+"%\\.$"), "Your best saved accuracy is $1%.")
+            .replace(new RegExp("^Se desbloquea con "+number+" aciertos acumulados\\.$"), "Unlock with $1 total correct answers.")
+            .replace(/^Tu respuesta es correcta: (VERDADERO|FALSO)\.$/, (_,v)=>"Your answer is correct: "+(v==="VERDADERO"?"TRUE.":"FALSE."))
+            .replace(/^La respuesta correcta era: (VERDADERO|FALSO)\. Tu respuesta fue (VERDADERO|FALSO)\.$/, (_,a,b)=>"The correct answer was: "+(a==="VERDADERO"?"TRUE":"FALSE")+". Your answer was "+(b==="VERDADERO"?"TRUE.":"FALSE."));
+        } else if (lang === "fr") {
+          translated = translated
+            .replace(new RegExp("^"+number+" curiosidades disponibles para descubrir\\.$"), "$1 anecdotes à découvrir.")
+            .replace(new RegExp("^"+number+" curiosidad disponible para descubrir\\.$"), "$1 anecdote à découvrir.")
+            .replace(new RegExp("^"+number+" preguntas$"), "$1 questions")
+            .replace(new RegExp("^"+number+" pregunta$"), "$1 question")
+            .replace(new RegExp("^"+number+" de "+number+" preguntas completadas\\.$"), "$1 questions sur $2 terminées.")
+            .replace(new RegExp("^"+number+"% completado$"), "$1% terminé")
+            .replace(new RegExp("^ACIERTOS: "+number+" · PUNTOS: "+number+"$"), "BONNES RÉPONSES : $1 · POINTS : $2")
+            .replace(new RegExp("^"+number+" de "+number+" aciertos$"), "$1 bonnes réponses sur $2")
+            .replace(new RegExp("^Tu mejor precisión guardada es "+number+"%\\.$"), "Votre meilleur score enregistré est de $1%.")
+            .replace(new RegExp("^Se desbloquea con "+number+" aciertos acumulados\\.$"), "Débloqué après $1 bonnes réponses au total.")
+            .replace(/^Tu respuesta es correcta: (VERDADERO|FALSO)\.$/, (_,v)=>"Votre réponse est correcte : "+(v==="VERDADERO"?"VRAI.":"FAUX."))
+            .replace(/^La respuesta correcta era: (VERDADERO|FALSO)\. Tu respuesta fue (VERDADERO|FALSO)\.$/, (_,a,b)=>"La bonne réponse était : "+(a==="VERDADERO"?"VRAI":"FAUX")+". Votre réponse : "+(b==="VERDADERO"?"VRAI.":"FAUX."));
+        } else if (lang === "pt") {
+          translated = translated
+            .replace(new RegExp("^"+number+" curiosidades disponibles para descubrir\\.$"), "$1 curiosidades disponíveis para descobrir.")
+            .replace(new RegExp("^"+number+" curiosidad disponible para descubrir\\.$"), "$1 curiosidade disponível para descobrir.")
+            .replace(new RegExp("^"+number+" preguntas$"), "$1 perguntas")
+            .replace(new RegExp("^"+number+" pregunta$"), "$1 pergunta")
+            .replace(new RegExp("^"+number+" de "+number+" preguntas completadas\\.$"), "$1 de $2 perguntas concluídas.")
+            .replace(new RegExp("^"+number+"% completado$"), "$1% concluído")
+            .replace(new RegExp("^ACIERTOS: "+number+" · PUNTOS: "+number+"$"), "ACERTOS: $1 · PONTOS: $2")
+            .replace(new RegExp("^"+number+" de "+number+" aciertos$"), "$1 de $2 acertos")
+            .replace(new RegExp("^Tu mejor precisión guardada es "+number+"%\\.$"), "Sua melhor precisão salva é $1%.")
+            .replace(new RegExp("^Se desbloquea con "+number+" aciertos acumulados\\.$"), "Desbloqueia com $1 acertos acumulados.")
+            .replace(/^Tu respuesta es correcta: (VERDADERO|FALSO)\.$/, (_,v)=>"Sua resposta está correta: "+(v==="VERDADERO"?"VERDADEIRO.":"FALSO."))
+            .replace(/^La respuesta correcta era: (VERDADERO|FALSO)\. Tu respuesta fue (VERDADERO|FALSO)\.$/, (_,a,b)=>"A resposta correta era: "+(a==="VERDADERO"?"VERDADEIRO":"FALSO")+". Sua resposta foi "+(b==="VERDADERO"?"VERDADEIRO.":"FALSO."));
+        }
+      }
       const next = original.replace(trimmed, translated);
       if (node.nodeValue !== next) node.nodeValue = next;
     });
