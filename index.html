@@ -46,13 +46,22 @@
           </div>
           <div class="intro-meta"><span>✓ VERDADERO O FALSO</span><span>✳ HISTORIA LOCAL</span><span>♡ PARA TODAS LAS EDADES</span></div>
           <button id="start-button" class="primary-button" type="button">¡JUGAR TODAS LAS CURIOSIDADES! <span aria-hidden="true">→</span></button>
+<section class="quick-play" aria-labelledby="quick-play-title">
+  <div class="quick-play-heading"><span aria-hidden="true">🎮</span><div><h2 id="quick-play-title">Elegí cómo querés jugar</h2><p>Podés empezar con poquito o hacer el recorrido completo.</p></div></div>
+  <div class="quick-play-options">
+    <button class="quick-play-card quick-one" type="button" data-quick-count="1"><span class="quick-number">1</span><span><strong>Una curiosidad</strong><small>Para probar y descubrir algo rápido.</small></span><b>EMPEZAR →</b></button>
+    <button class="quick-play-card quick-three" type="button" data-quick-count="3"><span class="quick-number">3</span><span><strong>Un paseo corto</strong><small>Tres preguntas, sin apuro.</small></span><b>EMPEZAR →</b></button>
+    <button class="quick-play-card quick-all" type="button" data-quick-count="all"><span class="quick-number">✦</span><span><strong>Todo el desafío</strong><small>Recorré todas las curiosidades disponibles.</small></span><b>EMPEZAR →</b></button>
+  </div>
+  <p class="available-questions" id="available-questions" aria-live="polite">Preparando las curiosidades...</p>
+</section>
 <section class="topic-picker" aria-labelledby="topic-title">
 <div class="topic-heading"><span class="topic-spark" aria-hidden="true">✳</span><div><h2 id="topic-title">¿Qué querés descubrir hoy?</h2><p>Elegí un tema o jugá el recorrido completo.</p></div></div>
 <div class="topic-grid">
-<button class="topic-card topic-history" type="button" data-category="Fundación,Instituciones"><span class="topic-emoji">🏛️</span><span class="topic-name">Los comienzos</span><small>Fundación e instituciones</small><b>EMPEZAR A EXPLORAR →</b></button>
-<button class="topic-card topic-water" type="button" data-category="Agua y producción"><span class="topic-emoji">💧</span><span class="topic-name">Agua y chacras</span><small>Producción y riego</small><b>EMPEZAR A EXPLORAR →</b></button>
-<button class="topic-card topic-land" type="button" data-category="Tierra y territorio"><span class="topic-emoji">🌾</span><span class="topic-name">La tierra</span><small>Territorio y sus historias</small><b>EMPEZAR A EXPLORAR →</b></button>
-<button class="topic-card topic-identity" type="button" data-category="Nombre e identidad"><span class="topic-emoji">☘️</span><span class="topic-name">Nuestra identidad</span><small>Nombres y símbolos</small><b>EMPEZAR A EXPLORAR →</b></button>
+<button class="topic-card topic-history" type="button" data-category="Fundación,Instituciones"><span class="topic-emoji">🏛️</span><span class="topic-name">Los comienzos</span><small>Fundación e instituciones · <span class="topic-count" data-count-for="Fundación,Instituciones">—</span></small><b>EMPEZAR A EXPLORAR →</b></button>
+<button class="topic-card topic-water" type="button" data-category="Agua y producción"><span class="topic-emoji">💧</span><span class="topic-name">Agua y chacras</span><small>Producción y riego · <span class="topic-count" data-count-for="Agua y producción">—</span></small><b>EMPEZAR A EXPLORAR →</b></button>
+<button class="topic-card topic-land" type="button" data-category="Tierra y territorio"><span class="topic-emoji">🌾</span><span class="topic-name">La tierra</span><small>Territorio y sus historias · <span class="topic-count" data-count-for="Tierra y territorio">—</span></small><b>EMPEZAR A EXPLORAR →</b></button>
+<button class="topic-card topic-identity" type="button" data-category="Nombre e identidad"><span class="topic-emoji">☘️</span><span class="topic-name">Nuestra identidad</span><small>Nombres y símbolos · <span class="topic-count" data-count-for="Nombre e identidad">—</span></small><b>EMPEZAR A EXPLORAR →</b></button>
 </div></section>
           <p class="small-note">Sin registrarte. Sin apuro. Solo curiosidad.</p>
           <div class="intro-footnote"><span class="tiny-sun">✳</span> Una experiencia para jugar en familia, en la escuela o entre amigos.</div>
