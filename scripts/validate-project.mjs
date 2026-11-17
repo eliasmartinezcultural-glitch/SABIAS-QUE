@@ -78,8 +78,7 @@ const braceBalance = (css.match(/{/g) || []).length - (css.match(/}/g) || []).le
 check(braceBalance === 0, "styles.css tiene llaves desbalanceadas.");
 
 for (const asset of ["styles.css", "questions.js", "app.js"]) {
-  const escaped = asset.replace(".", "\\.");
-  check(new RegExp(escaped + "\\?v=[^\\" ]+").test(html), "Falta versión de caché para " + asset + " en index.html.");
+  check(html.includes(asset + "?v="), "Falta versión de caché para " + asset + " en index.html.");
 }
 
 check(html.includes('href="FUENTES.md"') && fs.existsSync("FUENTES.md"), "Falta el acceso al documento de fuentes.");
