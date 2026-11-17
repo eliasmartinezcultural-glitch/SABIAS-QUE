@@ -46,7 +46,8 @@ Cada pregunta debe conservar este esquema:
   explanation: "Una explicación sencilla que permita aprender.",
   sourceTitle: "Nombre de la fuente",
   sourceUrl: "https://...",
-  sourceNote: "Observación editorial o límite de la fuente."
+  sourceNote: "Observación editorial o límite de la fuente.",
+  image: { src: "https://...", alt: "Descripción de la foto", caption: "EPÍGRAFE BREVE" } // opcional
 }
 ```
 
