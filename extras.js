@@ -430,7 +430,13 @@
     if (language !== "es") $("language-select").value = language;
     // La música nunca se reproduce automáticamente: requiere una acción explícita.
     if (document.hidden) stopMusic();
-    const languageObserver = new MutationObserver(() => translateTextNodes(language));
+    const languageObserver = new MutationObserver(() => {
+      // Traducir cambios del juego sin observar nuestras propias traducciones.
+      // Evita ciclos de mutaciones que pueden congelar la interfaz en algunos navegadores.
+      languageObserver.disconnect();
+      translateTextNodes(language);
+      languageObserver.observe(document.body, {subtree:true,childList:true,characterData:true});
+    });
     languageObserver.observe(document.body, {subtree:true,childList:true,characterData:true});
     document.addEventListener("visibilitychange", () => { if (document.hidden) stopMusic(); });
     window.addEventListener("pagehide", stopMusic);
