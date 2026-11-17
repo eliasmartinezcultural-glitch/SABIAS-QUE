@@ -1,45 +1,75 @@
 # ¿Sabías que...? — San Patricio del Chañar
 
-Experiencia web gratuita de verdadero o falso para descubrir historias documentadas de San Patricio del Chañar, Neuquén. Una producción de Ocarina Producciones.
+Juego web gratuito de verdadero o falso para descubrir historias documentadas de San Patricio del Chañar, Neuquén. Una producción de Ocarina Producciones.
 
-## La experiencia
-- Una mecánica central: responder VERDADERO o FALSO.
-- Explicación inmediata y enlace a la fuente después de cada respuesta.
-- Preguntas mezcladas en cada partida.
-- Puntaje acumulado, rachas y progreso visible durante la partida.\n- Devolución inmediata, explicación y fuente después de cada respuesta.\n- Pantalla final con precisión, puntos, mejor racha y medalla.\n- Repaso de respuestas incorrectas y partida especial para volver a intentarlas.\n- Reinicio completo y mezcla de preguntas en cada partida.
-- Diseño adaptable a celulares, tabletas y computadoras.
-- Acceso libre, sin cuentas, backend ni base de datos.
-- Donativo voluntario opcional para apoyar la continuidad del proyecto.
+**Sitio publicado:** https://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/
 
-## Estructura
-- \`index.html\`: estructura, portada, juego, resultados y donativo.
-- \`styles.css\`: identidad visual, diseño responsive y accesibilidad.
-- \`app.js\`: lógica del juego, respuestas, puntaje, compartir y copiar alias.
-- \`questions.js\`: banco editorial de preguntas.
-- \`FUENTES.md\`: procedencia y criterios de verificación.
+## Qué incluye
 
-## Publicación con GitHub Pages
-En el repositorio: **Settings → Pages → Build and deployment → Deploy from a branch → main → /(root) → Save**. Esperar a que GitHub complete la publicación.
+- Recorrido completo o por tema.
+- Una pregunta por pantalla, con respuesta verdadero/falso.
+- Explicación inmediata y enlace a la fuente.
+- Puntaje, rachas y progreso.
+- Resultados, repaso y repetición de preguntas incorrectas.
+- Insignias y récord local en el dispositivo.
+- Lectura en voz alta cuando el navegador la admite.
+- Ajuste de tamaño de letra y alto contraste.
+- Diseño adaptable a celular, tableta y computadora.
+- Acceso libre, sin cuentas, servidor ni base de datos.
+- Aporte voluntario opcional, sin bloquear el contenido.
 
-## Accesibilidad para personas mayores
-- Controles A− y A+ para ajustar el tamaño de lectura.
-- Modo de alto contraste.
-- Lectura en voz alta de preguntas y explicaciones si el navegador ofrece voz en español.
-- Instrucciones breves y visibles; botones grandes; una pregunta por pantalla.
-- Sin reloj, penalización por tardar ni obligación de registrarse.
-- El juego siempre puede completarse leyendo; la voz es una ayuda opcional.
+## Estructura del proyecto
 
-## Control de calidad
-Antes de ampliar el banco:
-1. Probar inicio, cada respuesta, avance y resultado final.
-2. Probar reinicio y compartir desde celular y computadora.
-3. Probar copia del alias en un navegador seguro (HTTPS).
-4. Revisar que cada enlace de fuente abra correctamente.
-5. Verificar contraste, lectura y botones en pantallas pequeñas.
+| Archivo | Responsabilidad |
+|---|---|
+| `index.html` | Estructura semántica, pantallas, controles y textos visibles |
+| `styles.css` | Sistema visual único, componentes, estados, accesibilidad y adaptación responsive |
+| `app.js` | Estado de partida, navegación, respuestas, puntaje, resultados y preferencias |
+| `questions.js` | Banco de preguntas y metadatos editoriales de cada afirmación |
+| `FUENTES.md` | Fuentes consultadas, criterios y observaciones de verificación |
+| `ARCHITECTURE.md` | Reglas para mantener y ampliar el producto sin desordenarlo |
+| `assets/` | Ilustraciones locales y recursos visuales |
 
-## Criterio histórico
-Las preguntas publicadas son una selección inicial, no una historia exhaustiva ni una certificación académica. Cada afirmación debe tener fuente, explicación y revisión editorial. Si las fuentes discrepan, la pregunta debe explicitarlo o quedar fuera del juego.
+## Cómo ampliar el juego
 
-## Créditos y colaboración
+1. Investigar y verificar el dato antes de redactar la pregunta.
+2. Agregar un objeto al banco de `questions.js`, respetando el esquema existente.
+3. Asignar un identificador único y una categoría existente o documentar la nueva.
+4. Incluir respuesta booleana, explicación comprensible y URL de fuente.
+5. Registrar la fuente y cualquier duda en `FUENTES.md`.
+6. Comprobar que el conteo por categoría, la partida completa, el repaso y los resultados sigan funcionando.
+
+No agregar preguntas de relleno. Si dos fuentes confiables discrepan, explicitar la diferencia o dejar el dato fuera del juego hasta resolverla.
+
+## Publicación
+
+El sitio se publica con GitHub Pages desde la rama `main` y la raíz del repositorio. Los archivos son estáticos: no requieren compilación, dependencias ni instalación.
+
+Después de cada actualización, comprobar la publicación en **Actions** y abrir el sitio en una ventana privada o recargar sin caché. Los archivos CSS y JavaScript llevan un identificador de versión en sus URLs para reducir problemas de caché.
+
+## Control de calidad antes de publicar
+
+- Abrir la portada en 320, 390, 680 y escritorio.
+- Completar una partida desde el inicio hasta los resultados.
+- Probar ambas respuestas y verificar que no se pueda responder dos veces.
+- Confirmar que el botón siguiente sólo avance después de responder.
+- Probar selección por tema, reinicio y repaso de errores.
+- Verificar enlaces de fuentes e imágenes; debe existir alternativa ilustrada si una foto externa falla.
+- Probar tamaño de letra, contraste y lectura en voz alta.
+- Probar compartir y copiar el alias en HTTPS.
+- Comprobar que no haya desbordes horizontales ni botones demasiado pequeños.
+
+## Criterios del producto
+
+- Primero claridad y facilidad; después decoración.
+- Una acción principal por pantalla.
+- Textos breves, legibles y respetuosos con todas las edades.
+- Sin reloj, presión ni penalización por tardar.
+- Las imágenes acompañan el contenido; nunca compiten con él.
+- No introducir registro, seguimiento personal ni datos innecesarios.
+- El contenido histórico debe ser trazable a fuentes; no inventar datos.
+
+## Créditos
+
 Investigación, diseño y desarrollo: **Elías Martínez · Ocarina Producciones**.  
-Alias para donativos voluntarios: **ocarina.guitarra**, a nombre de **Elías Martínez**. La colaboración es opcional y no condiciona el acceso al juego.
+Alias para aportes voluntarios: **ocarina.guitarra**, a nombre de **Elías Martínez**. La colaboración es opcional y no condiciona el acceso al juego.
