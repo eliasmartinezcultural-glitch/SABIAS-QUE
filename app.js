@@ -237,8 +237,34 @@
       "Tierra y territorio": "assets/tema-tierra.svg",
       "Nombre e identidad": "assets/tema-identidad.svg"
     };
-    artImage.src = artByCategory[q.category] || "assets/tema-historia.svg";
-    artImage.alt = "Ilustración sobre " + String(q.category || "la historia local").toLowerCase();
+    // Fotografías municipales reales: se usan solo cuando ilustran el tema de la pregunta.
+    // Si una foto no carga, vuelve automáticamente a la ilustración local del juego.
+    const localPhotos = {
+      "CH-003": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Balneario-Municipal.JPG", alt: "Río Neuquén y balneario municipal de San Patricio del Chañar", caption: "RÍO NEUQUÉN · NUESTRO PAISAJE" },
+      "CH-004": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Balneario-Municipal.JPG", alt: "Río Neuquén junto a San Patricio del Chañar", caption: "EL AGUA QUE ACOMPAÑA NUESTRA HISTORIA" },
+      "CH-005": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG", alt: "Chacra Municipal Valles del Chañar", caption: "CHACRAS · TIERRA DE TRABAJO" },
+      "CH-006": { src: "https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG", alt: "Vista de la Chacra Municipal Valles del Chañar", caption: "EL TERRITORIO Y SU HISTORIA" }
+    };
+    const photo = localPhotos[q.id];
+    const illustration = artByCategory[q.category] || "assets/tema-historia.svg";
+    ui.art.classList.toggle("has-photo", Boolean(photo));
+    if (photo) {
+      ui.art.dataset.photoCaption = photo.caption;
+      artImage.alt = photo.alt;
+      artImage.onerror = () => {
+        ui.art.classList.remove("has-photo");
+        ui.art.removeAttribute("data-photo-caption");
+        artImage.onerror = null;
+        artImage.src = illustration;
+        artImage.alt = "Ilustración sobre " + String(q.category || "la historia local").toLowerCase();
+      };
+      artImage.src = photo.src;
+    } else {
+      ui.art.removeAttribute("data-photo-caption");
+      artImage.onerror = null;
+      artImage.src = illustration;
+      artImage.alt = "Ilustración sobre " + String(q.category || "la historia local").toLowerCase();
+    }
     ui.source.href = q.sourceUrl;
     ui.source.textContent = (q.sourceTitle || "Consultar fuente histórica") + " ↗";
     ui.explanation.textContent = "";
