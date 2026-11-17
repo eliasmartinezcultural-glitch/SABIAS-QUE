@@ -220,6 +220,9 @@
       q.explanation = translated ? translated[1] : base.explanation;
     });
   }
+  // Conserva el texto fuente y la última traducción aplicada.
+  // Si la lógica del juego actualiza un nodo existente, ese nuevo texto pasa
+  // a ser la fuente; nunca se restaura un placeholder antiguo.
   const originalTextNodes = new WeakMap();
   function translateTextNodes(lang) {
     const dict = translations[lang]?.ui || {};
@@ -227,8 +230,14 @@
     const nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach(node => {
-      if (!originalTextNodes.has(node)) originalTextNodes.set(node, node.nodeValue);
-      const original = originalTextNodes.get(node);
+      let record = originalTextNodes.get(node);
+      if (!record) {
+        record = { original: node.nodeValue, translated: null };
+      } else if (record.translated !== null && node.nodeValue !== record.translated) {
+        // El juego escribió un valor nuevo desde la última traducción.
+        record.original = node.nodeValue;
+      }
+      const original = record.original;
       const trimmed = original.trim();
       let translated = dict[trimmed] || trimmed;
       if (lang !== "es") {
@@ -296,6 +305,8 @@
         }
       }
       const next = original.replace(trimmed, translated);
+      record.translated = next;
+      originalTextNodes.set(node, record);
       if (node.nodeValue !== next) node.nodeValue = next;
     });
     const labels = {
