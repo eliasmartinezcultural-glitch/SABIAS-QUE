@@ -696,7 +696,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #7356b7;outline-offset:3p
 .access-tools{padding:8px 0 10px;gap:7px}
 .access-label{font-size:10px}
 .access-button{min-height:42px;min-width:44px;font-size:15px;border-radius:10px}
-.intro-screen{display:grid;grid-template-columns: minmax(0, .82fr) minmax(0,,1.18fr);align-items:center;gap:22px;min-height:0;padding:18px 0 20px}
+.intro-screen{display:grid;grid-template-columns: minmax(0, .82fr) minmax(0,1.18fr);align-items:center;gap:22px;min-height:0;padding:18px 0 20px}
 .hero-art{height:220px;min-height:0;border-radius:20px;order:0;box-shadow:0 10px 24px rgba(65,55,39,.09)}
 .intro-copy{order:0;padding:0}
 .intro-copy .eyebrow{font-size:9px;margin:0}
