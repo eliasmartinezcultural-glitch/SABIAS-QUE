@@ -155,7 +155,11 @@
   function applyLanguage(lang) {
     const current = $("question-text");
     const previousStatement = current ? current.textContent : "";
-    const currentQuestion = (window.CHANAR_QUESTIONS || []).find(q => baseQuestions.get(q.id)?.statement === previousStatement);
+    const currentQuestion = (window.CHANAR_QUESTIONS || []).find(q =>
+      q.statement === previousStatement ||
+      baseQuestions.get(q.id)?.statement === previousStatement ||
+      Object.values(translations).some(pack => pack.questions?.[q.id]?.[0] === previousStatement)
+    );
     language = ["es","en","fr","pt"].includes(lang) ? lang : "es";
     translateQuestions(language);
     translateTextNodes(language);
