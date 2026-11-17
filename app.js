@@ -515,12 +515,15 @@
       const bg = ctx.createLinearGradient(0,0,1200,630);
       bg.addColorStop(0,"#f7f0e2"); bg.addColorStop(1,"#e9efdf");
       ctx.fillStyle=bg; ctx.fillRect(0,0,1200,630);
-      ctx.strokeStyle="#cdbf9f"; ctx.lineWidth=3; ctx.beginPath(); ctx.roundRect(24,24,1152,582,28); ctx.stroke();
+      ctx.strokeStyle="#cdbf9f"; ctx.lineWidth=3; ctx.beginPath();
+      if (typeof ctx.roundRect === "function") ctx.roundRect(24,24,1152,582,28);
+      else ctx.rect(24,24,1152,582);
+      ctx.stroke();
       ctx.fillStyle="#34745e"; ctx.beginPath(); ctx.arc(94,88,28,0,Math.PI*2); ctx.fill();
       ctx.fillStyle="#fffdf7"; ctx.font="bold 28px Georgia"; ctx.textAlign="center"; ctx.fillText("¿?",94,98);
       ctx.textAlign="left"; ctx.fillStyle="#2f5241"; ctx.font="bold 20px Arial"; ctx.fillText("OCARINA PRODUCCIONES",140,82);
       ctx.fillStyle="#687764"; ctx.font="bold 11px Arial"; ctx.fillText("HISTORIAS, PERSONAS Y TERRITORIO",140,104);
-      ctx.fillStyle="#263a38"; ctx.font="bold 66px Georgia"; ctx.fillText(words.headline,68,205);
+      ctx.fillStyle="#263a38"; ctx.font=lang==="fr"?"bold 58px Georgia":"bold 66px Georgia"; ctx.fillText(words.headline,68,205);
       ctx.fillStyle="#34745e"; ctx.font="bold 28px Arial"; ctx.fillText("SAN PATRICIO DEL CHAÑAR",72,254);
       ctx.fillStyle="#526451"; ctx.font="26px Georgia"; ctx.fillText(words.subtitle,72,307);
       ctx.fillStyle="#245344"; ctx.font="bold 62px Georgia"; ctx.fillText(result.score+" / "+result.total,72,407);
@@ -555,7 +558,9 @@
     $("share-feedback").textContent = "";
     if (navigator.share) {
       const card = buildShareImage(result);
-      if (card && navigator.canShare && navigator.canShare({files:[card]})) {
+      let canShareFile = false;
+      try { canShareFile = Boolean(card && navigator.canShare && navigator.canShare({files:[card]})); } catch(error) {}
+      if (canShareFile) {
         try { await navigator.share({files:[card],title:payload.title,text:message,url:payload.url}); return; }
         catch (error) { if (error && error.name === "AbortError") return; }
       }
