@@ -61,6 +61,14 @@
     <button class="quick-play-card quick-all" type="button" data-quick-count="all"><span class="quick-number">✦</span><span><strong>Todo el desafío</strong><small>Recorré todas las curiosidades disponibles.</small></span><b>EMPEZAR →</b></button>
   </div>
   <p class="available-questions" id="available-questions" aria-live="polite">Preparando las curiosidades...</p>
+  <section id="player-record" class="player-record hidden" aria-label="Tu progreso en este dispositivo">
+    <div class="record-heading"><span aria-hidden="true">🏅</span><div><strong>Tu camino de descubrimientos</strong><small>Este registro queda guardado solamente en este dispositivo.</small></div></div>
+    <div class="record-stats">
+      <div><strong id="record-games">0</strong><span>PARTIDAS</span></div>
+      <div><strong id="record-best">0%</strong><span>MEJOR PRECISIÓN</span></div>
+      <div><strong id="record-correct">0</strong><span>ACIERTOS TOTALES</span></div>
+    </div>
+  </section>
 </section>
 <section class="topic-picker" aria-labelledby="topic-title">
 <div class="topic-heading"><span class="topic-spark" aria-hidden="true">✳</span><div><h2 id="topic-title">¿Qué querés descubrir hoy?</h2><p>Elegí un tema o jugá el recorrido completo.</p></div></div>
@@ -126,9 +134,15 @@
           <div><strong id="final-streak">0</strong><span>MEJOR RACHA</span></div>
         </div>
         <div id="result-badge" class="result-badge">🏅 DESAFÍO COMPLETADO</div>
+        <p id="record-line" class="record-line" aria-live="polite"></p>
+        <section id="category-breakdown" class="category-breakdown hidden" aria-labelledby="category-breakdown-title">
+          <h3 id="category-breakdown-title">Tus temas favoritos</h3>
+          <p>Así te fue en cada tema de esta partida.</p>
+          <div id="category-results" class="category-results"></div>
+        </section>
         <section id="review-panel" class="review-panel hidden" aria-labelledby="review-title">
-          <h3 id="review-title">Repasemos lo aprendido</h3>
-          <p>Estas son las afirmaciones que podemos volver a descubrir.</p>
+          <h3 id="review-title">Repaso de tu partida</h3>
+          <p>Volvé a mirar cada afirmación, su respuesta correcta y lo que aprendiste.</p>
           <div id="review-list" class="review-list"></div>
         </section>
         <div class="result-actions">
