@@ -217,7 +217,6 @@
         : items.length < validQuestions.length ? "PASEO CORTO"
         : "RECORRIDO COMPLETO";
     }
-    hide(ui.support);
     hide(ui.intro);
     hide(ui.results);
     show(ui.game);
@@ -379,7 +378,6 @@
     stopVoice();
     hide(ui.game);
     show(ui.results);
-    show(ui.support);
     const total = history.length;
     const ratio = total ? correctCount / total : 0;
     const accuracy = total ? Math.round(ratio * 100) : 0;
@@ -582,8 +580,9 @@
 
   function openWhatsAppMessage(message) {
     const url = "https://wa.me/?text=" + encodeURIComponent(message);
-    const popup = window.open(url, "_blank", "noopener,noreferrer");
-    if (!popup) window.location.href = url;
+    const popup = window.open(url, "_blank");
+    if (popup) popup.opener = null;
+    else window.location.href = url;
   }
 
   function shareWhatsAppGame() {
