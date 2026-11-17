@@ -602,3 +602,30 @@ button:focus-visible,a:focus-visible{outline:3px solid #7356b7;outline-offset:3p
 .text-extra-large .record-stats strong{font-size:25px}
 .high-contrast .player-record,.high-contrast .category-breakdown,.high-contrast .record-line{background:#fff!important;color:#000!important;border:3px solid #000}
 .high-contrast .record-heading strong,.high-contrast .record-heading small,.high-contrast .record-stats strong,.high-contrast .record-stats span,.high-contrast .category-breakdown h3,.high-contrast .category-breakdown p,.high-contrast .category-result-row strong,.high-contrast .category-result-row>span{color:#000!important}
+
+
+/* Insignias: progresión amable, reconocible y sin presión */
+.achievement-shelf,.earned-achievements{margin:15px 0 20px;padding:15px;border:2px solid #eadfc9;border-radius:18px;background:linear-gradient(145deg,#fffaf0,#f4f8f0)}
+.achievement-heading{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.achievement-heading>span{display:grid;place-items:center;width:40px;height:40px;border-radius:13px;background:#fff;font-size:22px}
+.achievement-heading h3,.earned-achievements h3{margin:0;color:#3b4d40;font-size:17px}
+.achievement-heading p{margin:4px 0 0;color:#6c786f;font-size:11px;line-height:1.4}
+.achievement-list,.earned-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.achievement-item{display:grid;grid-template-columns:36px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;gap:2px 8px;padding:9px;border-radius:12px;background:#ffffffc9;border:1px solid #e8e4d9;min-width:0}
+.achievement-icon{grid-row:1/3;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:#f3eee3;font-size:18px}
+.achievement-item strong{font-size:11px;line-height:1.2;color:#4a594d}
+.achievement-item small{font-size:9px;line-height:1.3;color:#718074}
+.achievement-item.is-locked{opacity:.58;filter:grayscale(.7)}
+.achievement-item.is-earned{border-color:#d6e6ce;background:#f5fbf1}
+.achievement-item.is-new{outline:2px solid #d7a84c;box-shadow:0 0 0 4px #f8eacb}
+.earned-achievements{margin-top:12px}
+.earned-achievements h3{margin-bottom:11px}
+@media(max-width:360px){
+ .achievement-list,.earned-list{grid-template-columns:1fr}
+ .achievement-item{grid-template-columns:38px minmax(0,1fr)}
+}
+.text-large .achievement-item strong,.text-extra-large .achievement-item strong{font-size:14px}
+.text-large .achievement-item small,.text-extra-large .achievement-item small{font-size:12px}
+.high-contrast .achievement-shelf,.high-contrast .earned-achievements{background:#fff!important;border:3px solid #000}
+.high-contrast .achievement-heading h3,.high-contrast .achievement-heading p,.high-contrast .earned-achievements h3,.high-contrast .achievement-item strong,.high-contrast .achievement-item small{color:#000!important}
+.high-contrast .achievement-item{background:#fff!important;border:2px solid #000}
