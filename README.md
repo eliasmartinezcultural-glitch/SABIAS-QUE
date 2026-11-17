@@ -28,6 +28,8 @@ Juego web gratuito de verdadero o falso para descubrir historias documentadas de
 | `questions.js` | Banco de preguntas y metadatos editoriales de cada afirmación |
 | `FUENTES.md` | Fuentes consultadas, criterios y observaciones de verificación |
 | `ARCHITECTURE.md` | Reglas para mantener y ampliar el producto sin desordenarlo |
+| `scripts/validate-project.mjs` | Revisión automática de estructura, datos, estilos y recursos |
+| `.github/workflows/quality.yml` | Ejecuta la revisión automática en cada cambio de `main` y en pull requests |
 | `assets/` | Ilustraciones locales y recursos visuales |
 
 ## Cómo ampliar el juego
@@ -47,7 +49,11 @@ El sitio se publica con GitHub Pages desde la rama `main` y la raíz del reposit
 
 Después de cada actualización, comprobar la publicación en **Actions** y abrir el sitio en una ventana privada o recargar sin caché. Los archivos CSS y JavaScript llevan un identificador de versión en sus URLs para reducir problemas de caché.
 
-## Control de calidad antes de publicar
+## Control de calidad automático y manual
+
+GitHub Actions ejecuta una validación sin dependencias externas cada vez que cambia `main` o se abre un pull request. Comprueba sintaxis, preguntas, categorías, fuentes, IDs, clases, recursos locales y versiones de caché. Esta revisión estática no reemplaza la prueba visual en navegador.
+
+### Comprobación manual antes de publicar
 
 - Abrir la portada en 320, 390, 680 y escritorio.
 - Completar una partida desde el inicio hasta los resultados.
