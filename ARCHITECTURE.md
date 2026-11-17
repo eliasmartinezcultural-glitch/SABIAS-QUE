@@ -114,7 +114,11 @@ No agregar bibliotecas, frameworks, cuentas, bases de datos ni servicios pagos p
 - Compartir y copiar alias.
 - Vista móvil estrecha, tableta y escritorio.
 
-## 6. Publicación y caché
+## 6. Validación automática
+
+`scripts/validate-project.mjs` comprueba el contrato básico del producto sin instalar paquetes. El flujo `.github/workflows/quality.yml` lo ejecuta en GitHub Actions ante cambios en `main`, pull requests y ejecuciones manuales. Una validación correcta no equivale a una prueba visual ni a una prueba completa de interacción en navegador.
+
+## 7. Publicación y caché
 
 - La rama publicada es `main`.
 - Los recursos CSS y JavaScript usan query de versión en `index.html`.
