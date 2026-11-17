@@ -500,6 +500,42 @@
     window.setTimeout(() => focus($("result-title")), 150);
   }
 
+  function buildShareImage(result) {
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1200; canvas.height = 630;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return null;
+      const bg = ctx.createLinearGradient(0,0,1200,630);
+      bg.addColorStop(0,"#f7f0e2"); bg.addColorStop(1,"#e9efdf");
+      ctx.fillStyle=bg; ctx.fillRect(0,0,1200,630);
+      ctx.strokeStyle="#cdbf9f"; ctx.lineWidth=3; ctx.beginPath(); ctx.roundRect(24,24,1152,582,28); ctx.stroke();
+      ctx.fillStyle="#34745e"; ctx.beginPath(); ctx.arc(94,88,28,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle="#fffdf7"; ctx.font="bold 28px Georgia"; ctx.textAlign="center"; ctx.fillText("¿?",94,98);
+      ctx.textAlign="left"; ctx.fillStyle="#2f5241"; ctx.font="bold 20px Arial"; ctx.fillText("OCARINA PRODUCCIONES",140,82);
+      ctx.fillStyle="#687764"; ctx.font="bold 11px Arial"; ctx.fillText("HISTORIAS, PERSONAS Y TERRITORIO",140,104);
+      ctx.fillStyle="#263a38"; ctx.font="bold 66px Georgia"; ctx.fillText("¿SABÍAS QUE...?",68,205);
+      ctx.fillStyle="#34745e"; ctx.font="bold 28px Arial"; ctx.fillText("SAN PATRICIO DEL CHAÑAR",72,254);
+      ctx.fillStyle="#526451"; ctx.font="26px Georgia"; ctx.fillText("Mi recorrido de descubrimientos",72,307);
+      ctx.fillStyle="#245344"; ctx.font="bold 62px Georgia"; ctx.fillText(result.score+" / "+result.total,72,407);
+      ctx.fillStyle="#526451"; ctx.font="bold 21px Arial"; ctx.fillText("RESPUESTAS CORRECTAS",75,445);
+      ctx.fillStyle="#34745e"; ctx.font="bold 22px Arial"; ctx.fillText(result.points+" PUNTOS",75,493);
+      // Paisaje ilustrado: valle, río y chacras, sin presentarlo como fotografía histórica.
+      ctx.fillStyle="#dfb157"; ctx.beginPath(); ctx.arc(1000,170,72,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle="#a8b88f"; ctx.beginPath(); ctx.moveTo(610,420); ctx.lineTo(790,270); ctx.lineTo(920,380); ctx.lineTo(1040,285); ctx.lineTo(1160,410); ctx.lineTo(1160,555); ctx.lineTo(610,555); ctx.closePath(); ctx.fill();
+      ctx.fillStyle="#6f9875"; ctx.beginPath(); ctx.moveTo(610,455); ctx.lineTo(790,350); ctx.lineTo(920,440); ctx.lineTo(1040,350); ctx.lineTo(1160,445); ctx.lineTo(1160,565); ctx.lineTo(610,565); ctx.closePath(); ctx.fill();
+      ctx.fillStyle="#91c0ba"; ctx.beginPath(); ctx.moveTo(700,515); ctx.lineTo(835,465); ctx.lineTo(960,490); ctx.lineTo(1080,445); ctx.lineTo(1160,475); ctx.lineTo(1160,570); ctx.lineTo(700,570); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle="#557d59"; ctx.lineWidth=5;
+      for(let y=415;y<490;y+=25){for(let x=790;x<1150;x+=42){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,y+15);ctx.stroke();ctx.beginPath();ctx.arc(x,y-5,7,0,Math.PI*2);ctx.fillStyle="#315c43";ctx.fill();}}
+      ctx.fillStyle="#34745e"; ctx.fillRect(68,548,1064,2);
+      ctx.fillStyle="#405b49"; ctx.font="bold 15px Arial"; ctx.fillText("CREADO Y DESARROLLADO POR ELÍAS MARTÍNEZ · OCARINA PRODUCCIONES",70,580);
+      const data=canvas.toDataURL("image/png");
+      const raw=atob(data.split(",")[1]); const bytes=new Uint8Array(raw.length);
+      for(let i=0;i<raw.length;i++) bytes[i]=raw.charCodeAt(i);
+      return new File([bytes],"mi-resultado-sabias-que.png",{type:"image/png"});
+    } catch(error) { return null; }
+  }
+
   async function shareResult() {
     const result = lastRun || { score: correctCount, total: history.length, points };
     const message = "¡Hice " + result.score + " de " + result.total +
@@ -508,23 +544,28 @@
     const payload = {
       title: "¿Sabías que...? — San Patricio del Chañar",
       text: message,
-      url: location.href
+      url: "https://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/"
     };
     $("share-feedback").textContent = "";
     if (navigator.share) {
+      const card = buildShareImage(result);
+      if (card && navigator.canShare && navigator.canShare({files:[card]})) {
+        try { await navigator.share({files:[card],title:payload.title,text:message}); return; }
+        catch (error) { if (error && error.name === "AbortError") return; }
+      }
       try { await navigator.share(payload); return; }
       catch (error) { if (error && error.name === "AbortError") return; }
     }
-    const text = message + " " + location.href;
+    const shareText = message + " " + payload.url;
     try {
       if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-        $("share-feedback").textContent = "¡Resultado copiado! Ahora podés pegarlo en WhatsApp.";
+        await navigator.clipboard.writeText(shareText);
+        $("share-feedback").textContent = "¡Resultado copiado! Podés pegarlo en WhatsApp. En celulares compatibles también se comparte una tarjeta con imagen.";
       } else {
-        window.prompt("Copiá tu resultado y compartilo:", text);
+        window.prompt("Copiá tu resultado y compartilo:", shareText);
       }
     } catch (error) {
-      window.prompt("Copiá tu resultado y compartilo:", text);
+      window.prompt("Copiá tu resultado y compartilo:", shareText);
     }
   }
 
