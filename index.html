@@ -30,88 +30,70 @@
     <nav class="access-tools" aria-label="Opciones de lectura"><span class="access-label">¿NECESITÁS VER MEJOR?</span><button id="font-smaller" class="access-button" type="button" aria-label="Achicar letra">A−</button><button id="font-larger" class="access-button" type="button" aria-label="Agrandar letra">A+</button><button id="contrast-toggle" class="access-button contrast-button" type="button" aria-pressed="false">MÁS CONTRASTE</button></nav>
     <main id="main-content">
       <section id="intro" class="intro-screen" aria-labelledby="main-title">
-        <div class="hero-art" aria-hidden="true"><img class="hero-illustration" src="assets/chanar-hero.svg" alt="" width="1200" height="900" loading="eager">
-          <div class="sun"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
-          <div class="river"></div><div class="vine-row vine-one"></div><div class="vine-row vine-two"></div>
-          <div class="hero-stamp">EDICIÓN<br>CHAÑARENSE</div>
-          <span class="art-spark spark-one">✳</span><span class="art-spark spark-two">✦</span>
-          <span class="art-caption">NEUQUÉN · PATAGONIA</span>
-          <span class="art-postmark">SPC</span>
-        </div>
+        <div class="hero-art" aria-hidden="true"><img class="hero-illustration" src="assets/chanar-hero.svg" alt="" width="1200" height="900" loading="eager"></div>
         <div class="intro-copy">
-          <p class="eyebrow"><span></span> UN JUEGO DE HISTORIAS REALES</p>
-          <h1 id="main-title">¿Cuánto<br>sabés del <em>Chañar?</em></h1>
-          <p class="intro-lead">Hay historias que conocés. Otras te van a sorprender. Poné a prueba cuánto sabés de nuestro lugar y descubrí algo nuevo en cada respuesta.</p>
-          <p class="mobile-play-note">📱 Una experiencia pensada para jugar desde el celular.</p>
-          <button id="start-button" class="primary-button" type="button">¡JUGAR TODAS LAS CURIOSIDADES! <span aria-hidden="true">→</span></button>
-          <div class="how-to-play">
-            <strong>ASÍ DE FÁCIL</strong>
-            <div class="how-step"><span aria-hidden="true">👀</span><span><b>1. Mirá y leé</b><small>Una curiosidad sobre nuestro lugar.</small></span></div>
-            <div class="how-step"><span aria-hidden="true">☝️</span><span><b>2. Elegí</b><small>¿Es verdadero o falso?</small></span></div>
-            <div class="how-step"><span aria-hidden="true">💡</span><span><b>3. Descubrí</b><small>Conocé la historia detrás de la respuesta.</small></span></div>
-            <b class="no-rush">Sin reloj, sin apuro. ¡A tu ritmo!</b>
+          <p class="eyebrow"><span></span> UN JUEGO DE SAN PATRICIO DEL CHAÑAR</p>
+          <h1 id="main-title">¿Cuánto sabés de <em>nuestro lugar?</em></h1>
+          <p class="intro-lead">Ocho curiosidades para jugar, compartir y descubrir historias reales del Chañar.</p>
+          <button id="start-button" class="primary-button" type="button">EMPEZAR A JUGAR <span aria-hidden="true">→</span></button>
+
+          <div class="how-to-play" aria-label="Cómo se juega">
+            <div class="how-step"><span aria-hidden="true">1</span><span><b>Leé</b><small>Una historia breve.</small></span></div>
+            <div class="how-step"><span aria-hidden="true">2</span><span><b>Elegí</b><small>Verdadero o falso.</small></span></div>
+            <div class="how-step"><span aria-hidden="true">3</span><span><b>Descubrí</b><small>Aprendé algo nuevo.</small></span></div>
           </div>
-          <div class="intro-meta"><span>✓ VERDADERO O FALSO</span><span>✳ HISTORIA LOCAL</span><span>♡ PARA TODAS LAS EDADES</span></div>
-          <section class="local-postcards" aria-labelledby="local-postcards-title">
-            <div class="local-postcards-heading">
-              <span class="local-pin" aria-hidden="true">⌖</span>
-              <div><p class="local-kicker">ESTE ES NUESTRO LUGAR</p><h2 id="local-postcards-title">San Patricio del Chañar, en imágenes</h2></div>
+          <p class="no-rush">Sin reloj y sin apuro. Cada edad, a su ritmo.</p>
+
+          <section class="topic-picker" aria-labelledby="topic-title">
+            <div class="topic-heading"><div><h2 id="topic-title">También podés elegir un tema</h2><p>Entrá directo a lo que más te interesa.</p></div></div>
+            <div class="topic-grid">
+              <button class="topic-card topic-history" type="button" data-category="Fundación,Instituciones"><span class="topic-emoji" aria-hidden="true">🏛️</span><span class="topic-name">Los comienzos</span><small>Fundación e instituciones · <span class="topic-count" data-count-for="Fundación,Instituciones">—</span></small></button>
+              <button class="topic-card topic-water" type="button" data-category="Agua y producción"><span class="topic-emoji" aria-hidden="true">💧</span><span class="topic-name">Agua y chacras</span><small>Producción y riego · <span class="topic-count" data-count-for="Agua y producción">—</span></small></button>
+              <button class="topic-card topic-land" type="button" data-category="Tierra y territorio"><span class="topic-emoji" aria-hidden="true">🌾</span><span class="topic-name">La tierra</span><small>Territorio e historias · <span class="topic-count" data-count-for="Tierra y territorio">—</span></small></button>
+              <button class="topic-card topic-identity" type="button" data-category="Nombre e identidad"><span class="topic-emoji" aria-hidden="true">☘️</span><span class="topic-name">Nuestra identidad</span><small>Nombres y símbolos · <span class="topic-count" data-count-for="Nombre e identidad">—</span></small></button>
             </div>
+            <p class="available-questions" id="available-questions" aria-live="polite">Preparando las curiosidades...</p>
+          </section>
+
+          <section id="player-record" class="player-record hidden" aria-label="Tu progreso en este dispositivo">
+            <div class="record-heading"><span aria-hidden="true">🏅</span><div><strong>Tu camino de descubrimientos</strong><small>Guardado solamente en este dispositivo.</small></div></div>
+            <div class="record-stats">
+              <div><strong id="record-games">0</strong><span>PARTIDAS</span></div>
+              <div><strong id="record-best">0%</strong><span>MEJOR PRECISIÓN</span></div>
+              <div><strong id="record-correct">0</strong><span>ACIERTOS</span></div>
+            </div>
+          </section>
+          <section id="achievement-shelf" class="achievement-shelf hidden" aria-labelledby="achievement-title">
+            <div class="achievement-heading"><span aria-hidden="true">🏵️</span><div><h3 id="achievement-title">Tus insignias</h3><p>Se consiguen jugando.</p></div></div>
+            <div id="achievement-list" class="achievement-list"></div>
+          </section>
+
+          <details class="local-postcards">
+            <summary>Ver San Patricio del Chañar en imágenes</summary>
             <div class="local-photo-grid">
               <a class="local-photo local-photo-river" href="https://sanpatricio.gob.ar/nuestra" target="_blank" rel="noopener noreferrer">
-                <img src="https://sanpatricio.gob.ar/assets/images/municipio/Balneario-Municipal.JPG" alt="Vista del balneario municipal de San Patricio del Chañar junto al río" loading="lazy">
+                <img src="https://sanpatricio.gob.ar/assets/images/municipio/Balneario-Municipal.JPG" alt="Río Neuquén y balneario municipal de San Patricio del Chañar" loading="lazy">
                 <span class="photo-caption"><strong>El río Neuquén</strong><small>Balneario Municipal</small></span>
               </a>
               <a class="local-photo local-photo-vineyard" href="https://sanpatricio.gob.ar/quehacer" target="_blank" rel="noopener noreferrer">
-                <img src="https://sanpatricio.gob.ar/assets/images/municipio/vinedos.JPG" alt="Hileras de viñedos en San Patricio del Chañar" loading="lazy">
+                <img src="https://sanpatricio.gob.ar/assets/images/municipio/vinedos.JPG" alt="Viñedos de San Patricio del Chañar" loading="lazy">
                 <span class="photo-caption"><strong>La tierra que produce</strong><small>Viñedos del Chañar</small></span>
               </a>
               <a class="local-photo local-photo-orchard" href="https://sanpatricio.gob.ar/nuestra" target="_blank" rel="noopener noreferrer">
-                <img src="https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG" alt="Vista aérea de la Chacra Municipal Valles del Chañar" loading="lazy">
+                <img src="https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG" alt="Chacra Municipal Valles del Chañar" loading="lazy">
                 <span class="photo-caption"><strong>El trabajo de nuestra gente</strong><small>Chacra Municipal</small></span>
               </a>
             </div>
             <p class="photo-credit">Fotografías: Municipalidad de San Patricio del Chañar · <a href="https://sanpatricio.gob.ar/nuestra" target="_blank" rel="noopener noreferrer">Conocé nuestra ciudad</a></p>
-          </section>
-
-<section class="quick-play" aria-labelledby="quick-play-title">
-  <div class="quick-play-heading"><span aria-hidden="true">🎮</span><div><h2 id="quick-play-title">Elegí cómo querés jugar</h2><p>Podés empezar con poquito o hacer el recorrido completo.</p></div></div>
-  <div class="quick-play-options">
-    <button class="quick-play-card quick-one" type="button" data-quick-count="1"><span class="quick-number">1</span><span><strong>Una curiosidad</strong><small>Para probar y descubrir algo rápido.</small></span><b>EMPEZAR →</b></button>
-    <button class="quick-play-card quick-three" type="button" data-quick-count="3"><span class="quick-number">3</span><span><strong>Un paseo corto</strong><small>Tres preguntas, sin apuro.</small></span><b>EMPEZAR →</b></button>
-    <button class="quick-play-card quick-all" type="button" data-quick-count="all"><span class="quick-number">✦</span><span><strong>Todo el desafío</strong><small>Recorré todas las curiosidades disponibles.</small></span><b>EMPEZAR →</b></button>
-  </div>
-  <p class="available-questions" id="available-questions" aria-live="polite">Preparando las curiosidades...</p>
-  <section id="player-record" class="player-record hidden" aria-label="Tu progreso en este dispositivo">
-    <div class="record-heading"><span aria-hidden="true">🏅</span><div><strong>Tu camino de descubrimientos</strong><small>Este registro queda guardado solamente en este dispositivo.</small></div></div>
-    <div class="record-stats">
-      <div><strong id="record-games">0</strong><span>PARTIDAS</span></div>
-      <div><strong id="record-best">0%</strong><span>MEJOR PRECISIÓN</span></div>
-      <div><strong id="record-correct">0</strong><span>ACIERTOS TOTALES</span></div>
-    </div>
-  </section>
-  <section id="achievement-shelf" class="achievement-shelf hidden" aria-labelledby="achievement-title">
-    <div class="achievement-heading"><span aria-hidden="true">🏵️</span><div><h3 id="achievement-title">Tus insignias de explorador</h3><p>Se consiguen jugando y descubriendo historias.</p></div></div>
-    <div id="achievement-list" class="achievement-list"></div>
-  </section>
-</section>
-<section class="topic-picker" aria-labelledby="topic-title">
-<div class="topic-heading"><span class="topic-spark" aria-hidden="true">✳</span><div><h2 id="topic-title">¿Qué querés descubrir hoy?</h2><p>Elegí un tema o jugá el recorrido completo.</p></div></div>
-<div class="topic-grid">
-<button class="topic-card topic-history" type="button" data-category="Fundación,Instituciones"><span class="topic-emoji">🏛️</span><span class="topic-name">Los comienzos</span><small>Fundación e instituciones · <span class="topic-count" data-count-for="Fundación,Instituciones">—</span></small><b>EMPEZAR A EXPLORAR →</b></button>
-<button class="topic-card topic-water" type="button" data-category="Agua y producción"><span class="topic-emoji">💧</span><span class="topic-name">Agua y chacras</span><small>Producción y riego · <span class="topic-count" data-count-for="Agua y producción">—</span></small><b>EMPEZAR A EXPLORAR →</b></button>
-<button class="topic-card topic-land" type="button" data-category="Tierra y territorio"><span class="topic-emoji">🌾</span><span class="topic-name">La tierra</span><small>Territorio y sus historias · <span class="topic-count" data-count-for="Tierra y territorio">—</span></small><b>EMPEZAR A EXPLORAR →</b></button>
-<button class="topic-card topic-identity" type="button" data-category="Nombre e identidad"><span class="topic-emoji">☘️</span><span class="topic-name">Nuestra identidad</span><small>Nombres y símbolos · <span class="topic-count" data-count-for="Nombre e identidad">—</span></small><b>EMPEZAR A EXPLORAR →</b></button>
-</div></section>
-          <p class="small-note">Sin registrarte. Sin apuro. Solo curiosidad.</p>
-          <div class="intro-footnote"><span class="tiny-sun">✳</span> Una experiencia para jugar en familia, en la escuela o entre amigos.</div>
+          </details>
+          <p class="small-note">Gratis · Sin registro · Para jugar en familia.</p>
         </div>
       </section>
 
       <section id="game" class="game-screen hidden" aria-label="Desafío de verdadero o falso">
         <div class="game-topline">
           <button id="home-button" class="home-button" type="button" aria-label="Volver al inicio">← INICIO</button>
-          <span class="round-label">DESAFÍO CHAÑARENSE</span>
+          <span id="round-label" class="round-label">RECORRIDO COMPLETO</span>
           <span id="question-counter" class="question-counter">01 / 08</span>
         </div>
         <div class="game-stats" aria-label="Estado de la partida">
@@ -182,7 +164,7 @@
         <p class="small-note">La historia de nuestro lugar siempre tiene algo más para contar.</p><p id="share-feedback" class="share-feedback" role="status" aria-live="polite"></p>
       </section>
 
-      <section id="support" class="support-card" aria-labelledby="support-title">
+      <section id="support" class="support-card hidden" aria-labelledby="support-title">
         <div class="support-doodle" aria-hidden="true">♡</div>
         <div class="support-copy">
           <p class="support-eyebrow">SI TE GUSTÓ ESTA EXPERIENCIA</p>
