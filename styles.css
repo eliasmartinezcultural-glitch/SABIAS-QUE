@@ -163,6 +163,12 @@ h1,h2,h3{font-family:var(--serif);letter-spacing:-.035em}
 }
 .available-questions:before{content:"";width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#719a6d}
 
+/* Variantes de tema: el color acompaña, no reemplaza el texto */
+.topic-history .topic-emoji{color:#8a6842}
+.topic-water .topic-emoji{color:#4b8790}
+.topic-land .topic-emoji{color:#66834c}
+.topic-identity .topic-emoji{color:#6f7d50}
+
 /* 04 · Memoria local e insignias */
 .player-record,.achievement-shelf{
   margin:10px 0;padding:12px;border:1px solid var(--line);
@@ -202,7 +208,10 @@ h1,h2,h3{font-family:var(--serif);letter-spacing:-.035em}
   position:relative;display:block;min-width:0;aspect-ratio:1.65/1;
   overflow:hidden;border-radius:8px;background:#e5e8dc;
 }
-.local-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .2s ease}
+ .local-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .2s ease}
+.local-photo-river img{object-position:center 52%}
+.local-photo-vineyard img{object-position:center 48%}
+.local-photo-orchard img{object-position:center 55%}
 .local-photo:hover img{transform:scale(1.025)}
 .photo-caption{
   position:absolute;right:6px;bottom:5px;left:6px;display:flex;flex-direction:column;gap:1px;
@@ -388,6 +397,9 @@ h1,h2,h3{font-family:var(--serif);letter-spacing:-.035em}
 .noscript{margin:12px 0;padding:12px;border:1px solid #c87967;border-radius:8px;color:#7c3026;background:#fff1ec;text-align:center}
 
 /* 09 · Preferencias de lectura y alto contraste */
+html.text-small{font-size:15px}
+html.text-large{font-size:18px}
+html.text-extra-large{font-size:20px}
 body.text-small{font-size:15px}
 body.text-large{font-size:18px}
 body.text-extra-large{font-size:20px}
