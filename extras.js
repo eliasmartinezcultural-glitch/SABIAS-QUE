@@ -76,7 +76,11 @@
         "VOLVER A JUGAR LAS QUE ME COSTARON ↻":"REJOUER LES QUESTIONS DIFFICILES ↻","JUGAR DE NUEVO ↻":"REJOUER ↻","COMPARTIR MI RESULTADO ↗":"PARTAGER MON RÉSULTAT ↗",
         "La historia de nuestro lugar siempre tiene algo más para contar.":"L'histoire de notre région a toujours quelque chose à raconter.",
         "Ayudanos a seguir contando historias.":"Aidez-nous à continuer à raconter des histoires.","ALIAS PARA DONATIVOS":"ALIAS DE DON","COPIAR ALIAS":"COPIER L'ALIAS",
-        "HECHO PARA JUGAR EN TU CELULAR":"FAIT POUR JOUER SUR MOBILE","Una creación de":"Une création de"
+        "HECHO PARA JUGAR EN TU CELULAR":"FAIT POUR JOUER SUR MOBILE","Una creación de":"Une création de",
+        "⚙ Opciones":"⚙ Options","Opciones del juego":"Options du jeu","Idioma":"Langue","♫ Activar música":"♫ Activer la musique",
+        "Música instrumental suave. Solo se activa cuando vos lo decidís.":"Musique instrumentale douce. Elle ne démarre que si vous le choisissez.",
+        "↻ Reiniciar partida":"↻ Recommencer la partie","Borrar todo el progreso guardado":"Effacer toute la progression enregistrée",
+        "Esto elimina puntos, partidas e insignias guardadas en este dispositivo.":"Cela efface les points, les parties et les badges enregistrés sur cet appareil."
       }
     },
     pt: {
@@ -111,7 +115,11 @@
         "VOLVER A JUGAR LAS QUE ME COSTARON ↻":"JOGAR NOVAMENTE AS MAIS DIFÍCEIS ↻","JUGAR DE NUEVO ↻":"JOGAR NOVAMENTE ↻","COMPARTIR MI RESULTADO ↗":"COMPARTILHAR MEU RESULTADO ↗",
         "La historia de nuestro lugar siempre tiene algo más para contar.":"A história do nosso lugar sempre tem mais para contar.",
         "Ayudanos a seguir contando historias.":"Ajude-nos a continuar contando histórias.","ALIAS PARA DONATIVOS":"ALIAS PARA DOAÇÕES","COPIAR ALIAS":"COPIAR ALIAS",
-        "HECHO PARA JUGAR EN TU CELULAR":"FEITO PARA JOGAR NO CELULAR","Una creación de":"Uma criação de"
+        "HECHO PARA JUGAR EN TU CELULAR":"FEITO PARA JOGAR NO CELULAR","Una creación de":"Uma criação de",
+        "⚙ Opciones":"⚙ Opções","Opciones del juego":"Opções do jogo","Idioma":"Idioma","♫ Activar música":"♫ Ativar música",
+        "Música instrumental suave. Solo se activa cuando vos lo decidís.":"Música instrumental suave. Ela só toca quando você decidir.",
+        "↻ Reiniciar partida":"↻ Reiniciar partida","Borrar todo el progreso guardado":"Apagar todo o progresso salvo",
+        "Esto elimina puntos, partidas e insignias guardadas en este dispositivo.":"Isso apaga pontos, partidas e medalhas salvos neste dispositivo."
       }
     }
   };
@@ -256,6 +264,7 @@
       translateTextNodes(language);
     }
     injectControls();
+    translateTextNodes(language);
     if (language !== "es") $("language-select").value = language;
     // La música nunca se reproduce automáticamente: requiere una acción explícita.
     if (document.hidden) stopMusic();
