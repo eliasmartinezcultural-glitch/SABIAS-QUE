@@ -561,6 +561,9 @@
     document.body.classList.toggle("text-small", fontLevel < 0);
     document.body.classList.toggle("text-large", fontLevel === 1);
     document.body.classList.toggle("text-extra-large", fontLevel === 2);
+    document.documentElement.classList.toggle("text-small", fontLevel < 0);
+    document.documentElement.classList.toggle("text-large", fontLevel === 1);
+    document.documentElement.classList.toggle("text-extra-large", fontLevel === 2);
   });
   $("contrast-toggle").addEventListener("click", (event) => {
     const active = document.body.classList.toggle("high-contrast");
