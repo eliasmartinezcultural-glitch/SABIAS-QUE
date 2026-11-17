@@ -47,7 +47,7 @@
         "Este juego es gratuito y seguirá siendo gratuito. Si te gustó y querés apoyar la creación de nuevos juegos, relatos y contenidos sobre San Patricio del Chañar, podés hacer una colaboración voluntaria a Ocarina Producciones. No hay obligación, monto mínimo, suscripción ni contenido bloqueado.":"This game is free and will remain free. If you enjoyed it and want to support new games, stories and content about San Patricio del Chañar, you can make a voluntary contribution to Ocarina Producciones. There is no obligation, minimum amount, subscription or locked content.",
         "Destinatario del alias":"Alias recipient","Alias para transferir":"Transfer alias","A nombre de Elías Martínez":"Registered to Elías Martínez",
         "Si jugaste, aprendiste o compartiste, ya nos ayudaste muchísimo. ¡Gracias por estar ahí!":"If you played, learned or shared the game, you've already helped us a lot. Thank you!",
-        "COLABORACIÓN VOLUNTARIA":"VOLUNTARY SUPPORT","Copiar el alias no realiza ninguna transferencia.":"Copying the alias does not make a transfer.","¡ALIAS COPIADO!":"ALIAS COPIED!","¡Gracias por apoyar este proyecto! ♡":"Alias copied. A transfer only happens if you choose to make one. ♡"
+        "COLABORACIÓN VOLUNTARIA":"VOLUNTARY SUPPORT","Copiar el alias no realiza ninguna transferencia.":"Copying the alias does not make a transfer.","¡ALIAS COPIADO!":"ALIAS COPIED!","Alias copiado. La transferencia solo se realiza si vos decidís hacerla. ♡":"Alias copied. A transfer only happens if you choose to make one. ♡"
       }
     },
     fr: {
@@ -93,7 +93,7 @@
         "Este juego es gratuito y seguirá siendo gratuito. Si te gustó y querés apoyar la creación de nuevos juegos, relatos y contenidos sobre San Patricio del Chañar, podés hacer una colaboración voluntaria a Ocarina Producciones. No hay obligación, monto mínimo, suscripción ni contenido bloqueado.":"Ce jeu est gratuit et le restera. Si vous l'avez aimé et souhaitez soutenir la création de nouveaux jeux, récits et contenus sur San Patricio del Chañar, vous pouvez contribuer volontairement à Ocarina Producciones. Aucune obligation, aucun montant minimum, abonnement ou contenu bloqué.",
         "Destinatario del alias":"Bénéficiaire de l'alias","Alias para transferir":"Alias de virement","A nombre de Elías Martínez":"Au nom de Elías Martínez",
         "Si jugaste, aprendiste o compartiste, ya nos ayudaste muchísimo. ¡Gracias por estar ahí!":"Si vous avez joué, appris ou partagé le jeu, vous nous avez déjà beaucoup aidés. Merci !",
-        "COLABORACIÓN VOLUNTARIA":"SOUTIEN VOLONTAIRE","Copiar el alias no realiza ninguna transferencia.":"Copier l'alias n'effectue aucun transfert.","¡ALIAS COPIADO!":"ALIAS COPIÉ !","¡Gracias por apoyar este proyecto! ♡":"Alias copié. Le virement n'est effectué que si vous décidez de le faire. ♡"
+        "COLABORACIÓN VOLUNTARIA":"SOUTIEN VOLONTAIRE","Copiar el alias no realiza ninguna transferencia.":"Copier l'alias n'effectue aucun transfert.","¡ALIAS COPIADO!":"ALIAS COPIÉ !","Alias copiado. La transferencia solo se realiza si vos decidís hacerla. ♡":"Alias copié. Le virement n'est effectué que si vous décidez de le faire. ♡"
       }
     },
     pt: {
@@ -139,7 +139,7 @@
         "Este juego es gratuito y seguirá siendo gratuito. Si te gustó y querés apoyar la creación de nuevos juegos, relatos y contenidos sobre San Patricio del Chañar, podés hacer una colaboración voluntaria a Ocarina Producciones. No hay obligación, monto mínimo, suscripción ni contenido bloqueado.":"Este jogo é gratuito e continuará assim. Se você gostou e quer apoiar a criação de novos jogos, histórias e conteúdos sobre San Patricio del Chañar, pode contribuir voluntariamente com a Ocarina Producciones. Não há obrigação, valor mínimo, assinatura ou conteúdo bloqueado.",
         "Destinatario del alias":"Destinatário do alias","Alias para transferir":"Alias para transferência","A nombre de Elías Martínez":"Em nome de Elías Martínez",
         "Si jugaste, aprendiste o compartiste, ya nos ayudaste muchísimo. ¡Gracias por estar ahí!":"Se você jogou, aprendeu ou compartilhou, já nos ajudou muito. Obrigado!",
-        "COLABORACIÓN VOLUNTARIA":"APOIO VOLUNTÁRIO","Copiar el alias no realiza ninguna transferencia.":"Copiar o alias não realiza nenhuma transferência.","¡ALIAS COPIADO!":"ALIAS COPIADO!","¡Gracias por apoyar este proyecto! ♡":"Alias copiado. A transferência só acontece se você decidir fazê-la. ♡"
+        "COLABORACIÓN VOLUNTARIA":"APOIO VOLUNTÁRIO","Copiar el alias no realiza ninguna transferencia.":"Copiar o alias não realiza nenhuma transferência.","¡ALIAS COPIADO!":"ALIAS COPIADO!","Alias copiado. La transferencia solo se realiza si vos decidís hacerla. ♡":"Alias copiado. A transferência só acontece se você decidir fazê-la. ♡"
       }
     }
   };
