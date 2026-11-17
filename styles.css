@@ -556,3 +556,49 @@ button:focus-visible,a:focus-visible{outline:3px solid #7356b7;outline-offset:3p
  html{scroll-behavior:auto}
  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
 }
+
+
+/* Nueva capa de progreso y aprendizaje: memoria local y devolución por temas */
+.player-record{margin:16px 0 22px;padding:15px;border:2px solid #e6d8f1;border-radius:18px;background:linear-gradient(135deg,#f2edff,#fff7e7);box-shadow:0 8px 20px #4d3b6a0d}
+.record-heading{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.record-heading>span{width:40px;height:40px;display:grid;place-items:center;background:#fff;border-radius:13px;font-size:22px}
+.record-heading strong{display:block;color:#35483d;font-size:14px}
+.record-heading small{display:block;color:#6c786f;font-size:10px;line-height:1.4;margin-top:3px}
+.record-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.record-stats>div{padding:10px 6px;border-radius:12px;background:#ffffffb8;text-align:center}
+.record-stats strong{display:block;color:#7056a5;font-size:22px;line-height:1.1}
+.record-stats span{display:block;color:#68766d;font-size:8px;font-weight:900;letter-spacing:.5px;margin-top:5px}
+.record-line{margin:12px auto;padding:11px 13px;border-radius:12px;background:#fff2d4;color:#76562c;font-size:13px;font-weight:800;text-align:center;line-height:1.45}
+.category-breakdown{margin:16px 0;padding:16px;border:2px solid #d9ece4;border-radius:18px;background:#f2faf6}
+.category-breakdown h3,.review-panel h3{margin:0;color:#344a3f;font-size:20px}
+.category-breakdown>p,.review-panel>p{margin:5px 0 13px;color:#6d7b71;font-size:12px;line-height:1.5}
+.category-results{display:grid;gap:12px}
+.category-result-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 10px;align-items:center}
+.category-result-row strong{color:#344a3f;font-size:13px}
+.category-result-row>span{color:#63766a;font-size:11px;font-weight:800}
+.category-result-track{grid-column:1/-1;height:9px;border-radius:99px;background:#dce9e1;overflow:hidden}
+.category-result-track span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#39aeb0,#7356b7)}
+.review-item{border:1px solid #e8e1d7}
+.review-item.review-correct{background:#f1faf3;border-color:#c8e7d0}
+.review-item.review-missed{background:#fff8ec;border-color:#f0d7ad}
+.review-item>strong{display:block;margin-bottom:8px;color:#3d7655}
+.review-item.review-missed>strong{color:#a66a32}
+.review-item>span{display:inline-block;margin:3px 0 8px;padding:7px 9px;border-radius:9px;background:#fff;font-size:12px;font-weight:900;color:#405c4a}
+@media(max-width:600px){
+ .player-record{padding:12px;border-radius:15px}
+ .record-heading strong{font-size:13px}
+ .record-heading small{font-size:10px}
+ .record-stats strong{font-size:20px}
+ .record-stats span{font-size:7px;letter-spacing:.2px}
+ .record-line{font-size:12px}
+ .category-breakdown{padding:13px}
+ .category-breakdown h3,.review-panel h3{font-size:18px}
+ .category-result-row strong{font-size:12px}
+ .category-result-row>span{font-size:10px}
+}
+.text-large .record-heading strong,.text-extra-large .record-heading strong{font-size:17px}
+.text-large .record-heading small,.text-extra-large .record-heading small{font-size:13px}
+.text-large .record-stats span,.text-extra-large .record-stats span{font-size:10px}
+.text-extra-large .record-stats strong{font-size:25px}
+.high-contrast .player-record,.high-contrast .category-breakdown,.high-contrast .record-line{background:#fff!important;color:#000!important;border:3px solid #000}
+.high-contrast .record-heading strong,.high-contrast .record-heading small,.high-contrast .record-stats strong,.high-contrast .record-stats span,.high-contrast .category-breakdown h3,.high-contrast .category-breakdown p,.high-contrast .category-result-row strong,.high-contrast .category-result-row>span{color:#000!important}
