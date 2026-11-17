@@ -644,3 +644,64 @@ button:focus-visible,a:focus-visible{outline:3px solid #7356b7;outline-offset:3p
 .local-glimpse-credit{margin:8px 0 0;color:#8b887f;font-size:9px;line-height:1.3}
 @media(max-width:420px){.local-glimpse{padding:10px;margin:14px auto 18px}.local-glimpse-items{gap:6px}.local-glimpse-item{flex-direction:column;align-items:flex-start;gap:4px}.local-glimpse-item img{width:100%;height:42px;flex-basis:auto;object-fit:cover}.local-glimpse-item strong{font-size:11px}.local-glimpse-item small{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.local-glimpse-item{scroll-behavior:auto}}
+
+
+/* Dirección de arte consolidada: ilustración protagonista, interfaz serena */
+.hero-art{background:#d7dfc8;border-radius:28px 28px 90px 28px;box-shadow:0 18px 42px rgba(65,55,39,.13)}
+.hero-illustration{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center 54%;z-index:0}
+.hero-art .sun,.hero-art .mountain,.hero-art .river,.hero-art .vine-row,.hero-art .art-spark{display:none}
+.hero-stamp,.art-caption,.art-postmark{z-index:2}
+.hero-stamp{top:20px;left:20px;padding:9px 11px;border-radius:5px;font-size:9px;box-shadow:0 4px 12px #293d3420}
+.art-caption{bottom:17px;left:19px;text-shadow:0 2px 8px #1e382c}
+.art-postmark{bottom:13px;right:17px;width:38px;height:38px;font-size:9px;background:#244a3940}
+.intro-copy h1{max-width:560px}
+#start-button{letter-spacing:.7px}
+.quick-play{border:1px solid #e8ddca;background:#fffaf1;box-shadow:0 8px 24px rgba(65,55,39,.055)}
+.quick-play-heading>span{background:#edf1e8;color:#38664f}
+.quick-play-card{border-width:1px;box-shadow:0 2px 6px rgba(55,65,50,.035)}
+.quick-play-card:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 7px 16px rgba(55,65,50,.09)}
+.topic-picker{padding-top:5px}
+.topic-card{overflow:hidden;isolation:isolate;box-shadow:0 5px 14px rgba(65,55,39,.055);border-width:1px}
+.topic-card:after{content:"";position:absolute;z-index:0;right:-5px;top:4px;width:58%;height:100%;background-repeat:no-repeat;background-position:center right;background-size:contain;opacity:.22;pointer-events:none;mask-image:linear-gradient(90deg,transparent 0%,#000 34%)}
+.topic-history:after{background-image:url("assets/tema-historia.svg")}
+.topic-water:after{background-image:url("assets/tema-agua.svg")}
+.topic-land:after{background-image:url("assets/tema-tierra.svg")}
+.topic-identity:after{background-image:url("assets/tema-identidad.svg")}
+.topic-card>*{position:relative;z-index:1}
+.topic-emoji{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#ffffffa8;font-size:22px;margin-bottom:8px}
+.topic-card b{letter-spacing:.35px}
+.local-glimpse{background:transparent;border:0;border-top:1px solid #e8dece;border-radius:0;box-shadow:none;padding:12px 0 0;margin:16px 0 20px}
+.local-glimpse-label{font-size:9px;letter-spacing:.09em}
+.local-glimpse-item img{filter:saturate(.68)}
+.local-glimpse-credit{font-size:9px}
+.question-card{box-shadow:0 12px 34px rgba(65,55,39,.075);border-width:1px}
+.question-art{background:#e8eadb}
+.answer-button{transition:transform .16s,box-shadow .16s}
+.answer-button:hover:not(:disabled){box-shadow:0 6px 14px rgba(40,60,45,.09)}
+.next-button{background:var(--green);box-shadow:0 6px 16px rgba(56,102,79,.17)}
+.results-screen{box-shadow:0 14px 38px rgba(65,55,39,.08)}
+@media(min-width:700px){
+ .page-shell{width:min(100% - 56px,1080px)}
+ .intro-screen{display:grid;grid-template-columns:minmax(300px,.9fr) minmax(0,1.1fr);align-items:start;gap:clamp(30px,5vw,64px);padding:42px 0 48px}
+ .hero-art{order:0;position:sticky;top:24px;width:100%;height:min(66vw,570px);min-height:390px;max-height:570px}
+ .intro-copy{order:1;width:100%;padding:0}
+ .intro-copy h1{font-size:clamp(54px,6vw,76px)}
+ .intro-lead{font-size:16px;line-height:1.7}
+ .quick-play,.topic-picker{max-width:none}
+ .local-glimpse-items{gap:12px}
+ .game-screen{max-width:760px;margin:36px auto 58px}
+}
+@media(min-width:1100px){
+ .page-shell{width:min(100% - 80px,1160px)}
+ .intro-screen{grid-template-columns:minmax(390px,.95fr) minmax(0,1.05fr);gap:72px;padding-top:54px}
+ .hero-art{height:570px}
+ .topic-card{min-height:170px}
+}
+@media(max-width:699px){
+ .hero-art{position:relative}
+ .intro-screen{gap:14px}
+ .local-glimpse{margin-top:13px}
+}
+@media(prefers-reduced-motion:reduce){
+ .topic-card,.quick-play-card,.answer-button{transition:none!important}
+}
