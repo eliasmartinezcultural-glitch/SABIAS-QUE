@@ -12,7 +12,7 @@
     : [];
 
   const ui = {
-    intro: $("intro"), game: $("game"), results: $("results"),
+    intro: $("intro"), game: $("game"), results: $("results"), support: $("support"), roundLabel: $("round-label"),
     start: $("start-button"), next: $("next-button"), restart: $("restart-button"), home: $("home-button"),
     retry: $("retry-missed-button"), share: $("share-button"),
     copyAlias: $("copy-alias-button"), answers: $("answer-buttons"),
@@ -44,6 +44,14 @@
       const count = button.dataset.quickCount === "all"
         ? total : Math.min(Number(button.dataset.quickCount), total);
       button.disabled = !count;
+      button.setAttribute("aria-disabled", String(!count));
+    });
+    document.querySelectorAll("[data-category]").forEach((button) => {
+      const categories = button.dataset.category.split(",");
+      const count = validQuestions.filter((q) => categories.includes(q.category)).length;
+      button.disabled = count === 0;
+      button.setAttribute("aria-disabled", String(count === 0));
+      button.setAttribute("aria-label", button.querySelector(".topic-name").textContent + ", " + count + (count === 1 ? " pregunta disponible" : " preguntas disponibles"));
     });
   }
 
@@ -173,7 +181,7 @@
 
   function updateHud() {
     const total = deck.length || 1;
-    const completed = position;
+    const completed = Math.min(total, position + (answered ? 1 : 0));
     const percent = Math.round(completed / total * 100);
     $("points-live").textContent = points;
     $("streak-live").textContent = streak;
@@ -182,6 +190,7 @@
     ui.progressFill.style.width = percent + "%";
     ui.progress.setAttribute("aria-valuenow", String(completed));
     ui.progress.setAttribute("aria-valuemax", String(total));
+    ui.progress.setAttribute("aria-valuetext", completed + " de " + total + " preguntas completadas.");
     $("progress-percent").textContent = percent + "% completado";
     $("progress-label").textContent = completed === 0
       ? "¡Vamos a empezar!"
@@ -207,6 +216,14 @@
       return;
     }
     resetRun(shuffle(items), mode);
+    if (ui.roundLabel) {
+      ui.roundLabel.textContent = mode === "category" ? "RECORRIDO POR TEMA"
+        : mode === "review" ? "REPASO DE TUS RESPUESTAS"
+        : items.length === 1 ? "UNA CURIOSIDAD"
+        : items.length < validQuestions.length ? "PASEO CORTO"
+        : "RECORRIDO COMPLETO";
+    }
+    hide(ui.support);
     hide(ui.intro);
     hide(ui.results);
     show(ui.game);
@@ -225,6 +242,7 @@
     ui.counter.textContent =
       String(position + 1).padStart(2, "0") + " / " +
       String(deck.length).padStart(2, "0");
+    ui.counter.setAttribute("aria-label", "Pregunta " + (position + 1) + " de " + deck.length);
     ui.category.textContent = String(q.category || "HISTORIA").toUpperCase();
     ui.difficulty.textContent = String(q.difficulty || "DESAFÍO").toUpperCase();
     ui.question.textContent = q.statement;
@@ -368,6 +386,7 @@
     stopVoice();
     hide(ui.game);
     show(ui.results);
+    show(ui.support);
     const total = history.length;
     const ratio = total ? correctCount / total : 0;
     const accuracy = total ? Math.round(ratio * 100) : 0;
@@ -594,6 +613,7 @@
     stopVoice();
     hide(ui.game);
     hide(ui.results);
+    hide(ui.support);
     show(ui.intro);
     scrollTop();
     focus($("main-title"));
