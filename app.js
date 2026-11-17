@@ -580,6 +580,19 @@
     }
   }
 
+  function shareWhatsAppResult() {
+    const result = lastRun || { score: correctCount, total: history.length, points };
+    const message = "¡Terminé mi recorrido en ¿Sabías que...?\n\n" +
+      "📍 San Patricio del Chañar\n" +
+      "🏅 Resultado: " + result.score + " de " + result.total + " respuestas correctas\n" +
+      "⭐ Puntos: " + result.points + "\n\n" +
+      "Es un juego gratuito de Ocarina Producciones para descubrir historias reales de nuestro lugar. ¿Te animás a jugar?\n\n" +
+      "🎮 https://eliasmartinezcultural-glitch.github.io/SABIAS-QUE/";
+    const url = "https://wa.me/?text=" + encodeURIComponent(message);
+    window.open(url, "_blank", "noopener,noreferrer");
+    $("share-feedback").textContent = "Se abrió WhatsApp con tu invitación lista para revisar y enviar.";
+  }
+
   async function copyDonationAlias() {
     const alias = $("donation-alias").textContent.trim();
     const feedback = $("copy-feedback");
@@ -677,6 +690,8 @@
     button.addEventListener("click", () => submitAnswer(button.dataset.answer === "true", button));
   });
   ui.share.addEventListener("click", shareResult);
+  const whatsappResult = $("whatsapp-result-button");
+  if (whatsappResult) whatsappResult.addEventListener("click", shareWhatsAppResult);
   ui.copyAlias.addEventListener("click", copyDonationAlias);
 
   // En navegadores móviles y vistas embebidas, detener el audio al salir de la página.
