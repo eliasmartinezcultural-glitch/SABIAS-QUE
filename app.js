@@ -81,7 +81,9 @@
   function scrollTop() {
     const reduced = window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+    const touchDevice = window.matchMedia &&
+      window.matchMedia("(pointer: coarse)").matches;
+    window.scrollTo({ top: 0, behavior: reduced || touchDevice ? "auto" : "smooth" });
   }
 
   function stopVoice() {
@@ -468,6 +470,12 @@
   });
   ui.share.addEventListener("click", shareResult);
   ui.copyAlias.addEventListener("click", copyDonationAlias);
+
+  // En navegadores móviles y vistas embebidas, detener el audio al salir de la página.
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopVoice();
+  });
+  window.addEventListener("pagehide", stopVoice);
 
   if (!validQuestions.length) {
     ui.start.disabled = true;
