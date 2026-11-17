@@ -506,6 +506,12 @@
       canvas.width = 1200; canvas.height = 630;
       const ctx = canvas.getContext("2d");
       if (!ctx) return null;
+      const lang = document.documentElement.lang || "es";
+      const words = {
+        en:{headline:"DID YOU KNOW...?",subtitle:"My discovery journey",correct:"CORRECT ANSWERS",points:"POINTS",footer:"CREATED BY ELÍAS MARTÍNEZ · OCARINA PRODUCCIONES"},
+        fr:{headline:"LE SAVIEZ-VOUS... ?",subtitle:"Mon parcours de découvertes",correct:"BONNES RÉPONSES",points:"POINTS",footer:"CRÉÉ PAR ELÍAS MARTÍNEZ · OCARINA PRODUCCIONES"},
+        pt:{headline:"VOCÊ SABIA...?",subtitle:"Meu caminho de descobertas",correct:"RESPOSTAS CORRETAS",points:"PONTOS",footer:"CRIADO POR ELÍAS MARTÍNEZ · OCARINA PRODUCCIONES"}
+      }[lang] || {headline:"¿SABÍAS QUE...?",subtitle:"Mi recorrido de descubrimientos",correct:"RESPUESTAS CORRECTAS",points:"PUNTOS",footer:"CREADO Y DESARROLLADO POR ELÍAS MARTÍNEZ · OCARINA PRODUCCIONES"};
       const bg = ctx.createLinearGradient(0,0,1200,630);
       bg.addColorStop(0,"#f7f0e2"); bg.addColorStop(1,"#e9efdf");
       ctx.fillStyle=bg; ctx.fillRect(0,0,1200,630);
@@ -514,12 +520,12 @@
       ctx.fillStyle="#fffdf7"; ctx.font="bold 28px Georgia"; ctx.textAlign="center"; ctx.fillText("¿?",94,98);
       ctx.textAlign="left"; ctx.fillStyle="#2f5241"; ctx.font="bold 20px Arial"; ctx.fillText("OCARINA PRODUCCIONES",140,82);
       ctx.fillStyle="#687764"; ctx.font="bold 11px Arial"; ctx.fillText("HISTORIAS, PERSONAS Y TERRITORIO",140,104);
-      ctx.fillStyle="#263a38"; ctx.font="bold 66px Georgia"; ctx.fillText("¿SABÍAS QUE...?",68,205);
+      ctx.fillStyle="#263a38"; ctx.font="bold 66px Georgia"; ctx.fillText(words.headline,68,205);
       ctx.fillStyle="#34745e"; ctx.font="bold 28px Arial"; ctx.fillText("SAN PATRICIO DEL CHAÑAR",72,254);
-      ctx.fillStyle="#526451"; ctx.font="26px Georgia"; ctx.fillText("Mi recorrido de descubrimientos",72,307);
+      ctx.fillStyle="#526451"; ctx.font="26px Georgia"; ctx.fillText(words.subtitle,72,307);
       ctx.fillStyle="#245344"; ctx.font="bold 62px Georgia"; ctx.fillText(result.score+" / "+result.total,72,407);
-      ctx.fillStyle="#526451"; ctx.font="bold 21px Arial"; ctx.fillText("RESPUESTAS CORRECTAS",75,445);
-      ctx.fillStyle="#34745e"; ctx.font="bold 22px Arial"; ctx.fillText(result.points+" PUNTOS",75,493);
+      ctx.fillStyle="#526451"; ctx.font="bold 21px Arial"; ctx.fillText(words.correct,75,445);
+      ctx.fillStyle="#34745e"; ctx.font="bold 22px Arial"; ctx.fillText(result.points+" "+words.points,75,493);
       // Paisaje ilustrado: valle, río y chacras, sin presentarlo como fotografía histórica.
       ctx.fillStyle="#dfb157"; ctx.beginPath(); ctx.arc(1000,170,72,0,Math.PI*2); ctx.fill();
       ctx.fillStyle="#a8b88f"; ctx.beginPath(); ctx.moveTo(610,420); ctx.lineTo(790,270); ctx.lineTo(920,380); ctx.lineTo(1040,285); ctx.lineTo(1160,410); ctx.lineTo(1160,555); ctx.lineTo(610,555); ctx.closePath(); ctx.fill();
@@ -528,7 +534,7 @@
       ctx.strokeStyle="#557d59"; ctx.lineWidth=5;
       for(let y=415;y<490;y+=25){for(let x=790;x<1150;x+=42){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,y+15);ctx.stroke();ctx.beginPath();ctx.arc(x,y-5,7,0,Math.PI*2);ctx.fillStyle="#315c43";ctx.fill();}}
       ctx.fillStyle="#34745e"; ctx.fillRect(68,548,1064,2);
-      ctx.fillStyle="#405b49"; ctx.font="bold 15px Arial"; ctx.fillText("CREADO Y DESARROLLADO POR ELÍAS MARTÍNEZ · OCARINA PRODUCCIONES",70,580);
+      ctx.fillStyle="#405b49"; ctx.font="bold 15px Arial"; ctx.fillText(words.footer,70,580);
       const data=canvas.toDataURL("image/png");
       const raw=atob(data.split(",")[1]); const bytes=new Uint8Array(raw.length);
       for(let i=0;i<raw.length;i++) bytes[i]=raw.charCodeAt(i);
