@@ -38,7 +38,7 @@ window.CHANAR_QUESTIONS = [
     explanation: "La reseña histórica municipal indica que en 1969 comenzaron las obras de sistematización y se regaron los primeros cultivos y plantaciones mediante bombas que tomaban agua del río Neuquén.",
     sourceTitle: "Municipalidad · Nuestra Identidad",
     sourceUrl: "https://www.sanpatricio.gob.ar/identidad",
-    sourceNote: "Reseña institucional municipal. Conviene localizar documentación técnica de las obras para una segunda corroboración."
+    sourceNote: "Reseña institucional municipal. Conviene localizar documentación técnica de las obras para una segunda corroboración.",
     image: {
       src: "https://sanpatricio.gob.ar/assets/images/municipio/Balneario-Municipal.JPG",
       alt: "Río Neuquén y balneario municipal de San Patricio del Chañar",
@@ -55,7 +55,7 @@ window.CHANAR_QUESTIONS = [
     explanation: "La reseña municipal describe que los primeros cultivos de 1969 se regaron por bombeo desde el río Neuquén. La primera bocatoma mencionada en esa cronología se construyó en 1971.",
     sourceTitle: "Municipalidad · Nuestra Identidad",
     sourceUrl: "https://www.sanpatricio.gob.ar/identidad",
-    sourceNote: "La pregunta contrasta el bombeo inicial con la posterior infraestructura de bocatomas."
+    sourceNote: "La pregunta contrasta el bombeo inicial con la posterior infraestructura de bocatomas.",
     image: {
       src: "https://sanpatricio.gob.ar/assets/images/municipio/vinedos.JPG",
       alt: "Viñedos de San Patricio del Chañar",
@@ -72,7 +72,7 @@ window.CHANAR_QUESTIONS = [
     explanation: "La reseña histórica municipal indica que en 1966 un grupo de vecinos de Cinco Saltos adquirió El Chañar. Según esa misma fuente, por dificultades económicas el proyecto no avanzó más allá de la subdivisión del campo.",
     sourceTitle: "Municipalidad · Nuestra Identidad",
     sourceUrl: "https://www.sanpatricio.gob.ar/identidad",
-    sourceNote: "Dato atribuido a la reseña municipal; requiere contraste con escrituras o registros de propiedad."
+    sourceNote: "Dato atribuido a la reseña municipal; requiere contraste con escrituras o registros de propiedad.",
     image: {
       src: "https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG",
       alt: "Chacra Municipal Valles del Chañar",
@@ -89,7 +89,7 @@ window.CHANAR_QUESTIONS = [
     explanation: "La afirmación es falsa porque la adquisición de 1966 se atribuye a un grupo de vecinos de Cinco Saltos, no a Gasparri. Atención: las fuentes consultadas no coinciden del todo sobre quién figura como comprador en 1968: la reseña municipal menciona a Frigorífico Cipolletti S.A. y el plan del CFI menciona a Gasparri Hnos. Por eso no afirmamos aquí una única versión sobre ese segundo momento.",
     sourceTitle: "Municipalidad · Nuestra Identidad",
     sourceUrl: "https://www.sanpatricio.gob.ar/identidad",
-    sourceNote: "La secuencia de titularidad debe seguir cotejándose con documentos registrales y otras publicaciones."
+    sourceNote: "La secuencia de titularidad debe seguir cotejándose con documentos registrales y otras publicaciones.",
     image: {
       src: "https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG",
       alt: "Vista de la Chacra Municipal Valles del Chañar",
