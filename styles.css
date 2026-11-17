@@ -1091,3 +1091,86 @@ body{background:linear-gradient(180deg,#f7f2e8 0%,#f2eee5 100%);color:var(--ink)
 @media(prefers-reduced-motion:reduce){
  #start-button,.quick-play-card,.topic-card,.answer-button{transition:none!important}
 }
+
+
+/* EXPERIENCIA 3.0 · claridad, orientación y estados */
+:root{--focus-ring:#b66d36}
+[hidden],.hidden{display:none!important}
+button:disabled{cursor:not-allowed;opacity:.48;filter:saturate(.55)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--focus-ring);outline-offset:3px}
+.access-tools{position:relative;z-index:3}
+.access-button{min-height:40px;min-width:40px}
+.intro-screen{align-items:start}
+.intro-copy{min-width:0}
+.primary-button{min-height:52px;line-height:1.2}
+.quick-play-card,.topic-card{cursor:pointer}
+.quick-play-card:disabled,.topic-card:disabled{cursor:not-allowed;transform:none;box-shadow:none}
+.topic-card:disabled small{color:#8b918b}
+.available-questions{display:flex;align-items:center;gap:7px;font-size:11px;color:#596b5f}
+.available-questions:before{content:"";width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#719a6d}
+.game-screen{width:min(100%,720px);margin:20px auto 30px}
+.game-topline{margin-bottom:13px}
+.home-button{min-height:42px}
+.round-label{font-size:10px;letter-spacing:.09em;font-weight:900;color:#65776a;text-align:center}
+.question-counter{font-variant-numeric:tabular-nums;white-space:nowrap}
+.game-stats{margin:0 0 13px}
+.game-stat{min-height:67px;display:flex;flex-direction:column;justify-content:center;gap:4px;border-radius:12px;background:#fffdf8}
+.game-stat span{font-size:9px;letter-spacing:.07em}
+.game-stat strong{font-size:21px;line-height:1;font-variant-numeric:tabular-nums}
+.progress-caption{display:flex;justify-content:space-between;gap:12px;font-size:11px;margin:0 0 7px}
+.progress-track{height:9px;margin-bottom:17px;border-radius:99px;background:#e2e7dc}
+.progress-fill{height:100%;min-width:0;transition:width .25s ease;background:linear-gradient(90deg,#548365,#8cae75)}
+.question-card{padding:clamp(17px,3vw,26px);border-radius:20px;box-shadow:0 12px 34px rgba(54,63,48,.07)}
+.question-kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.question-kicker span{display:inline-flex;align-items:center;min-height:26px;padding:5px 9px;border-radius:99px;background:#edf2e9;color:#47634c;font-size:9px;letter-spacing:.05em}
+.question-art{height:clamp(135px,25vw,205px);position:relative;margin:0 auto 17px;border-radius:14px}
+.question-art img{width:100%;height:100%;object-fit:cover}
+.question-overline{font-size:10px;letter-spacing:.11em;font-weight:900;color:#8b7251;margin:0 0 8px}
+.question-card h2{font-size:clamp(21px,3.5vw,29px);line-height:1.22;margin:0 auto 9px;max-width:31ch}
+.answer-hint{margin:0 0 8px;color:#617066;font-size:13px}
+.listen-button{min-height:42px;padding:9px 14px;border:1px solid #d8e1d5;border-radius:10px;background:#f0f4ed;color:#315840;font-size:10px;font-weight:900}
+.answer-encouragement{font-size:11px;color:#758077;margin:12px 0}
+.answer-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.answer-button{min-height:72px;border-radius:14px;font-size:15px;letter-spacing:.035em}
+.answer-symbol{font-size:23px}
+.feedback{margin-top:14px;padding:16px;border-radius:15px}
+.feedback-heading{display:flex;align-items:center;gap:9px;font-size:17px}
+.feedback p{line-height:1.55}
+.source-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:12px 0;border-top:1px solid #e3e7dc;border-bottom:1px solid #e3e7dc}
+.source-line span{font-size:9px;font-weight:900;letter-spacing:.08em;color:#6e7b6e}
+.source-line a{font-size:12px;font-weight:800}
+.next-button{margin-top:14px;min-height:54px}
+.next-hint{font-size:10px;color:#6e7b6e;text-align:center}
+.game-footer{display:flex;justify-content:space-between;gap:10px;padding:12px 2px;color:#6c786e;font-size:10px}
+.results-screen{width:min(100%,720px);margin:22px auto;padding:clamp(18px,3vw,30px);border-radius:20px}
+.result-actions{margin-top:18px}
+.result-actions button{min-height:48px}
+.support-card{margin:18px auto 24px;max-width:720px}
+.site-footer{padding-top:18px;padding-bottom:22px}
+@media(max-width:700px){
+ .game-screen{margin:10px auto 20px}
+ .game-topline{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center}
+ .home-button{grid-column:1;grid-row:1;padding:8px 10px;font-size:10px}
+ .round-label{grid-column:2;grid-row:1;font-size:8px;line-height:1.25}
+ .question-counter{grid-column:3;grid-row:1;padding:7px 8px;font-size:10px}
+ .game-stats{gap:6px}
+ .game-stat{min-height:58px;padding:7px 3px}
+ .game-stat span{font-size:8px}
+ .game-stat strong{font-size:18px}
+ .question-card{padding:14px 12px}
+ .question-art{height:clamp(115px,34vw,160px)}
+ .question-card h2{font-size:clamp(20px,5.7vw,25px)}
+ .answer-buttons{grid-template-columns:1fr;gap:8px}
+ .answer-button{min-height:62px}
+ .feedback{padding:13px}
+ .source-line{align-items:flex-start;flex-direction:column}
+ .game-footer{font-size:9px}
+ .results-screen{margin:12px auto;padding:16px 12px}
+}
+@media(max-width:370px){
+ .round-label{font-size:7px;letter-spacing:.04em}
+ .home-button{font-size:9px;padding:7px}
+ .question-counter{font-size:9px}
+ .game-stat span{font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){.progress-fill{transition:none}}
