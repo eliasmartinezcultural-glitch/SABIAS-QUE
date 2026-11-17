@@ -78,3 +78,22 @@ El primer banco contiene ocho preguntas seleccionadas de fuentes institucionales
 
 ## Créditos
 Investigación y desarrollo: Elías Martínez · Ocarina Producciones.
+
+## Edición pública 1.0 · noviembre de 2026
+
+- Juego de preguntas de verdadero/falso, con recorrido completo, partidas breves y selección temática.
+- Progreso local en el dispositivo, puntos, rachas, insignias, repaso de respuestas y reinicio con confirmación.
+- Opciones de idioma: español, inglés, francés y portugués. Las traducciones son versiones editoriales de apoyo; para publicaciones educativas formales o circulación internacional conviene una revisión final por hablantes nativos.
+- Lectura en voz alta según el idioma disponible en el navegador, controles de tamaño de texto y alto contraste.
+- Música instrumental generada en el navegador, siempre opcional y sin reproducción automática.
+- Compartir resultado: en dispositivos compatibles se genera una tarjeta gráfica con el puntaje y la identidad del proyecto; si el navegador no admite compartir imágenes, se comparte o copia el enlace y el texto.
+- Colaboración: completamente voluntaria. El juego, sus preguntas y sus funciones no dependen de realizar aportes.
+
+### Alcance histórico de esta edición
+
+El banco inicial contiene ocho preguntas. Se apoya en las fuentes institucionales y normativas enumeradas en este documento, pero no debe presentarse como una historia exhaustiva ni como una investigación académica cerrada. Los puntos que las propias fuentes identifican como pendientes de cotejo permanecen expresamente señalados en las explicaciones. La ampliación del banco debe mantener el mismo criterio: fuente accesible, afirmación precisa, explicación y revisión editorial antes de publicar.
+
+### Créditos de producción
+
+Creado y desarrollado por **Elías Martínez · Ocarina Producciones**.  
+Identidad editorial: **Historias, personas y territorio**.
