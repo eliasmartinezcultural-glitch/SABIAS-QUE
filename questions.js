@@ -39,6 +39,11 @@ window.CHANAR_QUESTIONS = [
     sourceTitle: "Municipalidad · Nuestra Identidad",
     sourceUrl: "https://www.sanpatricio.gob.ar/identidad",
     sourceNote: "Reseña institucional municipal. Conviene localizar documentación técnica de las obras para una segunda corroboración."
+    image: {
+      src: "https://sanpatricio.gob.ar/assets/images/municipio/Balneario-Municipal.JPG",
+      alt: "Río Neuquén y balneario municipal de San Patricio del Chañar",
+      caption: "RÍO NEUQUÉN · NUESTRO PAISAJE"
+    },
   },
   {
     id: "CH-004",
@@ -51,6 +56,11 @@ window.CHANAR_QUESTIONS = [
     sourceTitle: "Municipalidad · Nuestra Identidad",
     sourceUrl: "https://www.sanpatricio.gob.ar/identidad",
     sourceNote: "La pregunta contrasta el bombeo inicial con la posterior infraestructura de bocatomas."
+    image: {
+      src: "https://sanpatricio.gob.ar/assets/images/municipio/vinedos.JPG",
+      alt: "Viñedos de San Patricio del Chañar",
+      caption: "VIÑEDOS · PRODUCCIÓN CHAÑARENSE"
+    },
   },
   {
     id: "CH-005",
@@ -63,6 +73,11 @@ window.CHANAR_QUESTIONS = [
     sourceTitle: "Municipalidad · Nuestra Identidad",
     sourceUrl: "https://www.sanpatricio.gob.ar/identidad",
     sourceNote: "Dato atribuido a la reseña municipal; requiere contraste con escrituras o registros de propiedad."
+    image: {
+      src: "https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG",
+      alt: "Chacra Municipal Valles del Chañar",
+      caption: "CHACRAS · TIERRA DE TRABAJO"
+    },
   },
   {
     id: "CH-006",
@@ -75,6 +90,11 @@ window.CHANAR_QUESTIONS = [
     sourceTitle: "Municipalidad · Nuestra Identidad",
     sourceUrl: "https://www.sanpatricio.gob.ar/identidad",
     sourceNote: "La secuencia de titularidad debe seguir cotejándose con documentos registrales y otras publicaciones."
+    image: {
+      src: "https://sanpatricio.gob.ar/assets/images/municipio/Chacra-Municipal.JPG",
+      alt: "Vista de la Chacra Municipal Valles del Chañar",
+      caption: "EL TERRITORIO Y SU HISTORIA"
+    },
   },
   {
     id: "CH-007",
