@@ -117,6 +117,10 @@ h1,h2,h3{font-family:var(--serif);letter-spacing:-.035em}
   transition:background .15s ease,transform .15s ease,box-shadow .15s ease;
 }
 .primary-button{background:var(--green);color:#fffdf7;box-shadow:0 4px 0 var(--green-dark)}
+.start-actions{display:grid;gap:10px;max-width:390px}
+.start-actions #start-button{width:100%;min-height:58px;font-size:.78rem}
+.quick-play-button{min-height:50px;font-size:.72rem}
+.family-invite{max-width:42ch;margin:8px 0 0;color:var(--muted);font-size:.76rem;line-height:1.45}
 .primary-button:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 5px 0 var(--green-dark)}
 .primary-button span{font-size:1.05rem}
 .secondary-button{border-color:#cbd8c9;background:var(--surface);color:var(--green-dark)}
@@ -244,7 +248,7 @@ h1,h2,h3{font-family:var(--serif);letter-spacing:-.035em}
 }
 .game-stat span{color:var(--muted);font-size:.56rem;font-weight:900;letter-spacing:.06em}
 .game-stat strong{font-size:1.25rem;line-height:1.1;font-variant-numeric:tabular-nums}
-.progress-caption{display:flex;justify-content:space-between;gap:10px;margin:0 0 6px;color:var(--muted);font-size:.65rem;font-weight:700}
+.progress-caption{display:flex;justify-content:space-between;gap:10px;margin:0 0 6px;color:var(--muted);font-size:.76rem;font-weight:700}
 .progress-track{
   height:9px;overflow:hidden;margin-bottom:14px;
   border-radius:99px;background:#e2e7dc;
@@ -256,9 +260,9 @@ h1,h2,h3{font-family:var(--serif);letter-spacing:-.035em}
 }
 .question-kicker{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
 .question-kicker span{
-  display:inline-flex;align-items:center;min-height:25px;padding:5px 9px;
+  display:inline-flex;align-items:center;min-height:30px;padding:6px 11px;
   border-radius:99px;background:#edf2e9;color:#47634c;
-  font-size:.56rem;font-weight:900;letter-spacing:.05em;
+  font-size:.68rem;font-weight:900;letter-spacing:.035em;
 }
 .question-art{
   position:relative;display:grid;place-items:center;height:clamp(125px,23vw,185px);
@@ -281,20 +285,20 @@ h1,h2,h3{font-family:var(--serif);letter-spacing:-.035em}
   font:800 .52rem/1.35 var(--sans);letter-spacing:.06em;
 }
 .question-art.has-photo:before,.question-art.has-photo .art-big-icon,.question-art.has-photo .art-artifact{display:none}
-.question-overline{margin:0 0 7px;color:var(--coral);font-size:.6rem;font-weight:900;letter-spacing:.1em}
+.question-overline{margin:0 0 8px;color:var(--coral);font-size:.72rem;font-weight:900;letter-spacing:.08em}
 .question-card h2{max-width:31ch;margin:0;font-size:clamp(1.35rem,3.5vw,1.85rem);line-height:1.22;letter-spacing:-.025em}
-.answer-hint{margin:8px 0;color:var(--muted);font-size:.78rem}
+.answer-hint{margin:9px 0;color:var(--muted);font-size:.94rem;line-height:1.45}
 .listen-button{
-  min-height:42px;padding:9px 13px;border:1px solid #d8e1d5;border-radius:9px;
-  background:#f0f4ed;color:#315840;font-size:.6rem;font-weight:900;cursor:pointer;
+  min-height:48px;padding:10px 15px;border:1px solid #d8e1d5;border-radius:9px;
+  background:#f0f4ed;color:#315840;font-size:.76rem;font-weight:900;cursor:pointer;
 }
 .listen-button:disabled{opacity:.5}
-.answer-encouragement{margin:10px 0;color:#758077;font-size:.65rem}
+.answer-encouragement{margin:11px 0;color:#647268;font-size:.78rem;line-height:1.45}
 .answer-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
 .answer-button{
   display:flex;align-items:center;justify-content:center;gap:9px;
-  min-height:66px;padding:10px;border:2px solid transparent;border-radius:12px;
-  font-size:.82rem;font-weight:900;letter-spacing:.035em;cursor:pointer;
+  min-height:76px;padding:12px;border:2px solid transparent;border-radius:12px;
+  font-size:.96rem;font-weight:900;letter-spacing:.035em;cursor:pointer;
   transition:transform .14s ease,border-color .14s ease,opacity .14s ease;
 }
 .answer-button:hover:not(:disabled){transform:translateY(-1px)}
@@ -309,12 +313,12 @@ h1,h2,h3{font-family:var(--serif);letter-spacing:-.035em}
 .feedback-learning{background:#f7efe4;border-color:#eadbc5}
 .feedback-heading{display:flex;align-items:center;gap:9px;color:var(--green-dark);font-family:var(--serif);font-size:1.2rem}
 .feedback-heading span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font:700 .9rem var(--sans)}
-.feedback p{margin:9px 0;color:#4f6256;font-size:.78rem;line-height:1.6}
+.feedback p{margin:10px 0;color:#4f6256;font-size:.9rem;line-height:1.6}
 .answer-verdict{font-weight:900}
-.learning-bonus{color:var(--green-dark);font-size:.7rem;font-weight:900}
+.learning-bonus{color:var(--green-dark);font-size:.82rem;font-weight:900;line-height:1.5}
 .source-line{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:10px 0;border-top:1px solid #e3e7dc;border-bottom:1px solid #e3e7dc}
 .source-line span{color:#6e7b6e;font-size:.54rem;font-weight:900;letter-spacing:.08em}
-.source-line a{color:var(--green);font-size:.68rem;font-weight:900;line-height:1.4}
+.source-line a{color:var(--green);font-size:.78rem;font-weight:900;line-height:1.4}
 .next-button{width:100%;margin-top:12px}
 .next-hint{margin:7px 0 0!important;color:var(--muted)!important;font-size:.58rem!important;text-align:center}
 .game-footer{display:flex;justify-content:space-between;gap:10px;padding:10px 2px;color:var(--muted);font-size:.6rem}
@@ -435,6 +439,9 @@ body.high-contrast{
   .hero-art{width:100%;height:clamp(118px,31vw,165px);aspect-ratio:auto;border-radius:14px}
   .intro-copy h1{max-width:15ch;margin:8px 0;font-size:clamp(2.1rem,8.5vw,2.7rem);line-height:1.04}
   .intro-lead{font-size:.82rem;line-height:1.48;margin-bottom:12px}
+  .start-actions{max-width:none}
+  .start-actions #start-button{width:100%;min-height:58px}
+  .family-invite{font-size:.78rem}
   #start-button{width:100%;min-height:54px;margin:0}
   .how-to-play{gap:5px;padding:8px;margin:10px 0 3px}
   .how-step{gap:5px}
@@ -465,7 +472,7 @@ body.high-contrast{
   .question-art{height:clamp(115px,34vw,160px)}
   .question-card h2{font-size:clamp(1.25rem,5.7vw,1.6rem)}
   .answer-buttons{grid-template-columns:1fr;gap:8px}
-  .answer-button{min-height:60px;font-size:.9rem}
+  .answer-button{min-height:68px;font-size:1rem}
   .feedback{padding:13px}
   .source-line{align-items:flex-start;flex-direction:column}
   .game-footer{font-size:.55rem}
