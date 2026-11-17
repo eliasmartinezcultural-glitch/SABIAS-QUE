@@ -80,7 +80,8 @@
         "⚙ Opciones":"⚙ Options","Opciones del juego":"Options du jeu","Idioma":"Langue","♫ Activar música":"♫ Activer la musique",
         "Música instrumental suave. Solo se activa cuando vos lo decidís.":"Musique instrumentale douce. Elle ne démarre que si vous le choisissez.",
         "↻ Reiniciar partida":"↻ Recommencer la partie","Borrar todo el progreso guardado":"Effacer toute la progression enregistrée",
-        "Esto elimina puntos, partidas e insignias guardadas en este dispositivo.":"Cela efface les points, les parties et les badges enregistrés sur cet appareil."
+        "Esto elimina puntos, partidas e insignias guardadas en este dispositivo.":"Cela efface les points, les parties et les badges enregistrés sur cet appareil.",
+        "Jugar es y seguirá siendo gratis. Si esta experiencia te resultó valiosa, podés colaborar voluntariamente con Ocarina Producciones con un aporte del tamaño que quieras. No es obligatorio ni cambia tu experiencia de juego.":"Le jeu restera toujours gratuit. Si cette expérience vous a plu, vous pouvez soutenir volontairement Ocarina Producciones par une contribution du montant de votre choix. Ce n'est pas obligatoire et cela ne change pas votre expérience de jeu."
       }
     },
     pt: {
@@ -119,7 +120,8 @@
         "⚙ Opciones":"⚙ Opções","Opciones del juego":"Opções do jogo","Idioma":"Idioma","♫ Activar música":"♫ Ativar música",
         "Música instrumental suave. Solo se activa cuando vos lo decidís.":"Música instrumental suave. Ela só toca quando você decidir.",
         "↻ Reiniciar partida":"↻ Reiniciar partida","Borrar todo el progreso guardado":"Apagar todo o progresso salvo",
-        "Esto elimina puntos, partidas e insignias guardadas en este dispositivo.":"Isso apaga pontos, partidas e medalhas salvos neste dispositivo."
+        "Esto elimina puntos, partidas e insignias guardadas en este dispositivo.":"Isso apaga pontos, partidas e medalhas salvos neste dispositivo.",
+        "Jugar es y seguirá siendo gratis. Si esta experiencia te resultó valiosa, podés colaborar voluntariamente con Ocarina Producciones con un aporte del tamaño que quieras. No es obligatorio ni cambia tu experiencia de juego.":"Jogar continuará sendo gratuito. Se esta experiência foi valiosa para você, pode apoiar voluntariamente a Ocarina Producciones com uma contribuição de qualquer valor. Não é obrigatório e não muda sua experiência de jogo."
       }
     }
   };
