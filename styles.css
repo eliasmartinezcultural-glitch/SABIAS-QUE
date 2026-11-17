@@ -1171,3 +1171,23 @@ body{padding-bottom:var(--support-dock-space,104px)}
   .support-copy p:not(.support-eyebrow){font-size:.53rem}
   .donation-alias{font-size:.9rem}
 }
+
+
+/* 13 · Compartir el juego: invitación directa y accesible */
+.whatsapp-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;min-height:46px;padding:11px 15px;
+  border:1px solid #23764d;border-radius:11px;
+  color:#fff;background:linear-gradient(110deg,#278653,#176b49);
+  box-shadow:0 3px 0 #14553b,0 7px 14px rgba(25,105,68,.13);
+  font-size:.68rem;font-weight:900;letter-spacing:.035em;
+  line-height:1.25;text-align:center;text-decoration:none;cursor:pointer;
+  transition:transform .15s ease,filter .15s ease;
+}
+.whatsapp-button:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.whatsapp-button:focus-visible{outline:3px solid #14553b;outline-offset:3px}
+.result-actions .whatsapp-button{grid-column:1/-1;max-width:440px;margin:0 auto}
+@media(max-width:760px){
+  .whatsapp-button{min-height:48px;font-size:.65rem}
+}
+@media(prefers-reduced-motion:reduce){.whatsapp-button{transition:none}}
