@@ -17,7 +17,7 @@
     retry: $("retry-missed-button"), share: $("share-button"),
     copyAlias: $("copy-alias-button"), answers: $("answer-buttons"),
     question: $("question-text"), counter: $("question-counter"),
-    category: $("category-label"), difficulty: $("difficulty-label"),
+    category: $("category-label"), difficulty: $("difficulty-label"), shortStart: $("short-game-button"),
     art: $("question-art"), feedback: $("feedback"),
     feedbackIcon: $("feedback-icon"), feedbackTitle: $("feedback-title"),
     verdict: $("answer-verdict"), explanation: $("feedback-explanation"),
@@ -212,6 +212,7 @@
     if (ui.roundLabel) {
       ui.roundLabel.textContent = mode === "category" ? "RECORRIDO POR TEMA"
         : mode === "review" ? "REPASO DE TUS RESPUESTAS"
+        : mode === "short" ? "PARTIDA CORTITA"
         : items.length === 1 ? "UNA CURIOSIDAD"
         : items.length < validQuestions.length ? "PASEO CORTO"
         : "RECORRIDO COMPLETO";
@@ -237,7 +238,12 @@
       String(deck.length).padStart(2, "0");
     ui.counter.setAttribute("aria-label", "Pregunta " + (position + 1) + " de " + deck.length);
     ui.category.textContent = String(q.category || "HISTORIA").toUpperCase();
-    ui.difficulty.textContent = String(q.difficulty || "DESAFÍO").toUpperCase();
+    const difficultyLabels = {
+      "FÁCIL": "PARA ENTRAR EN CALOR",
+      "MEDIA": "A PENSAR",
+      "DIFÍCIL": "DESAFÍO EXTRA"
+    };
+    ui.difficulty.textContent = difficultyLabels[String(q.difficulty || "").toUpperCase()] || "UNA HISTORIA PARA DESCUBRIR";
     ui.question.textContent = q.statement;
     ui.art.querySelector(".art-big-icon").textContent = q.icon || "🌿";
     const artImage = ui.art.querySelector(".question-illustration");
@@ -585,6 +591,12 @@
   });
 
   ui.start.addEventListener("click", () => startGame());
+  if (ui.shortStart) {
+    ui.shortStart.addEventListener("click", () => {
+      const shortDeck = shuffle(validQuestions).slice(0, Math.min(5, validQuestions.length));
+      startGame(shortDeck, "short");
+    });
+  }
   refreshDiscoveryCounts();
   updateRecordDisplay();
 
