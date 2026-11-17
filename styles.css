@@ -954,3 +954,11 @@ body{background:linear-gradient(180deg,#f7f2e8 0%,#f2eee5 100%);color:var(--ink)
 @media(prefers-reduced-motion:reduce){
  .topic-card,.local-photo img,.progress-fill{transition:none!important}
 }
+
+
+/* La ilustración SVG ya contiene el paisaje completo: evitar capas decorativas duplicadas */
+.hero-art>.sun,.hero-art>.mountain,.hero-art>.river,.hero-art>.vine-row,.hero-art>.art-spark{display:none!important}
+.hero-art{background:#d9dfc9}
+.hero-art .hero-illustration{position:absolute;inset:0}
+.hero-stamp{z-index:2}
+.art-caption,.art-postmark{z-index:2}
