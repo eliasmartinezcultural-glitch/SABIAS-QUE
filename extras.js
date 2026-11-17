@@ -129,16 +129,19 @@
       q.explanation = translated ? translated[1] : base.explanation;
     });
   }
+  const originalTextNodes = new WeakMap();
   function translateTextNodes(lang) {
-    const dict = translations[lang]?.ui;
-    if (!dict) return;
+    const dict = translations[lang]?.ui || {};
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     const nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach(node => {
-      const raw = node.nodeValue;
-      const trimmed = raw.trim();
-      if (dict[trimmed]) node.nodeValue = raw.replace(trimmed, dict[trimmed]);
+      if (!originalTextNodes.has(node)) originalTextNodes.set(node, node.nodeValue);
+      const original = originalTextNodes.get(node);
+      const trimmed = original.trim();
+      const translated = dict[trimmed] || trimmed;
+      const next = original.replace(trimmed, translated);
+      if (node.nodeValue !== next) node.nodeValue = next;
     });
     const labels = {
       "font-smaller": {en:"Decrease text size",fr:"Réduire le texte",pt:"Diminuir texto"},
@@ -150,20 +153,16 @@
     document.documentElement.lang = lang;
   }
   function applyLanguage(lang) {
+    const current = $("question-text");
+    const previousStatement = current ? current.textContent : "";
+    const currentQuestion = (window.CHANAR_QUESTIONS || []).find(q => baseQuestions.get(q.id)?.statement === previousStatement);
     language = ["es","en","fr","pt"].includes(lang) ? lang : "es";
     translateQuestions(language);
-    if (language === "es") location.reload();
     translateTextNodes(language);
     try { localStorage.setItem(LANG_KEY, language); } catch(e) {}
-    const current = $("question-text");
-    const counter = $("question-counter");
-    if (current && counter && !$("game").classList.contains("hidden")) {
-      const match = (counter.textContent.match(/^\s*(\d+)/) || [])[1];
-      const index = Math.max(0, Number(match || 1)-1);
-      const active = window.CHANAR_QUESTIONS || [];
-      const text = active.find(q => q.statement === current.textContent) || active[index];
-      if (text) current.textContent = text.statement;
-    }
+    if (currentQuestion && current) current.textContent = currentQuestion.statement;
+    const selector = $("language-select");
+    if (selector) selector.value = language;
   }
 
   function injectControls() {
@@ -256,6 +255,8 @@
     if (language !== "es") $("language-select").value = language;
     // La música nunca se reproduce automáticamente: requiere una acción explícita.
     if (document.hidden) stopMusic();
+    const languageObserver = new MutationObserver(() => translateTextNodes(language));
+    languageObserver.observe(document.body, {subtree:true,childList:true,characterData:true});
     document.addEventListener("visibilitychange", () => { if (document.hidden) stopMusic(); });
     window.addEventListener("pagehide", stopMusic);
   }
